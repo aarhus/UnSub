@@ -7,6 +7,6 @@ If click it makes a POST to the appropriate URL and creates a thread action mess
 
 Still very much a work in progress - looking to support mailto unsubscribe as well. Have been running in production for some time.
 
-Free to use, but if you end up using it in an organisation with 20 or more users, please consider support me via https://ko-fi.com/aarhus and/or helping with the development/maintenance.
+Free to use, but if you end up using it in an organisation with 20 or more users, or provide it as part of another package or service, please consider support me via https://ko-fi.com/aarhus and/or helping with the development/maintenance.
 
 Thanks
