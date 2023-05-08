@@ -1,6 +1,7 @@
 {
     "name": "aarhus/unsub",
     "description": "",
+    "license": "AGPL-3.0-only",
     "authors": [
         {
             "name": "Matt Hampton",
