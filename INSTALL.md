@@ -17,3 +17,7 @@ Other installations are possible, but not supported here.
 4. Access your admin modules page like https://freescout.example.com/modules/list.
 
 5. Find **Aarhus Unsub** and click ACTIVATE.
+
+6. Use and enjoy!
+
+7. [Buy Matt a Coffee](https://ko-fi.com/aarhus)
