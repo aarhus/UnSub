@@ -1,0 +1,17 @@
+{
+    "name": "Aarhus Unsub",
+    "alias": "unsub",
+    "description": "Aarhus Unsub adds a link to the conversation if we can automatically unsub",
+    "version": "1.0.0",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\UnSub\\Providers\\UnSubServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

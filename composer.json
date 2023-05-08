@@ -1,0 +1,30 @@
+{
+    "name": "aarhus/unsub",
+    "description": "",
+    "authors": [
+        {
+            "name": "Matt Hampton",
+            "email": "arrhus@coders.co.uk"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\UnSub\\Providers\\UnSubServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "require": {
+        "rivsen/hello-world": "0.1.0",
+        "guzzlehttp/guzzle": "^7.3"
+    },
+    "replace": {
+        "laravel/framework": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\UnSub\\": ""
+        }
+    }
+}
