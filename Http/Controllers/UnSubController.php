@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use App\Conversation;
 use App\Thread;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ConnectException;
 
 
 
@@ -64,39 +65,74 @@ class UnSubController extends Controller
 
 		if ((isset($opts["https"]) || isset($opts["http"]))) {
 
-			$client = new Client();
+			try {
+			$client = new Client( [ 'request.options' => [ 'exceptions' => false, ] ]);
 
 			$url = isset($opts["https"]) ? 'https:' . $opts["https"] : 'http:' . $opts["http"];
 			$response = null;
 
-			if ("List-Unsubscribe=One-Click" === $unsubPost) {
-				$response = $client->request('POST', $url, [
-					'body' => "List-Unsubscribe=One-Click",
+				if ("List-Unsubscribe=One-Click" === $unsubPost) {
+					$response = $client->request('POST', $url, [
+						'body' => "List-Unsubscribe=One-Click",
+					]);
+				} else {
+					$response = $client->request('GET', $url);
+				}
+	
+	
+				$body = $response->getBody();
+	
+				$conversation->setMeta("List-Unsubscribe-Submitted", ["status" => $response->getStatusCode(), "reason" => $response->getReasonPhrase()]);
+	
+				$auth_user = auth()->user();
+				$created_by_user_id = $auth_user->id;
+				\App\Thread::create($conversation, Thread::TYPE_LINEITEM, '', [
+					'user_id' => $conversation->user_id,
+					'created_by_user_id' => $created_by_user_id,
+					'action_type' => self::ACTION_TYPE_UNSUBSCRIBE,
+					'source_via' => \App\Thread::PERSON_USER,
+					'source_type' => \App\Thread::SOURCE_TYPE_WEB,
+					'body' => $body,
+					'meta' => [
+						'code' => $response->getStatusCode(),
+						'message' => $response->getReasonPhrase()
+					]
 				]);
-			} else {
-				$response = $client->request('GET', $url);
 			}
+			catch (ConnectException $e) {
 
+				 $auth_user = auth()->user();
+                                $created_by_user_id = $auth_user->id;
+                                \App\Thread::create($conversation, Thread::TYPE_LINEITEM, '', [
+                                        'user_id' => $conversation->user_id,
+                                        'created_by_user_id' => $created_by_user_id,
+                                        'action_type' => self::ACTION_TYPE_UNSUBSCRIBE,
+                                        'source_via' => \App\Thread::PERSON_USER,
+                                        'source_type' => \App\Thread::SOURCE_TYPE_WEB,
+                                        'body' => "Something went wrong",
+                                        'meta' => [
+                                                'code' => 501,
+                                                'message' => "Sorry, something went wrong: ".$e->getMessage()
+                                        ]
+                                ]);
+			}
+			catch (\Exception $e) {
 
-			$body = $response->getBody();
-
-			$conversation->setMeta("List-Unsubscribe-Submitted", ["status" => $response->getStatusCode(), "reason" => $response->getReasonPhrase()]);
-
-			$auth_user = auth()->user();
-			$created_by_user_id = $auth_user->id;
-			\App\Thread::create($conversation, Thread::TYPE_LINEITEM, '', [
-				'user_id' => $conversation->user_id,
-				'created_by_user_id' => $created_by_user_id,
-				'action_type' => self::ACTION_TYPE_UNSUBSCRIBE,
-				'source_via' => \App\Thread::PERSON_USER,
-				'source_type' => \App\Thread::SOURCE_TYPE_WEB,
-				'body' => $body,
-				'meta' => [
-					'code' => $response->getStatusCode(),
-					'message' => $response->getReasonPhrase()
-				]
-			]);
-
+				 $auth_user = auth()->user();
+                                $created_by_user_id = $auth_user->id;
+                                \App\Thread::create($conversation, Thread::TYPE_LINEITEM, '', [
+                                        'user_id' => $conversation->user_id,
+                                        'created_by_user_id' => $created_by_user_id,
+                                        'action_type' => self::ACTION_TYPE_UNSUBSCRIBE,
+                                        'source_via' => \App\Thread::PERSON_USER,
+                                        'source_type' => \App\Thread::SOURCE_TYPE_WEB,
+                                        'body' => "Something went wrong",
+                                        'meta' => [
+                                                'code' => 501,
+                                                'message' => "Sorry, something went wrong: ".$e->getMessage()
+                                        ]
+                                ]);
+			}
 			$conversation->save();
 			return redirect()->route('conversations.view', ['id' => $conversation_id,]);
 
