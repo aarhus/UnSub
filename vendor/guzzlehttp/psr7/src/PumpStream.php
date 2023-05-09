@@ -18,19 +18,29 @@ use Psr\Http\Message\StreamInterface;
  */
 final class PumpStream implements StreamInterface
 {
-    /** @var callable|null */
+    /**
+     * @var callable|null 
+     */
     private $source;
 
-    /** @var int|null */
+    /**
+     * @var int|null 
+     */
     private $size;
 
-    /** @var int */
+    /**
+     * @var int 
+     */
     private $tellPos = 0;
 
-    /** @var array */
+    /**
+     * @var array 
+     */
     private $metadata;
 
-    /** @var BufferStream */
+    /**
+     * @var BufferStream 
+     */
     private $buffer;
 
     /**

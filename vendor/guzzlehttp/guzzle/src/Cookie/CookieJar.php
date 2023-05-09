@@ -49,12 +49,16 @@ class CookieJar implements CookieJarInterface
     {
         $cookieJar = new self();
         foreach ($cookies as $name => $value) {
-            $cookieJar->setCookie(new SetCookie([
-                'Domain'  => $domain,
-                'Name'    => $name,
-                'Value'   => $value,
-                'Discard' => true
-            ]));
+            $cookieJar->setCookie(
+                new SetCookie(
+                    [
+                    'Domain'  => $domain,
+                    'Name'    => $name,
+                    'Value'   => $value,
+                    'Discard' => true
+                    ]
+                )
+            );
         }
 
         return $cookieJar;
@@ -101,9 +105,11 @@ class CookieJar implements CookieJarInterface
      */
     public function toArray(): array
     {
-        return \array_map(static function (SetCookie $cookie): array {
-            return $cookie->toArray();
-        }, $this->getIterator()->getArrayCopy());
+        return \array_map(
+            static function (SetCookie $cookie): array {
+                return $cookie->toArray();
+            }, $this->getIterator()->getArrayCopy()
+        );
     }
 
     /**
@@ -178,12 +184,11 @@ class CookieJar implements CookieJarInterface
 
         // Resolve conflicts with previously set cookies
         foreach ($this->cookies as $i => $c) {
-
             // Two cookies are identical, when their path, and domain are
             // identical.
-            if ($c->getPath() != $cookie->getPath() ||
-                $c->getDomain() != $cookie->getDomain() ||
-                $c->getName() != $cookie->getName()
+            if ($c->getPath() != $cookie->getPath() 
+                || $c->getDomain() != $cookie->getDomain() 
+                || $c->getName() != $cookie->getName()
             ) {
                 continue;
             }
@@ -241,6 +246,11 @@ class CookieJar implements CookieJarInterface
                 if (0 !== \strpos($sc->getPath(), '/')) {
                     $sc->setPath($this->getCookiePathFromRequest($request));
                 }
+                if (!$sc->matchesDomain($request->getUri()->getHost())) {
+                    continue;
+                }
+                // Note: At this point `$sc->getDomain()` being a public suffix should
+                // be rejected, but we don't want to pull in the full PSL dependency.
                 $this->setCookie($sc);
             }
         }
@@ -280,10 +290,10 @@ class CookieJar implements CookieJarInterface
         $path = $uri->getPath() ?: '/';
 
         foreach ($this->cookies as $cookie) {
-            if ($cookie->matchesPath($path) &&
-                $cookie->matchesDomain($host) &&
-                !$cookie->isExpired() &&
-                (!$cookie->getSecure() || $scheme === 'https')
+            if ($cookie->matchesPath($path) 
+                && $cookie->matchesDomain($host) 
+                && !$cookie->isExpired() 
+                && (!$cookie->getSecure() || $scheme === 'https')
             ) {
                 $values[] = $cookie->getName() . '='
                     . $cookie->getValue();

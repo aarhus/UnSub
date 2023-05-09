@@ -47,7 +47,9 @@ class SessionCookieJar extends CookieJar
     public function save(): void
     {
         $json = [];
-        /** @var SetCookie $cookie */
+        /**
+ * @var SetCookie $cookie 
+*/
         foreach ($this as $cookie) {
             if (CookieJar::shouldPersist($cookie, $this->storeSessionCookies)) {
                 $json[] = $cookie->toArray();

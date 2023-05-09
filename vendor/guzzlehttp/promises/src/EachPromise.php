@@ -12,22 +12,34 @@ class EachPromise implements PromisorInterface
 
     private $nextPendingIndex = 0;
 
-    /** @var \Iterator|null */
+    /**
+     * @var \Iterator|null 
+     */
     private $iterable;
 
-    /** @var callable|int|null */
+    /**
+     * @var callable|int|null 
+     */
     private $concurrency;
 
-    /** @var callable|null */
+    /**
+     * @var callable|null 
+     */
     private $onFulfilled;
 
-    /** @var callable|null */
+    /**
+     * @var callable|null 
+     */
     private $onRejected;
 
-    /** @var Promise|null */
+    /**
+     * @var Promise|null 
+     */
     private $aggregate;
 
-    /** @var bool|null */
+    /**
+     * @var bool|null 
+     */
     private $mutex;
 
     /**
@@ -68,7 +80,9 @@ class EachPromise implements PromisorInterface
         }
     }
 
-    /** @psalm-suppress InvalidNullableReturnType */
+    /**
+     * @psalm-suppress InvalidNullableReturnType 
+     */
     public function promise()
     {
         if ($this->aggregate) {
@@ -77,7 +91,9 @@ class EachPromise implements PromisorInterface
 
         try {
             $this->createPromise();
-            /** @psalm-assert Promise $this->aggregate */
+            /**
+ * @psalm-assert Promise $this->aggregate 
+*/
             $this->iterable->rewind();
             $this->refillPending();
         } catch (\Throwable $e) {
@@ -87,7 +103,7 @@ class EachPromise implements PromisorInterface
         }
 
         /**
-         * @psalm-suppress NullableReturnStatement
+         * @psalm-suppress           NullableReturnStatement
          * @phpstan-ignore-next-line
          */
         return $this->aggregate;
@@ -96,21 +112,23 @@ class EachPromise implements PromisorInterface
     private function createPromise()
     {
         $this->mutex = false;
-        $this->aggregate = new Promise(function () {
-            if ($this->checkIfFinished()) {
-                return;
-            }
-            reset($this->pending);
-            // Consume a potentially fluctuating list of promises while
-            // ensuring that indexes are maintained (precluding array_shift).
-            while ($promise = current($this->pending)) {
-                next($this->pending);
-                $promise->wait();
-                if (Is::settled($this->aggregate)) {
+        $this->aggregate = new Promise(
+            function () {
+                if ($this->checkIfFinished()) {
                     return;
                 }
+                reset($this->pending);
+                // Consume a potentially fluctuating list of promises while
+                // ensuring that indexes are maintained (precluding array_shift).
+                while ($promise = current($this->pending)) {
+                    next($this->pending);
+                    $promise->wait();
+                    if (Is::settled($this->aggregate)) {
+                        return;
+                    }
+                }
             }
-        });
+        );
 
         // Clear the references when the promise is resolved.
         $clearFn = function () {

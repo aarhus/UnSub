@@ -46,17 +46,19 @@ final class Utils
     {
         $queue = self::queue();
         $promise = new Promise([$queue, 'run']);
-        $queue->add(function () use ($task, $promise) {
-            try {
-                if (Is::pending($promise)) {
-                    $promise->resolve($task());
+        $queue->add(
+            function () use ($task, $promise) {
+                try {
+                    if (Is::pending($promise)) {
+                        $promise->resolve($task());
+                    }
+                } catch (\Throwable $e) {
+                    $promise->reject($e);
+                } catch (\Exception $e) {
+                    $promise->reject($e);
                 }
-            } catch (\Throwable $e) {
-                $promise->reject($e);
-            } catch (\Exception $e) {
-                $promise->reject($e);
             }
-        });
+        );
 
         return $promise;
     }
@@ -161,20 +163,24 @@ final class Utils
             function ($reason, $idx, Promise $aggregate) {
                 $aggregate->reject($reason);
             }
-        )->then(function () use (&$results) {
-            ksort($results);
-            return $results;
-        });
+        )->then(
+            function () use (&$results) {
+                ksort($results);
+                return $results;
+            }
+        );
 
         if (true === $recursive) {
-            $promise = $promise->then(function ($results) use ($recursive, &$promises) {
-                foreach ($promises as $promise) {
-                    if (Is::pending($promise)) {
-                        return self::all($promises, $recursive);
+            $promise = $promise->then(
+                function ($results) use ($recursive, &$promises) {
+                    foreach ($promises as $promise) {
+                        if (Is::pending($promise)) {
+                            return self::all($promises, $recursive);
+                        }
                     }
+                    return $results;
                 }
-                return $results;
-            });
+            );
         }
 
         return $promise;
@@ -239,9 +245,11 @@ final class Utils
      */
     public static function any($promises)
     {
-        return self::some(1, $promises)->then(function ($values) {
-            return $values[0];
-        });
+        return self::some(1, $promises)->then(
+            function ($values) {
+                return $values[0];
+            }
+        );
     }
 
     /**
@@ -268,9 +276,11 @@ final class Utils
             function ($reason, $idx) use (&$results) {
                 $results[$idx] = ['state' => PromiseInterface::REJECTED, 'reason' => $reason];
             }
-        )->then(function () use (&$results) {
-            ksort($results);
-            return $results;
-        });
+        )->then(
+            function () use (&$results) {
+                ksort($results);
+                return $results;
+            }
+        );
     }
 }

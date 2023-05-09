@@ -21,7 +21,9 @@ final class FnStream implements StreamInterface
         'isReadable', 'read', 'getContents', 'getMetadata'
     ];
 
-    /** @var array<string, callable> */
+    /**
+     * @var array<string, callable> 
+     */
     private $methods;
 
     /**
@@ -44,8 +46,10 @@ final class FnStream implements StreamInterface
      */
     public function __get(string $name): void
     {
-        throw new \BadMethodCallException(str_replace('_fn_', '', $name)
-            . '() is not implemented in the FnStream');
+        throw new \BadMethodCallException(
+            str_replace('_fn_', '', $name)
+            . '() is not implemented in the FnStream'
+        );
     }
 
     /**
@@ -82,7 +86,9 @@ final class FnStream implements StreamInterface
         // If any of the required methods were not provided, then simply
         // proxy to the decorated stream.
         foreach (array_diff(self::SLOTS, array_keys($methods)) as $diff) {
-            /** @var callable $callable */
+            /**
+ * @var callable $callable 
+*/
             $callable = [$stream, $diff];
             $methods[$diff] = $callable;
         }

@@ -53,28 +53,44 @@ class Uri implements UriInterface, \JsonSerializable
     private const CHAR_SUB_DELIMS = '!\$&\'\(\)\*\+,;=';
     private const QUERY_SEPARATORS_REPLACEMENT = ['=' => '%3D', '&' => '%26'];
 
-    /** @var string Uri scheme. */
+    /**
+     * @var string Uri scheme. 
+     */
     private $scheme = '';
 
-    /** @var string Uri user info. */
+    /**
+     * @var string Uri user info. 
+     */
     private $userInfo = '';
 
-    /** @var string Uri host. */
+    /**
+     * @var string Uri host. 
+     */
     private $host = '';
 
-    /** @var int|null Uri port. */
+    /**
+     * @var int|null Uri port. 
+     */
     private $port;
 
-    /** @var string Uri path. */
+    /**
+     * @var string Uri path. 
+     */
     private $path = '';
 
-    /** @var string Uri query string. */
+    /**
+     * @var string Uri query string. 
+     */
     private $query = '';
 
-    /** @var string Uri fragment. */
+    /**
+     * @var string Uri fragment. 
+     */
     private $fragment = '';
 
-    /** @var string|null String representation */
+    /**
+     * @var string|null String representation 
+     */
     private $composedComponents;
 
     public function __construct(string $uri = '')
@@ -107,12 +123,16 @@ class Uri implements UriInterface, \JsonSerializable
         // If IPv6
         $prefix = '';
         if (preg_match('%^(.*://\[[0-9:a-f]+\])(.*?)$%', $url, $matches)) {
-            /** @var array{0:string, 1:string, 2:string} $matches */
+            /**
+ * @var array{0:string, 1:string, 2:string} $matches 
+*/
             $prefix = $matches[1];
             $url = $matches[2];
         }
 
-        /** @var string */
+        /**
+ * @var string 
+*/
         $encodedUrl = preg_replace_callback(
             '%[^:/@?&=#]+%usD',
             static function ($matches) {
@@ -215,9 +235,9 @@ class Uri implements UriInterface, \JsonSerializable
      * - absolute-path references, e.g. '/path'
      * - relative-path references, e.g. 'subpath'
      *
-     * @see Uri::isNetworkPathReference
-     * @see Uri::isAbsolutePathReference
-     * @see Uri::isRelativePathReference
+     * @see  Uri::isNetworkPathReference
+     * @see  Uri::isAbsolutePathReference
+     * @see  Uri::isRelativePathReference
      * @link https://tools.ietf.org/html/rfc3986#section-4
      */
     public static function isAbsolute(UriInterface $uri): bool
@@ -651,9 +671,11 @@ class Uri implements UriInterface, \JsonSerializable
 
         $decodedKeys = array_map('rawurldecode', $keys);
 
-        return array_filter(explode('&', $current), function ($part) use ($decodedKeys) {
-            return !in_array(rawurldecode(explode('=', $part)[0]), $decodedKeys, true);
-        });
+        return array_filter(
+            explode('&', $current), function ($part) use ($decodedKeys) {
+                return !in_array(rawurldecode(explode('=', $part)[0]), $decodedKeys, true);
+            }
+        );
     }
 
     private static function generateQueryString(string $key, ?string $value): string

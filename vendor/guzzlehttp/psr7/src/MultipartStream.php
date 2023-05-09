@@ -14,10 +14,14 @@ final class MultipartStream implements StreamInterface
 {
     use StreamDecoratorTrait;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     private $boundary;
 
-    /** @var StreamInterface */
+    /**
+     * @var StreamInterface 
+     */
     private $stream;
 
     /**
