@@ -295,39 +295,45 @@ final class Utils
         }
 
         switch (gettype($resource)) {
-            case 'resource':
-                /*
-                 * The 'php://input' is a special stream with quirks and inconsistencies.
-                 * We avoid using that stream by reading it into php://temp
-                 */
+        case 'resource':
+            /*
+             * The 'php://input' is a special stream with quirks and inconsistencies.
+             * We avoid using that stream by reading it into php://temp
+             */
 
-                /** @var resource $resource */
-                if ((\stream_get_meta_data($resource)['uri'] ?? '') === 'php://input') {
-                    $stream = self::tryFopen('php://temp', 'w+');
-                    stream_copy_to_stream($resource, $stream);
-                    fseek($stream, 0);
-                    $resource = $stream;
-                }
-                return new Stream($resource, $options);
-            case 'object':
-                /** @var object $resource */
-                if ($resource instanceof StreamInterface) {
-                    return $resource;
-                } elseif ($resource instanceof \Iterator) {
-                    return new PumpStream(function () use ($resource) {
+            /**
+ * @var resource $resource 
+*/
+            if ((\stream_get_meta_data($resource)['uri'] ?? '') === 'php://input') {
+                $stream = self::tryFopen('php://temp', 'w+');
+                stream_copy_to_stream($resource, $stream);
+                fseek($stream, 0);
+                $resource = $stream;
+            }
+            return new Stream($resource, $options);
+        case 'object':
+            /**
+ * @var object $resource 
+*/
+            if ($resource instanceof StreamInterface) {
+                return $resource;
+            } elseif ($resource instanceof \Iterator) {
+                return new PumpStream(
+                    function () use ($resource) {
                         if (!$resource->valid()) {
                             return false;
                         }
                         $result = $resource->current();
                         $resource->next();
                         return $result;
-                    }, $options);
-                } elseif (method_exists($resource, '__toString')) {
-                    return self::streamFor((string) $resource, $options);
-                }
-                break;
-            case 'NULL':
-                return new Stream(self::tryFopen('php://temp', 'r+'), $options);
+                    }, $options
+                );
+            } elseif (method_exists($resource, '__toString')) {
+                return self::streamFor((string) $resource, $options);
+            }
+            break;
+        case 'NULL':
+            return new Stream(self::tryFopen('php://temp', 'r+'), $options);
         }
 
         if (is_callable($resource)) {
@@ -353,33 +359,43 @@ final class Utils
     public static function tryFopen(string $filename, string $mode)
     {
         $ex = null;
-        set_error_handler(static function (int $errno, string $errstr) use ($filename, $mode, &$ex): bool {
-            $ex = new \RuntimeException(sprintf(
-                'Unable to open "%s" using mode "%s": %s',
-                $filename,
-                $mode,
-                $errstr
-            ));
+        set_error_handler(
+            static function (int $errno, string $errstr) use ($filename, $mode, &$ex): bool {
+                $ex = new \RuntimeException(
+                    sprintf(
+                        'Unable to open "%s" using mode "%s": %s',
+                        $filename,
+                        $mode,
+                        $errstr
+                    )
+                );
 
-            return true;
-        });
+                return true;
+            }
+        );
 
         try {
-            /** @var resource $handle */
+            /**
+ * @var resource $handle 
+*/
             $handle = fopen($filename, $mode);
         } catch (\Throwable $e) {
-            $ex = new \RuntimeException(sprintf(
-                'Unable to open "%s" using mode "%s": %s',
-                $filename,
-                $mode,
-                $e->getMessage()
-            ), 0, $e);
+            $ex = new \RuntimeException(
+                sprintf(
+                    'Unable to open "%s" using mode "%s": %s',
+                    $filename,
+                    $mode,
+                    $e->getMessage()
+                ), 0, $e
+            );
         }
 
         restore_error_handler();
 
         if ($ex) {
-            /** @var $ex \RuntimeException */
+            /**
+ * @var $ex \RuntimeException 
+*/
             throw $ex;
         }
 
@@ -400,33 +416,43 @@ final class Utils
     public static function tryGetContents($stream): string
     {
         $ex = null;
-        set_error_handler(static function (int $errno, string $errstr) use (&$ex): bool {
-            $ex = new \RuntimeException(sprintf(
-                'Unable to read stream contents: %s',
-                $errstr
-            ));
+        set_error_handler(
+            static function (int $errno, string $errstr) use (&$ex): bool {
+                $ex = new \RuntimeException(
+                    sprintf(
+                        'Unable to read stream contents: %s',
+                        $errstr
+                    )
+                );
 
-            return true;
-        });
+                return true;
+            }
+        );
 
         try {
-            /** @var string|false $contents */
+            /**
+ * @var string|false $contents 
+*/
             $contents = stream_get_contents($stream);
 
             if ($contents === false) {
                 $ex = new \RuntimeException('Unable to read stream contents');
             }
         } catch (\Throwable $e) {
-            $ex = new \RuntimeException(sprintf(
-                'Unable to read stream contents: %s',
-                $e->getMessage()
-            ), 0, $e);
+            $ex = new \RuntimeException(
+                sprintf(
+                    'Unable to read stream contents: %s',
+                    $e->getMessage()
+                ), 0, $e
+            );
         }
 
         restore_error_handler();
 
         if ($ex) {
-            /** @var $ex \RuntimeException */
+            /**
+ * @var $ex \RuntimeException 
+*/
             throw $ex;
         }
 

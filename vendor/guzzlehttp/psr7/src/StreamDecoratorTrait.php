@@ -65,7 +65,9 @@ trait StreamDecoratorTrait
      */
     public function __call(string $method, array $args)
     {
-        /** @var callable $callable */
+        /**
+ * @var callable $callable 
+*/
         $callable = [$this->stream, $method];
         $result = call_user_func_array($callable, $args);
 

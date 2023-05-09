@@ -18,19 +18,33 @@ class Stream implements StreamInterface
     private const READABLE_MODES = '/r|a\+|ab\+|w\+|wb\+|x\+|xb\+|c\+|cb\+/';
     private const WRITABLE_MODES = '/a|w|r\+|rb\+|rw|x|c/';
 
-    /** @var resource */
+    /**
+     * @var resource 
+     */
     private $stream;
-    /** @var int|null */
+    /**
+     * @var int|null 
+     */
     private $size;
-    /** @var bool */
+    /**
+     * @var bool 
+     */
     private $seekable;
-    /** @var bool */
+    /**
+     * @var bool 
+     */
     private $readable;
-    /** @var bool */
+    /**
+     * @var bool 
+     */
     private $writable;
-    /** @var string|null */
+    /**
+     * @var string|null 
+     */
     private $uri;
-    /** @var mixed[] */
+    /**
+     * @var mixed[] 
+     */
     private $customMetadata;
 
     /**
@@ -206,8 +220,10 @@ class Stream implements StreamInterface
             throw new \RuntimeException('Stream is not seekable');
         }
         if (fseek($this->stream, $offset, $whence) === -1) {
-            throw new \RuntimeException('Unable to seek to stream position '
-                . $offset . ' with whence ' . var_export($whence, true));
+            throw new \RuntimeException(
+                'Unable to seek to stream position '
+                . $offset . ' with whence ' . var_export($whence, true)
+            );
         }
     }
 

@@ -22,18 +22,20 @@ final class Utils
     public static function describeType($input): string
     {
         switch (\gettype($input)) {
-            case 'object':
-                return 'object(' . \get_class($input) . ')';
-            case 'array':
-                return 'array(' . \count($input) . ')';
-            default:
-                \ob_start();
-                \var_dump($input);
-                // normalize float vs double
-                /** @var string $varDumpContent */
-                $varDumpContent = \ob_get_clean();
+        case 'object':
+            return 'object(' . \get_class($input) . ')';
+        case 'array':
+            return 'array(' . \count($input) . ')';
+        default:
+            \ob_start();
+            \var_dump($input);
+            // normalize float vs double
+            /**
+ * @var string $varDumpContent 
+*/
+            $varDumpContent = \ob_get_clean();
 
-                return \str_replace('double(', 'float(', \rtrim($varDumpContent));
+            return \str_replace('double(', 'float(', \rtrim($varDumpContent));
         }
     }
 
@@ -86,12 +88,15 @@ final class Utils
     public static function chooseHandler(): callable
     {
         $handler = null;
-        if (\function_exists('curl_multi_exec') && \function_exists('curl_exec')) {
-            $handler = Proxy::wrapSync(new CurlMultiHandler(), new CurlHandler());
-        } elseif (\function_exists('curl_exec')) {
-            $handler = new CurlHandler();
-        } elseif (\function_exists('curl_multi_exec')) {
-            $handler = new CurlMultiHandler();
+
+        if (\defined('CURLOPT_CUSTOMREQUEST')) {
+            if (\function_exists('curl_multi_exec') && \function_exists('curl_exec')) {
+                $handler = Proxy::wrapSync(new CurlMultiHandler(), new CurlHandler());
+            } elseif (\function_exists('curl_exec')) {
+                $handler = new CurlHandler();
+            } elseif (\function_exists('curl_multi_exec')) {
+                $handler = new CurlMultiHandler();
+            }
         }
 
         if (\ini_get('allow_url_fopen')) {
@@ -225,20 +230,20 @@ EOT
         }
 
         // Strip port if present.
-        if (\strpos($host, ':')) {
-            /** @var string[] $hostParts will never be false because of the checks above */
-            $hostParts = \explode(':', $host, 2);
-            $host = $hostParts[0];
-        }
+        [$host] = \explode(':', $host, 2);
 
         foreach ($noProxyArray as $area) {
             // Always match on wildcards.
             if ($area === '*') {
                 return true;
-            } elseif (empty($area)) {
+            }
+
+            if (empty($area)) {
                 // Don't match on empty values.
                 continue;
-            } elseif ($area === $host) {
+            }
+
+            if ($area === $host) {
                 // Exact matches.
                 return true;
             }
@@ -296,7 +301,9 @@ EOT
             throw new InvalidArgumentException('json_encode error: ' . \json_last_error_msg());
         }
 
-        /** @var string */
+        /**
+ * @var string 
+*/
         return $json;
     }
 
@@ -325,9 +332,11 @@ EOT
             if ($asciiHost === false) {
                 $errorBitSet = $info['errors'] ?? 0;
 
-                $errorConstants = array_filter(array_keys(get_defined_constants()), static function ($name) {
-                    return substr($name, 0, 11) === 'IDNA_ERROR_';
-                });
+                $errorConstants = array_filter(
+                    array_keys(get_defined_constants()), static function (string $name): bool {
+                        return substr($name, 0, 11) === 'IDNA_ERROR_';
+                    }
+                );
 
                 $errors = [];
                 foreach ($errorConstants as $errorConstant) {

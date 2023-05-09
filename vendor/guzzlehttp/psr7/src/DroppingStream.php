@@ -14,10 +14,14 @@ final class DroppingStream implements StreamInterface
 {
     use StreamDecoratorTrait;
 
-    /** @var int */
+    /**
+     * @var int 
+     */
     private $maxLength;
 
-    /** @var StreamInterface */
+    /**
+     * @var StreamInterface 
+     */
     private $stream;
 
     /**

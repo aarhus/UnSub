@@ -228,17 +228,22 @@ class StreamHandler
     private function createResource(callable $callback)
     {
         $errors = [];
-        \set_error_handler(static function ($_, $msg, $file, $line) use (&$errors): bool {
-            $errors[] = [
+        \set_error_handler(
+            static function ($_, $msg, $file, $line) use (&$errors): bool {
+                $errors[] = [
                 'message' => $msg,
                 'file'    => $file,
                 'line'    => $line
-            ];
-            return true;
-        });
+                ];
+                return true;
+            }
+        );
 
-        $resource = $callback();
-        \restore_error_handler();
+        try {
+            $resource = $callback();
+        } finally {
+            \restore_error_handler();
+        }
 
         if (!$resource) {
             $message = 'Error creating resource: ';
@@ -261,6 +266,10 @@ class StreamHandler
         static $methods;
         if (!$methods) {
             $methods = \array_flip(\get_class_methods(__CLASS__));
+        }
+
+        if (!\in_array($request->getUri()->getScheme(), ['http', 'https'])) {
+            throw new RequestException(\sprintf("The scheme '%s' is not supported.", $request->getUri()->getScheme()), $request);
         }
 
         // HTTP/1.1 streams using the PHP stream wrapper require a
@@ -315,7 +324,7 @@ class StreamHandler
         return $this->createResource(
             function () use ($uri, &$http_response_header, $contextResource, $context, $options, $request) {
                 $resource = @\fopen((string) $uri, 'r', false, $contextResource);
-                $this->lastHeaders = $http_response_header;
+                $this->lastHeaders = $http_response_header ?? [];
 
                 if (false === $resource) {
                     throw new ConnectException(sprintf('Connection refused for URI %s', $uri), $request, null, $context);
@@ -373,6 +382,9 @@ class StreamHandler
                 'protocol_version' => $request->getProtocolVersion(),
                 'ignore_errors'    => true,
                 'follow_location'  => 0,
+            ],
+            'ssl' => [
+                'peer_name' => $request->getUri()->getHost(),
             ],
         ];
 
@@ -514,7 +526,9 @@ class StreamHandler
             $params,
             static function ($code, $a, $b, $c, $transferred, $total) use ($value) {
                 if ($code == \STREAM_NOTIFY_PROGRESS) {
-                    $value($total, $transferred, null, null);
+                    // The upload progress cannot be determined. Use 0 for cURL compatibility:
+                    // https://curl.se/libcurl/c/CURLOPT_PROGRESSFUNCTION.html
+                    $value($total, $transferred, 0, 0);
                 }
             }
         );
@@ -563,10 +577,12 @@ class StreamHandler
         if (!isset($params['notification'])) {
             $params['notification'] = $notify;
         } else {
-            $params['notification'] = self::callArray([
+            $params['notification'] = self::callArray(
+                [
                 $params['notification'],
                 $notify
-            ]);
+                ]
+            );
         }
     }
 

@@ -1,5 +1,31 @@
 <?php
 
+/**
+ * Short description for file
+ *
+ * Long description for file (if any)...
+ *
+ * PHP version 7
+ *
+ * LICENSE: This source file is subject to version 3.01 of the PHP license
+ * that is available through the world-wide-web at the following URI:
+ * http://www.php.net/license/3_01.txt.  If you did not receive a copy of
+ * the PHP License and are unable to obtain it through the web, please
+ * send a note to license@php.net so we can mail you a copy immediately.
+ *
+ * @category   CategoryName
+ * @package    PackageName
+ * @author     Original Author <author@example.com>
+ * @author     Another Author <another@example.com>
+ * @copyright  1997-2005 The PHP Group
+ * @license    http://www.php.net/license/3_01.txt  PHP License 3.01
+ * @version    SVN: $Id$
+ * @link       http://pear.php.net/package/PackageName
+ * @see        NetOther, Net_Sample::Net_Sample()
+ * @since      File available since Release 1.2.0
+ * @deprecated File deprecated in Release 2.0.0
+ */
+
 namespace Modules\UnSub\Providers;
 
 use Illuminate\Support\ServiceProvider;
@@ -9,6 +35,22 @@ use Illuminate\Database\Eloquent\Factory;
 
 define('UNSUB_MODULE', 'unsub');
 
+/**
+ * Please use them in the order they appear here.  phpDocumentor has
+ * several other tags available, feel free to use them.
+ *
+ * @category   CategoryName
+ * @package    PackageName
+ * @author     Original Author <author@example.com>
+ * @author     Another Author <another@example.com>
+ * @copyright  1997-2005 The PHP Group
+ * @license    http://www.php.net/license/3_01.txt  PHP License 3.01
+ * @version    Release: @package_version@
+ * @link       http://pear.php.net/package/PackageName
+ * @see        NetOther, Net_Sample::Net_Sample()
+ * @since      Class available since Release 1.2.0
+ * @deprecated Class deprecated in Release 2.0.0
+ */
 class UnSubServiceProvider extends ServiceProvider
 {
     /**
@@ -33,133 +75,168 @@ class UnSubServiceProvider extends ServiceProvider
 
 
 
-        \Eventy::addAction('conversation.created_by_customer', function ($conversation, $thread, $customer) {
+        \Eventy::addAction(
+            'conversation.created_by_customer',
+            function ($conversation, $thread, $customer) {
 
-            if (!isset($thread["headers"])) {
+                if (!isset($thread["headers"])) {
+                    return $conversation;
+                }
+                $headers = $this->getMyHeaders($thread["headers"]);
+
+                if (isset($headers["List-Unsubscribe"])) {
+                    $thread->setMeta("List-Unsubscribe", $headers["List-Unsubscribe"]);
+                }
+                if (isset($headers["List-Unsubscribe-Post"])) {
+                    $thread->setMeta("List-Unsubscribe-Post", $headers["List-Unsubscribe-Post"]);
+                }
+
+                $thread->save();
                 return $conversation;
-            }
-            $headers = $this->getMyHeaders($thread["headers"]);
-
-            if (isset($headers["List-Unsubscribe"])) {
-                $thread->setMeta("List-Unsubscribe", $headers["List-Unsubscribe"]);
-            }
-            if (isset($headers["List-Unsubscribe-Post"])) {
-                $thread->setMeta("List-Unsubscribe-Post", $headers["List-Unsubscribe-Post"]);
-            }
-
-            $thread->save();
-            return $conversation;
-        }, 20, 3);
+            },
+            20,
+            3
+        );
 
 
-        \Eventy::addFilter('email.reply_to_customer.subject', function ($subject, $conversation) {
-            $details = $conversation->getMeta("List-Unsubscribe-Details");
-            \Helper::Log("Wibble", json_encode(["meta" => $details, "subject" => $subject]));
-            $conversation->setMeta("List-Unsubscribe-Details", null, true);
-            return $details["subject"] ?? $subject;
-        }, 99, 2);
+        \Eventy::addFilter(
+            'email.reply_to_customer.subject',
+            function ($subject, $conversation) {
+                $details = $conversation->getMeta("List-Unsubscribe-Details");
+                \Helper::Log("Wibble", json_encode(["meta" => $details, "subject" => $subject]));
+                $conversation->setMeta("List-Unsubscribe-Details", null, true);
+                return $details["subject"] ?? $subject;
+            },
+            99,
+            2
+        );
 
 
-        \Eventy::addFilter('email.auto_reply.subject', function ($subject, $conversation) {
-            $details = $conversation->getMeta("List-Unsubscribe-Details");
-            \Helper::Log("Wibble", json_encode(["meta" => $details, "subject" => $subject]));
-            $conversation->setMeta("List-Unsubscribe-Details", null, true);
-            return $details["subject"] ?? $subject;
-        }, 99, 2);
+        \Eventy::addFilter(
+            'email.auto_reply.subject',
+            function ($subject, $conversation) {
+                $details = $conversation->getMeta("List-Unsubscribe-Details");
+                \Helper::Log("Wibble", json_encode(["meta" => $details, "subject" => $subject]));
+                $conversation->setMeta("List-Unsubscribe-Details", null, true);
+                return $details["subject"] ?? $subject;
+            },
+            99,
+            2
+        );
 
 
-        \Eventy::addFilter('thread.action_text', function ($did_this, $thread, $conversation_number, $escape) {
+        \Eventy::addFilter(
+            'thread.action_text',
+            function ($did_this, $thread, $conversation_number, $escape) {
 
-            if ($thread->action_type != 167 /*Unsubscriber::ACTION_TYPE_UNSUBSCRIBE*/) {
-                return $did_this;
-            }
+                if ($thread->action_type != 167 /*Unsubscriber::ACTION_TYPE_UNSUBSCRIBE*/) {
+                    return $did_this;
+                }
 
-            $meta = $thread->getMetas();
+                $meta = $thread->getMetas();
 
-            $person = $thread->getActionPerson($conversation_number);
-
-
-            $code = $meta["code"] ?? 0;
-
-            if ($code > 199 && $code < 300 && $code != 202) {
-                $did_this = __(':person successfully unsubscribed from this mailing list', ['person' => $person]);
-
-                $did_this .= $thread->body;
-            } else {
-                $did_this = __(':person unsuccessfully unsubscribed from this mailing list', ['person' => $person]);
-                $did_this .= print_r($meta, 1);
-                $did_this .= $thread->body;
-            }
-
-            return ($escape) ? htmlspecialchars($did_this) : $did_this;
-        }, 20, 4);
+                $person = $thread->getActionPerson($conversation_number);
 
 
+                $code = $meta["code"] ?? 0;
 
-        \Eventy::addAction('conversation.after_subject', function ($conversation, $mailbox) {
+                if ($code > 199 && $code < 300 && $code != 202) {
+                    $did_this = __(':person successfully unsubscribed from this mailing list', ['person' => $person]);
 
-            $c = $conversation->getMeta("List-Unsubscribe-Submitted");
+                    $did_this .= $thread->body;
+                } else {
+                    $did_this = __(':person unsuccessfully unsubscribed from this mailing list', ['person' => $person]);
+                    $did_this .= print_r($meta, 1);
+                    $did_this .= $thread->body;
+                }
 
-            $status = $c["status"] ?? 0;
+                return ($escape) ? htmlspecialchars($did_this) : $did_this;
+            },
+            20,
+            4
+        );
 
-            if ($status > 199 && $status < 300 && $status != 202) {
-                ?>
+
+
+        \Eventy::addAction(
+            'conversation.after_subject',
+            function ($conversation, $mailbox) {
+
+                $c = $conversation->getMeta("List-Unsubscribe-Submitted");
+
+                $status = $c["status"] ?? 0;
+
+                if ($status > 199 && $status < 300 && $status != 202) {
+                    ?>
                 <div class="conv-numnav" style="top: 2em;"> Unsubscribed </div>
-                <?php
-                return;
-            }
+                    <?php
+                    return;
+                }
 
 
-            $thread = $conversation->getFirstThread();
+                $thread = $conversation->getFirstThread();
 
-            $unsub = $thread->getMeta("List-Unsubscribe", null);
-            if ($unsub === null) {
-                return;
-            }
+                $unsub = $thread->getMeta("List-Unsubscribe", null);
+                if ($unsub === null) {
+                    return;
+                }
 
-            $opts = array_map(function ($x) {
-                return trim($x, " \n\r\t\v\x00,<"); }, explode(">", $unsub));
+                $opts = array_map(
+                    function ($x) {
+                            return trim($x, " \n\r\t\v\x00,<");
+                    },
+                    explode(">", $unsub)
+                );
 
-            $l = array_keys($opts);
+                $l = array_keys($opts);
 
 
-            foreach ($l as $x) {
-                $y = $opts[$x];
-                unset($opts[$x]);
+                foreach ($l as $x) {
+                    $y = $opts[$x];
+                    unset($opts[$x]);
 
-                if ($y) {
-                    $bits = explode(":", $y, 2);
-                    if (isset($bits[1])) {
-                        $opts[$bits[0]] = $bits[1];
+                    if ($y) {
+                        $bits = explode(":", $y, 2);
+                        if (isset($bits[1])) {
+                            $opts[$bits[0]] = $bits[1];
+                        }
                     }
                 }
-            }
 
-            if ((isset($opts["https"]) || isset($opts["http"]))) {
+                if ((isset($opts["https"]) || isset($opts["http"]))) {
+
+                    ?>
+                <div class="conv-numnav" style="top: 2em;"> <a
+                        href="/unsubscriber/<?php echo $mailbox->id; ?>/<?php echo $conversation->id; ?>">
+                        Unsubscribe </a></div>
+                    <?php
+                    return;
+                }
 
                 ?>
-                <div class="conv-numnav" style="top: 2em;"> <a href="/unsubscriber/<?= $mailbox->id; ?>/<?= $conversation->id; ?>">
-                        Unsubscribe </a></div>
-                <?php
-                return;
-            }
-
-            ?>
             <div class="conv-numnav" style="top: 2em;"> Unsubscribe Not Available </a></div>
-            <?php
+                <?php
 
 
 
 
 
 
-        }, 20, 2);
+            },
+            20,
+            2
+        );
 
         // Add module's css file to the application layout
-        \Eventy::addFilter('stylesheets', function ($value) {
-            array_push($value, '/modules/' . UNSUB_MODULE . '/css/style.css');
-            return $value;
-        }, 20, 1);
+        \Eventy::addFilter(
+            'stylesheets',
+            function ($value) {
+                array_push($value, '/modules/' . UNSUB_MODULE . '/css/style.css');
+                return $value;
+            },
+            20,
+            1
+        );
 
     }
 
@@ -180,9 +257,12 @@ class UnSubServiceProvider extends ServiceProvider
      */
     protected function registerConfig()
     {
-        $this->publishes([
-            __DIR__ . '/../Config/config.php' => config_path('unsub.php'),
-        ], 'config');
+        $this->publishes(
+            [
+                __DIR__ . '/../Config/config.php' => config_path('unsub.php'),
+            ],
+            'config'
+        );
         $this->mergeConfigFrom(
             __DIR__ . '/../Config/config.php',
             'unsub'
@@ -200,13 +280,24 @@ class UnSubServiceProvider extends ServiceProvider
 
         $sourcePath = __DIR__ . '/../Resources/views';
 
-        $this->publishes([
-            $sourcePath => $viewPath
-        ], 'views');
+        $this->publishes(
+            [
+                $sourcePath => $viewPath
+            ],
+            'views'
+        );
 
-        $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/unsub';
-        }, \Config::get('view.paths')), [$sourcePath]), 'unsub');
+        $this->loadViewsFrom(
+            array_merge(
+                array_map(
+                    function ($path) {
+                        return $path . '/modules/unsub';
+                    }, \Config::get('view.paths')
+                ),
+                [$sourcePath]
+            ),
+            'unsub'
+        );
     }
 
     /**
@@ -227,7 +318,10 @@ class UnSubServiceProvider extends ServiceProvider
 
     /**
      * Register an additional directory of factories.
+     *
      * @source https://github.com/sebastiaanluca/laravel-resource-flow/blob/develop/src/Modules/ModuleServiceProvider.php#L66
+     *
+     * @return void
      */
     public function registerFactories()
     {
@@ -247,6 +341,13 @@ class UnSubServiceProvider extends ServiceProvider
     }
 
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param string $h string of headers
+     *
+     * @return Response
+     */
     function getMyHeaders($h)
     {
         $h_array = explode("\n", $h);

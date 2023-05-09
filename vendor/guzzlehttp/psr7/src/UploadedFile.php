@@ -153,7 +153,9 @@ class UploadedFile implements UploadedFileInterface
             return $this->stream;
         }
 
-        /** @var string $file */
+        /**
+ * @var string $file 
+*/
         $file = $this->file;
 
         return new LazyOpenStream($file, 'r+');

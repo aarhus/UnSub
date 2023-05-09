@@ -9,6 +9,7 @@
     "providers": [
         "Modules\\UnSub\\Providers\\UnSubServiceProvider"
     ],
+    "img": "/modules/unsub/img/module.svg",
     "aliases": {},
     "files": [
         "start.php"

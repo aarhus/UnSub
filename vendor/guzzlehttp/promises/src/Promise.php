@@ -99,7 +99,9 @@ class Promise implements PromiseInterface
         }
 
         // Reject the promise only if it wasn't rejected in a then callback.
-        /** @psalm-suppress RedundantCondition */
+        /**
+ * @psalm-suppress RedundantCondition 
+*/
         if ($this->state === self::PENDING) {
             $this->reject(new CancellationException('Promise has been cancelled'));
         }
@@ -148,11 +150,13 @@ class Promise implements PromiseInterface
         if (!is_object($value) || !method_exists($value, 'then')) {
             $id = $state === self::FULFILLED ? 1 : 2;
             // It's a success, so resolve the handlers in the queue.
-            Utils::queue()->add(static function () use ($id, $value, $handlers) {
-                foreach ($handlers as $handler) {
-                    self::callHandler($id, $value, $handler);
+            Utils::queue()->add(
+                static function () use ($id, $value, $handlers) {
+                    foreach ($handlers as $handler) {
+                        self::callHandler($id, $value, $handler);
+                    }
                 }
-            });
+            );
         } elseif ($value instanceof Promise && Is::pending($value)) {
             // We can just merge our handlers onto the next promise.
             $value->handlers = array_merge($value->handlers, $handlers);
@@ -182,7 +186,9 @@ class Promise implements PromiseInterface
      */
     private static function callHandler($index, $value, array $handler)
     {
-        /** @var PromiseInterface $promise */
+        /**
+ * @var PromiseInterface $promise 
+*/
         $promise = $handler[0];
 
         // The promise may have been cancelled or resolved before placing
@@ -226,15 +232,19 @@ class Promise implements PromiseInterface
             $this->invokeWaitList();
         } else {
             // If there's no wait function, then reject the promise.
-            $this->reject('Cannot wait on a promise that has '
+            $this->reject(
+                'Cannot wait on a promise that has '
                 . 'no internal wait function. You must provide a wait '
                 . 'function when constructing the promise to be able to '
-                . 'wait on a promise.');
+                . 'wait on a promise.'
+            );
         }
 
         Utils::queue()->run();
 
-        /** @psalm-suppress RedundantCondition */
+        /**
+ * @psalm-suppress RedundantCondition 
+*/
         if ($this->state === self::PENDING) {
             $this->reject('Invoking the wait callback did not resolve the promise');
         }

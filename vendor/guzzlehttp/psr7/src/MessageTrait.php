@@ -12,16 +12,24 @@ use Psr\Http\Message\StreamInterface;
  */
 trait MessageTrait
 {
-    /** @var array<string, string[]> Map of all registered headers, as original name => array of values */
+    /**
+     * @var array<string, string[]> Map of all registered headers, as original name => array of values 
+     */
     private $headers = [];
 
-    /** @var array<string, string> Map of lowercase header name => original name at registration */
+    /**
+     * @var array<string, string> Map of lowercase header name => original name at registration 
+     */
     private $headerNames  = [];
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     private $protocol = '1.1';
 
-    /** @var StreamInterface|null */
+    /**
+     * @var StreamInterface|null 
+     */
     private $stream;
 
     public function getProtocolVersion(): string
@@ -195,19 +203,23 @@ trait MessageTrait
      */
     private function trimAndValidateHeaderValues(array $values): array
     {
-        return array_map(function ($value) {
-            if (!is_scalar($value) && null !== $value) {
-                throw new \InvalidArgumentException(sprintf(
-                    'Header value must be scalar or null but %s provided.',
-                    is_object($value) ? get_class($value) : gettype($value)
-                ));
-            }
+        return array_map(
+            function ($value) {
+                if (!is_scalar($value) && null !== $value) {
+                    throw new \InvalidArgumentException(
+                        sprintf(
+                            'Header value must be scalar or null but %s provided.',
+                            is_object($value) ? get_class($value) : gettype($value)
+                        )
+                    );
+                }
 
-            $trimmed = trim((string) $value, " \t");
-            $this->assertValue($trimmed);
+                $trimmed = trim((string) $value, " \t");
+                $this->assertValue($trimmed);
 
-            return $trimmed;
-        }, array_values($values));
+                return $trimmed;
+            }, array_values($values)
+        );
     }
 
     /**
@@ -218,10 +230,12 @@ trait MessageTrait
     private function assertHeader($header): void
     {
         if (!is_string($header)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Header name must be a string but %s provided.',
-                is_object($header) ? get_class($header) : gettype($header)
-            ));
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'Header name must be a string but %s provided.',
+                    is_object($header) ? get_class($header) : gettype($header)
+                )
+            );
         }
 
         if (! preg_match('/^[a-zA-Z0-9\'`#$%&*+.^_|~!-]+$/D', $header)) {

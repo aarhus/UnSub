@@ -19,6 +19,9 @@
     "require": {
         "guzzlehttp/guzzle": "^7.3"
     },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    },
     "replace": {
         "laravel/framework": "*"
     },

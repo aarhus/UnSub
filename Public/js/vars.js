@@ -1,5 +1,5 @@
 if (typeof(Vars) == "undefined") {
-	Vars = {};
+    Vars = {};
 }
 var ModuleVars = {
     hello_world: true
@@ -8,21 +8,21 @@ Vars = $.extend(ModuleVars, Vars);
 
 
 if (typeof(LangMessages) == "undefined") {
-	LangMessages = {};
+    LangMessages = {};
 }
-	var locale_messages = {
+    var locale_messages = {
         
         "hello_world": "Hello World!"
-	};
+    };
 
-   	if (typeof(LangMessages["en.messages"]) == "undefined") {
-		LangMessages["en.messages"] = {};
-	}
-	LangMessages["en.messages"] = $.extend(locale_messages, LangMessages["en.messages"]);
-
-(function () {
-	if (typeof(Lang) == "undefined") {
-    	Lang = new Lang();
+    if (typeof(LangMessages["en.messages"]) == "undefined") {
+        LangMessages["en.messages"] = {};
     }
-    Lang.setMessages(LangMessages);
-})();
+    LangMessages["en.messages"] = $.extend(locale_messages, LangMessages["en.messages"]);
+
+    (function () {
+        if (typeof(Lang) == "undefined") {
+            Lang = new Lang();
+        }
+        Lang.setMessages(LangMessages);
+    })();

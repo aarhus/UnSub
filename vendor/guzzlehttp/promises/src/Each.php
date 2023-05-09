@@ -28,10 +28,12 @@ final class Each
         callable $onFulfilled = null,
         callable $onRejected = null
     ) {
-        return (new EachPromise($iterable, [
+        return (new EachPromise(
+            $iterable, [
             'fulfilled' => $onFulfilled,
             'rejected'  => $onRejected
-        ]))->promise();
+            ]
+        ))->promise();
     }
 
     /**
@@ -55,11 +57,13 @@ final class Each
         callable $onFulfilled = null,
         callable $onRejected = null
     ) {
-        return (new EachPromise($iterable, [
+        return (new EachPromise(
+            $iterable, [
             'fulfilled'   => $onFulfilled,
             'rejected'    => $onRejected,
             'concurrency' => $concurrency
-        ]))->promise();
+            ]
+        ))->promise();
     }
 
     /**

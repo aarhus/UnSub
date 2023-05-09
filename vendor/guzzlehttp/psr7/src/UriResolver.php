@@ -95,13 +95,15 @@ final class UriResolver
             }
         }
 
-        return new Uri(Uri::composeComponents(
-            $base->getScheme(),
-            $targetAuthority,
-            $targetPath,
-            $targetQuery,
-            $rel->getFragment()
-        ));
+        return new Uri(
+            Uri::composeComponents(
+                $base->getScheme(),
+                $targetAuthority,
+                $targetPath,
+                $targetQuery,
+                $rel->getFragment()
+            )
+        );
     }
 
     /**
@@ -127,8 +129,8 @@ final class UriResolver
      */
     public static function relativize(UriInterface $base, UriInterface $target): UriInterface
     {
-        if ($target->getScheme() !== '' &&
-            ($base->getScheme() !== $target->getScheme() || $target->getAuthority() === '' && $base->getAuthority() !== '')
+        if ($target->getScheme() !== '' 
+            && ($base->getScheme() !== $target->getScheme() || $target->getAuthority() === '' && $base->getAuthority() !== '')
         ) {
             return $target;
         }
@@ -162,7 +164,9 @@ final class UriResolver
         // inherit the base query component when resolving.
         if ($target->getQuery() === '') {
             $segments = explode('/', $target->getPath());
-            /** @var string $lastSegment */
+            /**
+ * @var string $lastSegment 
+*/
             $lastSegment = end($segments);
 
             return $emptyPathUri->withPath($lastSegment === '' ? './' : $lastSegment);
