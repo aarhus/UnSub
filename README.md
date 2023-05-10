@@ -12,7 +12,7 @@ And once you have clicked on it....
 How it appears in the conversation history....
 ![Action](images/action.png)
 
-If click it makes a POST to the appropriate URL and creates a thread action message with the details.
+When you click the link it makes a POST/GET to the appropriate URL and creates a thread action message with the details.
 
 Still very much a work in progress - looking to support mailto unsubscribe as well. Have been running in production for some time.
 
