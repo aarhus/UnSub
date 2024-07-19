@@ -2,7 +2,7 @@
 
 
 
-class ClassDeclaration
+ class ClassDeclaration
 {
 
 }
@@ -19,27 +19,20 @@ final  class CorrectClassDeclarationWithImplements implements correctClassDeclar
 
 
 // Incorrect placement of opening/closing braces, including indent.
-class IncorrectBracePlacement
-{
-}
-class IncorrectBracePlacementWithExtends extends correctClassDeclaration
-{
-}
-class IncorrectBracePlacementWithImplements implements correctClassDeclaration
-{
-}
+class IncorrectBracePlacement {}
+class IncorrectBracePlacementWithExtends extends correctClassDeclaration {}
+class IncorrectBracePlacementWithImplements implements correctClassDeclaration {}
 
 
-class IncorrectIndentedClass
-{
+    class IncorrectIndentedClass
+    {
 
-}//end class
+    }//end class
 
 
 // Incorrect code placement for opening/closing brace.
 class IncorrectCodeAfterOpeningBrace
-{
-    echo phpinfo();
+{ echo phpinfo();
 
 }//end class
 
@@ -52,10 +45,9 @@ class IncorrectCodeAfterClosingBrace
 class IncorrectCodeBeforeClosingBrace
 {
 
-    echo phpinfo(); 
-}
+echo phpinfo(); }
 
-class IncorrectIndentedClass
+    class IncorrectIndentedClass
 {
 
 }
@@ -69,6 +61,7 @@ class ClassOne implements ClassFour   ,ClassFive,  ClassSix
 }//end class
 
 class CorrectClassDeclarationWithExtends extends correctClassDeclaration
+
 {
 
 }
@@ -110,9 +103,7 @@ class MyClass2
 /**
  * No error.
  */
-function example()
-{
-}
+function example() {}
 
 class CorrectClassDeclaration
 {
@@ -127,5 +118,13 @@ class testing
 class IncorrectCodeBeforeClosingBrace
 {
 
-    echo phpinfo();
+echo phpinfo();}
+
+readonly
+class Test
+{
+}
+
+readonly    class Test
+{
 }

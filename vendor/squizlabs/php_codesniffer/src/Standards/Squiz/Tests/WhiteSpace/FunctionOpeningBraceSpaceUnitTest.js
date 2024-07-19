@@ -7,22 +7,22 @@ function FuncOne()
 
 Testing.prototype = {
 
-    doSomething: function () {
+    doSomething: function()
+    {
 
         // Code here.
 
     },
 
-    doSomethingElse: function () {
+    doSomethingElse: function()
+    {
         // Code here.
 
     },
 
-    start: function () {
-        this.toolbarPlugin.addButton(
-            'Image', 'imageEditor', 'Insert/Edit Image', function () {
-                self.editImage() }
-        );
+    start: function()
+    {
+        this.toolbarPlugin.addButton('Image', 'imageEditor', 'Insert/Edit Image', function () { self.editImage() });
 
     },
 };
@@ -35,13 +35,14 @@ function FuncFour()
 }
 
 AbstractAttributeEditorWidgetType.prototype = {
-    isActive: function () {
+    isActive: function() {
 
         return this.active;
 
     },
 
-    activate: function (data) {
+    activate: function(data)
+    {
         var x = {
             test: function () {
                 alert('This is ok');
@@ -54,10 +55,10 @@ AbstractAttributeEditorWidgetType.prototype = {
 
 };
 
-function test()
-{
+function test() {
     var x = 1;
-    var y = function () {
+    var y = function()
+    {
         alert(1);
     }
 
@@ -65,49 +66,48 @@ function test()
 
 }
 
-var myFunc = function () {
+var myFunc = function()
+{
     var x = 1;
 
-    blah(
-        x, y, function () {
-            alert(2);
-        }, z
-    );
+    blah(x, y, function()
+    {
+        alert(2);
+    }, z);
 
-    blah(
-        function () {
-            alert(2); }
-    );
+    blah(function() { alert(2); });
 
     return x;
 
 }
 
 HelpWidgetType.prototype = {
-    init: function () {
-        var x = 1;
-        var y = {
-            test: function () {
+    init: function() {
+    var x = 1;
+    var y = {
+        test: function() {
 
 
-                alert(3);
-            }
+            alert(3);
         }
-        return x;
+    }
+    return x;
 
     }
 }
 
 CustomFormEditWidgetType.prototype = {
 
-    addQuestion: function () {
+    addQuestion: function()
+    {
         var settings = {
             default: ''
         };
 
     },
 
-    addQuestionRulesEvent: function () {
+    addQuestionRulesEvent: function()
+    {
         var self = this;
 
     }

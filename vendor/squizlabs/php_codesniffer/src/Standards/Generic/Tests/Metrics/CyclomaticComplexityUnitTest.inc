@@ -1,8 +1,6 @@
 <?php
 
-function complexityOne()
-{ 
-}
+function complexityOne() { }
 
 function complexityFive()
 {
@@ -10,11 +8,11 @@ function complexityFive()
     }
 
     switch ($condition) {
-    case '1':
+        case '1':
         break;
-    case '2':
+        case '2':
         break;
-    case '3':
+        case '3':
         break;
     }
 }
@@ -27,19 +25,19 @@ function complexityTen()
     }
 
     switch ($condition) {
-    case '1':
-        if ($condition) {
-        } else if ($cond) {
-        }
+        case '1':
+            if ($condition) {
+            } else if ($cond) {
+            }
         break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
         break;
-    case '3':
+        case '3':
         break;
-    default:
+        default:
         break;
     }
 }
@@ -53,19 +51,19 @@ function complexityEleven()
     }
 
     switch ($condition) {
-    case '1':
-        if ($condition) {
-        } else if ($cond) {
-        }
+        case '1':
+            if ($condition) {
+            } else if ($cond) {
+            }
         break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
         break;
-    case '3':
+        case '3':
         break;
-    default:
+        default:
         break;
     }
 }
@@ -80,38 +78,38 @@ function complexityTwenty()
     }
 
     switch ($condition) {
-    case '1':
-        do {
-            if ($condition) {
-            } else if ($cond) {
-            }
-        } while ($cond);
-        break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
-        break;
-    case '3':
-        switch ($cond) {
         case '1':
-            break;
-        case '2':
-            break;
-        }
-        break;
-    case '4':
-        do {
-            if ($condition) {
-                if ($cond) {
-                } else if ($con) {
+            do {
+                if ($condition) {
+                } else if ($cond) {
                 }
-            }
-        } while ($cond);
+            } while ($cond);
         break;
-    default:
-        if ($condition) {
-        }
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
+        break;
+        case '3':
+            switch ($cond) {
+                case '1':
+                break;
+                case '2':
+                break;
+            }
+        break;
+        case '4':
+            do {
+                if ($condition) {
+                    if ($cond) {
+                    } else if ($con) {
+                    }
+                }
+            } while ($cond);
+        break;
+        default:
+            if ($condition) {
+            }
         break;
     }
 }
@@ -128,37 +126,37 @@ function complexityTwentyOne()
     }
 
     switch ($condition) {
-    case '1':
-        if ($condition) {
-        } else if ($cond) {
-        }
-        break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
-        break;
-    case '3':
-        switch ($cond) {
         case '1':
-            break;
-        case '2':
-            break;
-        }
-        break;
-    case '4':
-        do {
             if ($condition) {
-                if ($cond) {
-                } else if ($con) {
-                }
+            } else if ($cond) {
             }
-        } while ($cond);
         break;
-    default:
-        if ($condition) {
-        } else if ($cond) {
-        }
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
+        break;
+        case '3':
+            switch ($cond) {
+                case '1':
+                break;
+                case '2':
+                break;
+            }
+        break;
+        case '4':
+            do {
+                if ($condition) {
+                    if ($cond) {
+                    } else if ($con) {
+                    }
+                }
+            } while ($cond);
+        break;
+        default:
+            if ($condition) {
+            } else if ($cond) {
+            }
         break;
     }
 }
@@ -170,20 +168,20 @@ function complexityTenWithTernaries()
     $value2 = (empty($condition2)) ? $value2A : $value2B;
 
     switch ($condition) {
-    case '1':
-        if ($condition) {
-        } else if ($cond) {
-        }
-        break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
-        break;
-    case '3':
-        break;
-    default:
-        break;
+        case '1':
+            if ($condition) {
+            } else if ($cond) {
+            }
+            break;
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
+            break;
+        case '3':
+            break;
+        default:
+            break;
     }
 }
 
@@ -195,20 +193,20 @@ function complexityElevenWithTernaries()
     $value3 = (empty($condition3)) ? $value3A : $value3B;
 
     switch ($condition) {
-    case '1':
-        if ($condition) {
-        } else if ($cond) {
-        }
-        break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
-        break;
-    case '3':
-        break;
-    default:
-        break;
+        case '1':
+            if ($condition) {
+            } else if ($cond) {
+            }
+            break;
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
+            break;
+        case '3':
+            break;
+        default:
+            break;
     }
 }
 
@@ -218,20 +216,20 @@ function complexityTenWithNestedTernaries()
     $value1 = true ? $value1A : false ? $value1B : $value1C;
 
     switch ($condition) {
-    case '1':
-        if ($condition) {
-        } else if ($cond) {
-        }
-        break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
-        break;
-    case '3':
-        break;
-    default:
-        break;
+        case '1':
+            if ($condition) {
+            } else if ($cond) {
+            }
+            break;
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
+            break;
+        case '3':
+            break;
+        default:
+            break;
     }
 }
 
@@ -242,20 +240,20 @@ function complexityElevenWithNestedTernaries()
     $value2 = true ? $value2A : false ? $value2B : $value2C;
 
     switch ($condition) {
-    case '1':
-        if ($condition) {
-        } else if ($cond) {
-        }
-        break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
-        break;
-    case '3':
-        break;
-    default:
-        break;
+        case '1':
+            if ($condition) {
+            } else if ($cond) {
+            }
+            break;
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
+            break;
+        case '3':
+            break;
+        default:
+            break;
     }
 }
 
@@ -266,20 +264,20 @@ function complexityTenWithNullCoalescence()
     $value2 = $value2A ?? $value2B;
 
     switch ($condition) {
-    case '1':
-        if ($condition) {
-        } else if ($cond) {
-        }
-        break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
-        break;
-    case '3':
-        break;
-    default:
-        break;
+        case '1':
+            if ($condition) {
+            } else if ($cond) {
+            }
+            break;
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
+            break;
+        case '3':
+            break;
+        default:
+            break;
     }
 }
 
@@ -291,20 +289,20 @@ function complexityElevenWithNullCoalescence()
     $value3 = $value3A ?? $value3B;
 
     switch ($condition) {
-    case '1':
-        if ($condition) {
-        } else if ($cond) {
-        }
-        break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
-        break;
-    case '3':
-        break;
-    default:
-        break;
+        case '1':
+            if ($condition) {
+            } else if ($cond) {
+            }
+            break;
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
+            break;
+        case '3':
+            break;
+        default:
+            break;
     }
 }
 
@@ -314,20 +312,20 @@ function complexityTenWithNestedNullCoalescence()
     $value1 = $value1A ?? $value1B ?? $value1C;
 
     switch ($condition) {
-    case '1':
-        if ($condition) {
-        } else if ($cond) {
-        }
-        break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
-        break;
-    case '3':
-        break;
-    default:
-        break;
+        case '1':
+            if ($condition) {
+            } else if ($cond) {
+            }
+            break;
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
+            break;
+        case '3':
+            break;
+        default:
+            break;
     }
 }
 
@@ -338,20 +336,20 @@ function complexityElevenWithNestedNullCoalescence()
     $value2 = $value2A ?? $value2B ?? $value2C;
 
     switch ($condition) {
-    case '1':
-        if ($condition) {
-        } else if ($cond) {
-        }
-        break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
-        break;
-    case '3':
-        break;
-    default:
-        break;
+        case '1':
+            if ($condition) {
+            } else if ($cond) {
+            }
+            break;
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
+            break;
+        case '3':
+            break;
+        default:
+            break;
     }
 }
 
@@ -362,20 +360,20 @@ function complexityTenWithNullCoalescenceAssignment()
     $value2 ??= $default2;
 
     switch ($condition) {
-    case '1':
-        if ($condition) {
-        } else if ($cond) {
-        }
-        break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
-        break;
-    case '3':
-        break;
-    default:
-        break;
+        case '1':
+            if ($condition) {
+            } else if ($cond) {
+            }
+            break;
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
+            break;
+        case '3':
+            break;
+        default:
+            break;
     }
 }
 
@@ -387,20 +385,20 @@ function complexityElevenWithNullCoalescenceAssignment()
     $value3 ??= $default3;
 
     switch ($condition) {
-    case '1':
-        if ($condition) {
-        } else if ($cond) {
-        }
-        break;
-    case '2':
-        while ($cond) {
-            echo 'hi';
-        }
-        break;
-    case '3':
-        break;
-    default:
-        break;
+        case '1':
+            if ($condition) {
+            } else if ($cond) {
+            }
+            break;
+        case '2':
+            while ($cond) {
+                echo 'hi';
+            }
+            break;
+        case '3':
+            break;
+        default:
+            break;
     }
 }
 

@@ -1,34 +1,27 @@
 <?php
 
-if ($something) { echo 'hello';
-}
+if ($something) echo 'hello';
 
 if ($something) {
     echo 'hello';
-} else { echo 'hi';
-}
+} else echo 'hi';
 
 if ($something) {
     echo 'hello';
-} else if ($else) { echo 'hi';
-}
+} else if ($else) echo 'hi';
 
-foreach ($something as $thing) { echo 'hello';
-}
+foreach ($something as $thing) echo 'hello';
 
-for ($i; $i > 0; $i--) { echo 'hello';
-}
+for ($i; $i > 0; $i--) echo 'hello';
 
-while ($something) { echo 'hello';
-}
+while ($something) echo 'hello';
 
 do {
     $i--;
 } while ($something);
 
-if(true) {
-    $someObject->{$name};
-}
+if(true)
+  $someObject->{$name};
 
 if (true) :
     $foo = true;
@@ -49,15 +42,12 @@ endforeach;
 while (!$this->readLine($tokens, $tag));
 while (!$this->readLine($tokens, $tag)); //skip to end of file
 
-foreach ($cookies as $cookie) {
-    if ($cookie->match($uri, $matchSessionCookies, $now)) {
+foreach ($cookies as $cookie)
+    if ($cookie->match($uri, $matchSessionCookies, $now))
         $ret[] = $cookie;
-    }
-}
 
-foreach ($stringParade as $hit) {
+foreach ($stringParade as $hit)
     $hitParade[] = $hit + 0; //cast to integer
-}
 
 if ($foo) :
     echo 'true';
@@ -69,12 +59,11 @@ endif;
 
 function test()
 {
-    if ($a) {
+    if ($a)
         $a.=' '.($b ? 'b' : ($c ? ($d ? 'd' : 'c') : ''));
-    }
 }
 
-if ($a) {
+if ($a)
     foreach ($b as $c) {
         if ($d) {
             $e=$f;
@@ -83,28 +72,26 @@ if ($a) {
             $j=$k;
         }
     }
-}
 
 ?>
 <div style="text-align: right;">
-    <?php if ($model->scenario == 'simple') { $widget->renderPager(); 
-    } ?>
+    <?php if ($model->scenario == 'simple') $widget->renderPager() ?>
 </div>
 
 <?php
 switch ($this->error):
-case Shop_Customer :: ERROR_INVALID_GENDER: ?>
+    case Shop_Customer :: ERROR_INVALID_GENDER: ?>
         Ung&uuml;ltiges Geschlecht!
     <?php break;
-case Shop_Customer :: ERROR_EMAIL_IN_USE: ?>
+    case Shop_Customer :: ERROR_EMAIL_IN_USE: ?>
         Die eingetragene E-Mail-Adresse ist bereits registriert.
     <?php break;
 endswitch;
 
-if ($this->allowShopping !== true) :
-    if ($this->status != Shop_Cart :: OK) :
+if ($this->allowShopping !== true):
+    if ($this->status != Shop_Cart :: OK):
         switch ($this->status):
-        case Shop_Cart :: NOT_FOUND:
+            case Shop_Cart :: NOT_FOUND:
             echo 'foo';
         endswitch;
     endif;
@@ -115,151 +102,125 @@ endif;
 // ELSE IF split over multiple lines (not inline)
 if ($test) {
 } else
-if ($test) {
-} else {
-}
-
-switch($response = \Bar::baz(
-    'bat', function ($foo) {
-        return 'bar';
+    if ($test) {
+    } else {
     }
-)) {
-case 1:
-    return 'test';
 
-case 2:
-    return 'other';
+switch($response = \Bar::baz('bat', function ($foo) {
+    return 'bar';
+})) {
+    case 1:
+        return 'test';
+
+    case 2:
+        return 'other';
 }
 
 $stuff = [1,2,3];
-foreach($stuff as $num) {
+foreach($stuff as $num)
     if ($num %2 ) {
         echo "even";
     } else {
         echo "odd";
     }
-}
 
 $i = 0;
-foreach($stuff as $num) {
+foreach($stuff as $num)
     do {
         echo $i;
         $i++;
     } while ($i < 5);
-}
 
-foreach($stuff as $num) {
+foreach($stuff as $num)
     if (true) {
         echo "true1\n";
     }
-}
-if (true) {
-    echo "true2\n";
-}
+    if (true) {
+        echo "true2\n";
+    }
 
-if ($foo) { echo 'foo';
-} elseif ($bar) { echo 'bar';
-} else { echo 'baz';
-}
+if ($foo) echo 'foo';
+elseif ($bar) echo 'bar';
+else echo 'baz';
 
 switch ($type) {
-case 1:
-    if ($foo) {
-        return true;
-    } elseif ($baz) {
-        return true;
-    } else {
-        echo 'else';
-    }
+    case 1:
+        if ($foo) {
+            return true;
+        } elseif ($baz)
+            return true;
+        else {
+            echo 'else';
+        }
     break;
 }
 
-foreach ($sql as $s) {
-    if (!$this->execute) { echo "<pre>",$s.";\n</pre>";
-    } else {
-        $ok = $this->connDest->Execute($s);
-        if (!$ok) {
-            if ($this->neverAbort) { $ret = false;
-            } else { return false;
-            }
+foreach ($sql as $s)
+        if (!$this->execute) echo "<pre>",$s.";\n</pre>";
+        else {
+            $ok = $this->connDest->Execute($s);
+            if (!$ok)
+                if ($this->neverAbort) $ret = false;
+                else return false;
         }
-    }
-}
 
-if ($bar) {
-    if ($foo) { echo 'hi'; // lol
-    }
-}
+if ($bar)
+    if ($foo) echo 'hi'; // lol
 
-if ($level == 'district') {
-    \DB::update(
-        <<<EOD
+if ($level == 'district')
+    \DB::update(<<<EOD
 some
 text
 here
 EOD
     );
-}
 
-if ($level == 'district') {
+if ($level == 'district')
     $var = <<<EOD
 some
 text
 here
 EOD;
-}
 
-if ($a && $a === Foo::VARIABLE && ($a === Foo::METHOD || $a === Foo::FUNCTION)) {
+if ($a && $a === Foo::VARIABLE && ($a === Foo::METHOD || $a === Foo::FUNCTION))
     echo 'hi';
-}
 
-$out = array_map(
-    function ($test) {
-        if ($test) { return 1; 
-        } else { return 2;
-        } 
-    }, $input
-); // comment
+$out = array_map(function ($test) { if ($test) return 1; else return 2; }, $input); // comment
 
 for ($x=0;$x<5;$x++):
-    if ($x) { continue;
-    }
+    if ($x) continue;
 endfor;
 
 for ($x=0;$x<5;$x++):
-    if ($x) { continue; 
-    } ?> <?php
+    if ($x) continue ?> <?php
 endfor;
 
-if (true) {
+if (true)
     try {
     }
     catch(Exception $e) {
     }
-}
 
 switch ($num) {
-case 0:
-    if (1 > $num) {
-        return bar(
-            baz(
-                "foobarbaz"
-            )
-        );
-    }
-    break;
+    case 0:
+        if (1 > $num)
+            return bar(
+                baz(
+                    "foobarbaz"
+                )
+            );
+        break;
 }
 
 do {
-    $i++;
+	$i++;
 }
 // Comment
 while ($i < 10);
 
 if ($this) {
-    if ($that) {
+    if ($that)
         foo(${$a[$b]});
-    }
 }
 
 while (!$this->readLine($tokens, $tag)); //phpcs:ignore Standard.Category.Sniff
@@ -268,21 +229,18 @@ while (!$this->readLine($tokens, $tag)); // comment
 
 while (!$this->readLine($tokens, $tag)); /* comment */
 
-foreach ($stringParade as $hit) {
+foreach ($stringParade as $hit)
     $hitParade[] = $hit + 0; // phpcs:ignore Standard.Category.Sniff
-}
-if ($bar) {
-    if ($foo) { echo 'hi'; /* @phpcs:ignore Standard.Category.Sniff */
-    }
-}
-if (true) { $callable = function () {
+
+if ($bar)
+    if ($foo) echo 'hi'; /* @phpcs:ignore Standard.Category.Sniff */
+
+if (true) $callable = function () {
     return true;
 };
-}
 
-foreach ([] as $a) {
-    echo 'bar';
-}
+foreach ([] as $a)
+echo 'bar';
 {
     echo 'baz';
 }
@@ -299,20 +257,22 @@ if ($this->valid(fn(): bool => 2 > 1)) {
 // Issue 3345.
 function testMultiCatch()
 {
-    if (true) {
+    if (true)
         try {
         } catch (\LogicException $e) {
         } catch (\Exception $e) {
         }
-    }
 }
 
 function testFinally()
 {
-    if (true) {
+    if (true)
         try {
         } catch (\LogicException $e) {
         } finally {
         }
-    }
 }
+
+if ($something) {
+    echo 'hello';
+} else /* comment */ if ($somethingElse) echo 'hi';

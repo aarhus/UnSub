@@ -48,8 +48,8 @@ result*=4;
 $.localScroll({offset: {top: -32}});
 
 switch (result) {
-case -1:
-        break;
+	case -1:
+		break;
 }
 
 result = x?y:z;
@@ -101,3 +101,4 @@ var foo = bar.map(baz=> baz.length);
 
 // phpcs:set Squiz.WhiteSpace.OperatorSpacing ignoreSpacingBeforeAssignments false
 a  =  3;
+// phpcs:set Squiz.WhiteSpace.OperatorSpacing ignoreSpacingBeforeAssignments true

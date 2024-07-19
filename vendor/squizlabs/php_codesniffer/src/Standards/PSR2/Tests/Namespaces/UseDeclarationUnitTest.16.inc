@@ -4,10 +4,8 @@ use Vendor\Package\SomeNamespace\{
     SubnamespaceOne\ClassB,
 }
 
-class Test
-{
-    public function __construct()
-    {
-        $var = 1;
-    }
+class Test {
+	public function __construct() {
+		$var = 1;
+	}
 }

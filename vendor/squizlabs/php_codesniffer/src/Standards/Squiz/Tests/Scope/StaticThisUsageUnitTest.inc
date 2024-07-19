@@ -14,7 +14,8 @@ class MyClass
         return $this->setValue($result);
     }
 
-    public static function func1()
+    public static function
+    func1()
     {
         return $this->setValue($result);
     }
@@ -35,9 +36,8 @@ class MyClass
         return $this->setValue($result);
     }
 
-    public static function func1()
-    {
-        return function () {
+    public static function func1() {
+        return function() {
             echo $this->name;
         };
     }
@@ -55,91 +55,73 @@ class MyClass
         };
     }
 
-    public function getAnonymousClass()
-    {
+    public function getAnonymousClass() {
         return new class() {
-            public static function something()
-            {
+            public static function something() {
                 $this->doSomething();
             }
         };
     }
 }
 
-trait MyTrait
-{
-    public static function myFunc()
-    {
+trait MyTrait {
+    public static function myFunc() {
         $this->doSomething();
     }
 }
 
 $b = new class()
 {
-    public static function myFunc()
-    {
+    public static function myFunc() {
         $this->doSomething();
     }
 
-    public static function other()
-    {
+    public static function other() {
         return fn () => $this->name;
     }
 
-    public static function anonClassUseThis()
-    {
+    public static function anonClassUseThis() {
         return new class($this) {
-            public function __construct($class)
-            {
+            public function __construct($class) {
             }
         };
     }
 
-    public static function anonClassAnotherThis()
-    {
+    public static function anonClassAnotherThis() {
         return new class() {
-            public function __construct()
-            {
+            public function __construct() {
                 $this->id = 1;
             }
         };
     }
 
-    public static function anonClassNestedUseThis()
-    {
-        return new class(new class($this) {
-        }) {
+    public static function anonClassNestedUseThis() {
+        return new class(new class($this) {}) {
         };
     }
 
-    public static function anonClassNestedAnotherThis()
-    {
+    public static function anonClassNestedAnotherThis() {
         return new class(new class() {
-            public function __construct()
-            {
+            public function __construct() {
                 $this->id = 1;
             }
         }) {
         };
     }
 
-    public static function thisMustBeLowercase()
-    {
+    public static function thisMustBeLowercase() {
         $This = 'hey';
 
         return $This;
     }
 }
 
-enum MyEnum
-{
-    private function notStatic()
-    {
+enum MyEnum {
+    private function notStatic () {
         $this->doSomething();
     }
 
-    public static function myFunc()
-    {
+    public static function myFunc() {
         $this->doSomething();
     }
 }

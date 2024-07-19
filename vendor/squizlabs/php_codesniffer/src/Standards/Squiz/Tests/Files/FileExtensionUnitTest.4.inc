@@ -1,5 +1,3 @@
 <?php
-trait MyTrait
-{
-}
+trait MyTrait {}
 ?>

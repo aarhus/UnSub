@@ -13,19 +13,13 @@ use Psr\Http\Message\StreamInterface;
  */
 final class StreamWrapper
 {
-    /**
-     * @var resource 
-     */
+    /** @var resource */
     public $context;
 
-    /**
-     * @var StreamInterface 
-     */
+    /** @var StreamInterface */
     private $stream;
 
-    /**
-     * @var string r, r+, or w 
-     */
+    /** @var string r, r+, or w */
     private $mode;
 
     /**
@@ -46,10 +40,8 @@ final class StreamWrapper
         } elseif ($stream->isWritable()) {
             $mode = 'w';
         } else {
-            throw new \InvalidArgumentException(
-                'The stream must be readable, '
-                . 'writable, or both.'
-            );
+            throw new \InvalidArgumentException('The stream must be readable, '
+                .'writable, or both.');
         }
 
         return fopen('guzzle://stream', $mode, false, self::createStreamContext($stream));
@@ -62,11 +54,9 @@ final class StreamWrapper
      */
     public static function createStreamContext(StreamInterface $stream)
     {
-        return stream_context_create(
-            [
-            'guzzle' => ['stream' => $stream]
-            ]
-        );
+        return stream_context_create([
+            'guzzle' => ['stream' => $stream],
+        ]);
     }
 
     /**
@@ -79,7 +69,7 @@ final class StreamWrapper
         }
     }
 
-    public function stream_open(string $path, string $mode, int $options, string &$opened_path = null): bool
+    public function stream_open(string $path, string $mode, int $options, ?string &$opened_path = null): bool
     {
         $options = stream_context_get_options($this->context);
 
@@ -125,61 +115,93 @@ final class StreamWrapper
      */
     public function stream_cast(int $cast_as)
     {
-        $stream = clone($this->stream);
+        $stream = clone $this->stream;
         $resource = $stream->detach();
 
         return $resource ?? false;
     }
 
     /**
-     * @return array<int|string, int>
+     * @return array{
+     *   dev: int,
+     *   ino: int,
+     *   mode: int,
+     *   nlink: int,
+     *   uid: int,
+     *   gid: int,
+     *   rdev: int,
+     *   size: int,
+     *   atime: int,
+     *   mtime: int,
+     *   ctime: int,
+     *   blksize: int,
+     *   blocks: int
+     * }|false
      */
-    public function stream_stat(): array
+    public function stream_stat()
     {
+        if ($this->stream->getSize() === null) {
+            return false;
+        }
+
         static $modeMap = [
-            'r'  => 33060,
+            'r' => 33060,
             'rb' => 33060,
             'r+' => 33206,
-            'w'  => 33188,
-            'wb' => 33188
+            'w' => 33188,
+            'wb' => 33188,
         ];
 
         return [
-            'dev'     => 0,
-            'ino'     => 0,
-            'mode'    => $modeMap[$this->mode],
-            'nlink'   => 0,
-            'uid'     => 0,
-            'gid'     => 0,
-            'rdev'    => 0,
-            'size'    => $this->stream->getSize() ?: 0,
-            'atime'   => 0,
-            'mtime'   => 0,
-            'ctime'   => 0,
+            'dev' => 0,
+            'ino' => 0,
+            'mode' => $modeMap[$this->mode],
+            'nlink' => 0,
+            'uid' => 0,
+            'gid' => 0,
+            'rdev' => 0,
+            'size' => $this->stream->getSize() ?: 0,
+            'atime' => 0,
+            'mtime' => 0,
+            'ctime' => 0,
             'blksize' => 0,
-            'blocks'  => 0
+            'blocks' => 0,
         ];
     }
 
     /**
-     * @return array<int|string, int>
+     * @return array{
+     *   dev: int,
+     *   ino: int,
+     *   mode: int,
+     *   nlink: int,
+     *   uid: int,
+     *   gid: int,
+     *   rdev: int,
+     *   size: int,
+     *   atime: int,
+     *   mtime: int,
+     *   ctime: int,
+     *   blksize: int,
+     *   blocks: int
+     * }
      */
     public function url_stat(string $path, int $flags): array
     {
         return [
-            'dev'     => 0,
-            'ino'     => 0,
-            'mode'    => 0,
-            'nlink'   => 0,
-            'uid'     => 0,
-            'gid'     => 0,
-            'rdev'    => 0,
-            'size'    => 0,
-            'atime'   => 0,
-            'mtime'   => 0,
-            'ctime'   => 0,
+            'dev' => 0,
+            'ino' => 0,
+            'mode' => 0,
+            'nlink' => 0,
+            'uid' => 0,
+            'gid' => 0,
+            'rdev' => 0,
+            'size' => 0,
+            'atime' => 0,
+            'mtime' => 0,
+            'ctime' => 0,
             'blksize' => 0,
-            'blocks'  => 0
+            'blocks' => 0,
         ];
     }
 }

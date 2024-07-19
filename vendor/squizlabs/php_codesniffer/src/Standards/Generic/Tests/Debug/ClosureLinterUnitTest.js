@@ -1,7 +1,6 @@
 /**
  * My function
  */
-function something()
-{
-    return a;
+function something() {
+	return a;
 }

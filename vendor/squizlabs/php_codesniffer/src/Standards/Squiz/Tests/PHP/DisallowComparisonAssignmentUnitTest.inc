@@ -1,20 +1,20 @@
 <?php
-$var = true;
+$var = TRUE;
 $var = ($foo === $bar);
 $var = ($foo * $bar);
 $var = !$foo;
 $var = ($foo || $bar);
-$var = ($foo === true);
-$var = ($foo === true
-        || $bar === false);
+$var = ($foo === TRUE);
+$var = ($foo === TRUE
+        || $bar === FALSE);
 $var = (!$foo);
 
 $var = is_array($foo);
 $var = myFunction($one, $two);
 $var = myFunction(
-    'one',
-    'two'
-);
+        'one',
+        'two'
+       );
 
 for ($i = ($stackPtr + 1); $i < $endStatement; $i++) {
 }
@@ -25,7 +25,7 @@ $var = myFunction(!$var);
 $depthAdv = array(
              $this,
              !$directLinks,
-             false,
+             FALSE,
             );
 
 $var = myFunction(
@@ -33,7 +33,7 @@ $var = myFunction(
     array(
      $this,
      !$directLinks,
-     false,
+     FALSE,
     );
 );
 
@@ -72,8 +72,7 @@ $callback = function ($value) {
     }
 };
 
-function issue3616()
-{
+function issue3616() {
     $food = 'cake';
 
     $returnValue = match (true) {

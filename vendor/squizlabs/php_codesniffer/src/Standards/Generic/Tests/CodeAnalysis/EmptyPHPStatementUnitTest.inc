@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Test empty statement: two consecutive semi-colons without executable code between them.
+ * Test empty statement: two consecutive semicolons without executable code between them.
  */
 function_call(); // OK.
 
@@ -45,47 +45,39 @@ function_call();
 <input name="<?php ; ?>" /> <!-- Bad. -->
 
 <!-- Tests with short open echo tag. -->
-<input name="<?php echo 'some text' ?>" /> <!-- OK. -->
-<input name="<?php echo ?>" /> <!-- Bad. -->
-<input name="<?php echo ; ?>" /> <!-- Bad. -->
+<input name="<?= 'some text' ?>" /> <!-- OK. -->
+<input name="<?= ?>" /> <!-- Bad. -->
+<input name="<?= ; ?>" /> <!-- Bad. -->
 
 <?php
-// Guard against false positives for two consecutive semi-colons in a for statement.
-for ( $i = 0; ; $i++ ) {
-}
+// Guard against false positives for two consecutive semicolons in a for statement.
+for ( $i = 0; ; $i++ ) {}
 
-// Test for useless semi-colons
-for ( $i = 0; ; $i++ ) {
-};
+// Test for useless semicolons
+for ( $i = 0; ; $i++ ) {};
 
-if (true) {
-};
+if (true) {};
 
-while (true) {
-};
+while (true) {};
 
-class ABC
-{
-}   ;  ;
+class ABC {}   ;  ;
 
 switch ( $a ) {
-case 1:
-    break;
-case 2:
-    break;
-default:
-    break;  ;
+    case 1:
+        break;
+    case 2:
+        break;
+    default:
+        break;  ;
 };
 
 // Do not break closures and anonymous classes and curlies without scope owners.
-$a = function () {
-};
-$b = new class {
-};
+$a = function () {};
+$b = new class {};
 echo $a{0};
 
 if ($foo) {
-    ;
+;
 }
 
 // Do not remove semicolon after match

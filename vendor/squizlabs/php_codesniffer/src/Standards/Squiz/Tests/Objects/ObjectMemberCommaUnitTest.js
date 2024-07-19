@@ -1,46 +1,47 @@
 this.request({ action: 'getTypeFormatContents', });
 
-addTypeFormatButton.addClickEvent(
-    function () {
-        self.addNewTypeFormat();
-    }
-);
+addTypeFormatButton.addClickEvent(function() {
+   self.addNewTypeFormat();
+});
 
 var x = {};
 
 var y = {
-    VarOne  : 'If you ask me, thats if you ask',
-    VarTwo  : ['Alonzo played you', 'for a fool', 'esse'],
-    VarThree: function (arg) {
-        console.info(1);
-    }
+   VarOne  : 'If you ask me, thats if you ask',
+   VarTwo  : ['Alonzo played you', 'for a fool', 'esse'],
+   VarThree: function(arg) {
+       console.info(1);
+   }
 };
 
 var z = {
-    VarOne  : 'If you ask me, thats if you ask',
-    VarTwo  : ['Alonzo played you', 'for a fool', 'esse'],
-    VarThree: function (arg) {
-        console.info(1);
-    },
+   VarOne  : 'If you ask me, thats if you ask',
+   VarTwo  : ['Alonzo played you', 'for a fool', 'esse'],
+   VarThree: function(arg) {
+       console.info(1);
+   },
 };
 
-var x = function () {
-    console.info(2);
-};
-
-AssetListingEditWidgetType.prototype = {
-    init: function (data, assetid, editables) {
-    }
+var x = function() {
+   console.info(2);
 };
 
 AssetListingEditWidgetType.prototype = {
-    init: function (data, assetid, editables) {
-    },
+   init: function(data, assetid, editables)
+   {
+   }
 };
 
 AssetListingEditWidgetType.prototype = {
-    // phpcs: disable Standard.Cat.SniffName -- testing annotation between closing brace and comma
-    init: function (data, assetid, editables) {
-    },
-    // phpcs:enable
+   init: function(data, assetid, editables)
+   {
+   },
+};
+
+AssetListingEditWidgetType.prototype = {
+   // phpcs: disable Standard.Cat.SniffName -- testing annotation between closing brace and comma
+   init: function(data, assetid, editables)
+   {
+   },
+   // phpcs:enable
 };

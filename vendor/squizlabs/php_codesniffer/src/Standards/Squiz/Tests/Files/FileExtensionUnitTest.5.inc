@@ -1,5 +1,3 @@
 <?php
-enum MyEnum
-{
-}
+enum MyEnum {}
 ?>

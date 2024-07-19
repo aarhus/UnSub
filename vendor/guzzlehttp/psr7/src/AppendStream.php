@@ -13,24 +13,16 @@ use Psr\Http\Message\StreamInterface;
  */
 final class AppendStream implements StreamInterface
 {
-    /**
-     * @var StreamInterface[] Streams being decorated 
-     */
+    /** @var StreamInterface[] Streams being decorated */
     private $streams = [];
 
-    /**
-     * @var bool 
-     */
+    /** @var bool */
     private $seekable = true;
 
-    /**
-     * @var int 
-     */
+    /** @var int */
     private $current = 0;
 
-    /**
-     * @var int 
-     */
+    /** @var int */
     private $pos = 0;
 
     /**
@@ -48,12 +40,14 @@ final class AppendStream implements StreamInterface
     {
         try {
             $this->rewind();
+
             return $this->getContents();
         } catch (\Throwable $e) {
             if (\PHP_VERSION_ID >= 70400) {
                 throw $e;
             }
             trigger_error(sprintf('%s::__toString exception: %s', self::class, (string) $e), E_USER_ERROR);
+
             return '';
         }
     }
@@ -146,9 +140,9 @@ final class AppendStream implements StreamInterface
 
     public function eof(): bool
     {
-        return !$this->streams ||
-            ($this->current >= count($this->streams) - 1 &&
-             $this->streams[$this->current]->eof());
+        return !$this->streams
+            || ($this->current >= count($this->streams) - 1
+             && $this->streams[$this->current]->eof());
     }
 
     public function rewind(): void
@@ -174,10 +168,8 @@ final class AppendStream implements StreamInterface
             try {
                 $stream->rewind();
             } catch (\Exception $e) {
-                throw new \RuntimeException(
-                    'Unable to seek stream '
-                    . $i . ' of the AppendStream', 0, $e
-                );
+                throw new \RuntimeException('Unable to seek stream '
+                    .$i.' of the AppendStream', 0, $e);
             }
         }
 
@@ -207,7 +199,7 @@ final class AppendStream implements StreamInterface
                 if ($this->current === $total) {
                     break;
                 }
-                $this->current++;
+                ++$this->current;
             }
 
             $result = $this->streams[$this->current]->read($remaining);
@@ -247,8 +239,6 @@ final class AppendStream implements StreamInterface
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return mixed
      */
     public function getMetadata($key = null)

@@ -45,7 +45,7 @@ if (i == 0) {
     i = 1;
 }
 
-if(i == 0) {
+if(i == 0){
     i = 1;
 }
 
@@ -73,7 +73,7 @@ if (i == 0) {
 
 if (i == 0) {
     i = 1;
-}else   if(i == 2) {
+}else   if(i == 2){
     i = 0;
 }
 
@@ -91,7 +91,8 @@ if (i == 0) { /* comments are allowed*/
     i = 1;
 }
 
-if (i == 0) { // this is ok
+if (i == 0)
+{ // this is ok
     i = 1;
 }
 
@@ -116,26 +117,19 @@ if (i === 0) {
     i = 1
 }
 
-if (window.jQuery) { (
-    function ($) {
-        $.fn.reset = function () {
-            return this.each(
-                function () {
-                    try {
-                        this.reset();
-                    } catch (e) {
-                    }
-                }
-            );
-        };
-    }
-    )(jQuery);
-}
+if (window.jQuery)(function($) {
+    $.fn.reset = function() {
+        return this.each(function() {
+            try {
+                this.reset();
+            } catch (e) {
+            }
+        });
+    };
+})(jQuery);
 
-if ($("#myid").rotationDegrees()=='90') {
+if ($("#myid").rotationDegrees()=='90')
     $('.modal').css({'transform': 'rotate(90deg)'});
-}
 
-if ($("#myid").rotationDegrees()=='90') {
+if ($("#myid").rotationDegrees()=='90')
     $foo = {'transform': 'rotate(90deg)'};
-}

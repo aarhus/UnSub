@@ -54,7 +54,5 @@ do {
     $a->count--;
 } while($a->count);
 
-for ($i = 0; $i < $a->count; $i++) {
-}
-for ($i = 0; $i < $a?->count; $i++) {
-}
+for ($i = 0; $i < $a->count; $i++) {}
+for ($i = 0; $i < $a?->count; $i++) {}

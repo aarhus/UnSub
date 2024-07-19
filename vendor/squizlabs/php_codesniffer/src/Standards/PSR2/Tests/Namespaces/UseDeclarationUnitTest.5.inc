@@ -28,7 +28,7 @@ use Grouped\TrailingComma\ {
 use function foo\math\trailingcomma\no\whitespace\{sin,cos,cosh,};
 
 use function foo\math\multipleonnewline\{
-    sin, cos, /* comment */ cosh
+	sin, cos, /* comment */ cosh
 };
 
 // phpcs:disable Standard.Cat.Sniff -- for reasons.

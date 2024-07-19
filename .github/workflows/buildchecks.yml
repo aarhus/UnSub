@@ -1,0 +1,75 @@
+name: Checks
+
+on:
+  push:
+    branches: ["main"]
+    tags:
+      - "*"
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: Setup PHP
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "7.4"
+          ini-values: "memory_limit=1G"
+          coverage: none
+          tools: cs2pr
+      - name: Install Composer dependencies
+        uses: "ramsey/composer-install@v2"
+      - name: Run PHPCS checks
+        continue-on-error: true
+        run: vendor/bin/phpcs -n --report-full --report-checkstyle=./phpcs-report.xml --ignore=vendor/* .
+      - name: Show PHPCS results in PR
+        run: cs2pr ./phpcs-report.xml
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Prepare files
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        run: |
+          mkdir AarhusChangeCustomer
+          # Move everything except .git and README.md into the AarhusChangeCustomer folder
+          find . -maxdepth 1 ! -name .git ! -name .github ! -name AarhusChangeCustomer ! -name . ! -name README.md -exec mv {} AarhusChangeCustomer/ \;
+
+      - name: Archive repository
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        run: |
+          zip -qr "${GITHUB_REF_NAME}.zip" AarhusChangeCustomer
+
+      - name: "Create Release"
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "${GITHUB_REF_NAME}.zip"
+          generateReleaseNotes: true
+          body: Download the zip file, copy the file to your server under the "Modules" directory, unzip the file and rename the directory createed to AarhusChangeCustomer

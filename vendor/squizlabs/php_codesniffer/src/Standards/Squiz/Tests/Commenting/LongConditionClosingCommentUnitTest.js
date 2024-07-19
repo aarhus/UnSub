@@ -401,35 +401,35 @@ if (something) {
 }
 
 switch (something) {
-case '1':
+    case '1':
     // Line 1
     // Line 2
     // Line 3
     // Line 4
     // Line 5
     break;
-case '2':
+    case '2':
     // Line 1
     // Line 2
     // Line 3
     // Line 4
     // Line 5
     break;
-case '3':
+    case '3':
     // Line 1
     // Line 2
     // Line 3
     // Line 4
     // Line 5
     break;
-case '4':
+    case '4':
     // Line 1
     // Line 2
     // Line 3
     // Line 4
     // Line 5
     break;
-case '5':
+    case '5':
     // Line 1
     // Line 2
     // Line 3

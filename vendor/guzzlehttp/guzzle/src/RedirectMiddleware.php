@@ -27,10 +27,10 @@ class RedirectMiddleware
      * @var array
      */
     public static $defaultSettings = [
-        'max'             => 5,
-        'protocols'       => ['http', 'https'],
-        'strict'          => false,
-        'referer'         => false,
+        'max' => 5,
+        'protocols' => ['http', 'https'],
+        'strict' => false,
+        'referer' => false,
         'track_redirects' => false,
     ];
 
@@ -69,11 +69,9 @@ class RedirectMiddleware
         }
 
         return $fn($request, $options)
-            ->then(
-                function (ResponseInterface $response) use ($request, $options) {
-                    return $this->checkRedirect($request, $options, $response);
-                }
-            );
+            ->then(function (ResponseInterface $response) use ($request, $options) {
+                return $this->checkRedirect($request, $options, $response);
+            });
     }
 
     /**
@@ -136,7 +134,7 @@ class RedirectMiddleware
                 \array_unshift($statusHeader, (string) $statusCode);
 
                 return $response->withHeader(self::HISTORY_HEADER, $historyHeader)
-                    ->withHeader(self::STATUS_HISTORY_HEADER, $statusHeader);
+                                ->withHeader(self::STATUS_HISTORY_HEADER, $statusHeader);
             }
         );
     }
@@ -168,7 +166,7 @@ class RedirectMiddleware
         // not forcing RFC compliance, but rather emulating what all browsers
         // would do.
         $statusCode = $response->getStatusCode();
-        if ($statusCode == 303 
+        if ($statusCode == 303
             || ($statusCode <= 302 && !$options['allow_redirects']['strict'])
         ) {
             $safeMethods = ['GET', 'HEAD', 'OPTIONS'];

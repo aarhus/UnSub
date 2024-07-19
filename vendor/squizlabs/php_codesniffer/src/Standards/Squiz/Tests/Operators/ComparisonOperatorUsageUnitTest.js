@@ -1,37 +1,37 @@
-if (value === true) {
-} else if (value === false) {
+if (value === TRUE) {
+} else if (value === FALSE) {
 }
 
-if (value == true) {
-} else if (value == false) {
+if (value == TRUE) {
+} else if (value == FALSE) {
 }
 
 if (value) {
 } else if (!value) {
 }
 
-if (value.isSomething === true) {
-} else if (myFunction(value) === false) {
+if (value.isSomething === TRUE) {
+} else if (myFunction(value) === FALSE) {
 }
 
-if (value.isSomething == true) {
-} else if (myFunction(value) == false) {
+if (value.isSomething == TRUE) {
+} else if (myFunction(value) == FALSE) {
 }
 
 if (value.isSomething) {
 } else if (!myFunction(value)) {
 }
 
-if (value === true || other === false) {
+if (value === TRUE || other === FALSE) {
 }
 
-if (value == true || other == false) {
+if (value == TRUE || other == FALSE) {
 }
 
 if (value || !other) {
 }
 
-if (one === true || two === true || three === false || four === true) {
+if (one === TRUE || two === TRUE || three === FALSE || four === TRUE) {
 }
 
 if (one || two || !three || four) {

@@ -10,17 +10,20 @@ var good = true; // Indeed.
 
 mig.Gallery.prototype = {
 
-    init: function (cb) {
+    init: function(cb)
+    {
 
     },//end init()
 
-    imageClicked: function (id) {
+    imageClicked: function(id)
+    {
 
     }//end imageClicked()
 
 };
 
-dfx.getIframeDocument = function (iframe) {
+dfx.getIframeDocument = function(iframe)
+{
 
     return doc;
 
@@ -28,7 +31,6 @@ dfx.getIframeDocument = function (iframe) {
 
 // Verify that multi-line control structure with comments and annotations are left alone.
 if (condition // comment
-    && anotherCondition
-) {
+    && anotherCondition) {
     condition = true;
 }

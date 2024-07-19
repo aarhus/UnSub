@@ -1,9 +1,5 @@
 <?php
 namespace C;
-class MyClass
-{
-}
-interface MyInterface
-{
-}
+class MyClass {}
+interface MyInterface {}
 ?>

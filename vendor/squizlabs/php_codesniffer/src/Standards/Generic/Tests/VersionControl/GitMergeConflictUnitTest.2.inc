@@ -2,7 +2,6 @@
 
 /**
 <<<<<<< HEAD
- *
  * @var string $bar
 =======
  * @var string $bar
@@ -15,9 +14,7 @@
 <<<<<<< HEAD
  * @var string $bar
  */
-public function foo($bar)
-{ 
-}
+public function foo($bar){ }
 
 /*
 =======

@@ -1,12 +1,10 @@
 <?php
-if (Function_Exists('myFunction') === true) {
+if (Function_Exists('myFunction') === TRUE) {
     $retval = MyFunction(true);
     $keys = Array_Keys($array);
 }
 
-function getType()
-{
-}
+function getType() {}
 
 $obj = new Date();
 
@@ -14,15 +12,11 @@ $count = $object->Count();
 $count = $object::Count();
 $count = $object->count();
 $count = $object::count();
-class MyClass
-{
-    public function Count()
-    {
-    }
+class MyClass {
+    public function Count() {}
 }
 
-function &Sort()
-{
+function &Sort() {
 
 }
 
@@ -34,11 +28,9 @@ use function strToUpper as somethingElse;
 use function MyClass\WordsToUpper as UCWords; // Intentional redeclared function error.
 use function strToUpper\NotTheFunction;
 
-class ArrayUnique
-{
-}
+class ArrayUnique {}
 
-$sillyComments = strToLower($string);
+$sillyComments = strToLower /*comment*/ ($string);
 
 $callToGlobalFunction = \STR_REPEAT($a, 2);
 $callToGlobalFunction = \ /*comment*/ str_Repeat($a, 2);
@@ -49,3 +41,10 @@ $callToNamespacedFunction = namespace\STR_REPEAT($a, 2); // Could potentially be
 $filePath = new \File($path);
 
 $count = $object?->Count();
+
+class AttributesShouldBeIgnored
+{
+    #[Putenv('FOO', 'foo')]
+    public function foo(): void
+    {}
+}

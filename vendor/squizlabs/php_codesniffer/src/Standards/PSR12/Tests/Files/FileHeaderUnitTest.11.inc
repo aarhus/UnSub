@@ -18,4 +18,4 @@ if (!defined('ABSPATH')) {
 /**
  * Docblock.
  */
-require 'foo.php';
+include 'foo.php';

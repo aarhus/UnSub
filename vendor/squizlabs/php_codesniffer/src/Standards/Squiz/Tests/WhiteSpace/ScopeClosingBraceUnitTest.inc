@@ -8,11 +8,9 @@ class Test
 
     function test1()
     {
-    }
+     }
 
-    function test2()
-    {
-    }
+    function test2() {}
 
     private function _test3()
     {
@@ -23,7 +21,7 @@ class Test
 
 class Test2
 {
-}
+ }
 
 
 public function test2()
@@ -55,17 +53,17 @@ if ($token['code'] === T_COMMENT
 }
 
 switch ($blah) {
-case 'one':
-    echo 'one';
+    case 'one':
+        echo 'one';
     break;
-default:
-    echo 'another';
+    default:
+        echo 'another';
 }
 
 ?>
 
 <?php while($row = $data->getRow()): ?>
-    <p><?php echo $val ?></p>
+    <p><?= $val ?></p>
 <?php endwhile; ?>
 
 <body>
@@ -77,51 +75,45 @@ default:
 </body>
 
 <?php
-if ($foo) {
-    ?>
-<?php         } ?>
+    if ($foo) {
+        ?>
+        <?php         } ?>
 
 <?php
-if ($foo) {
-    ?>
-<?php         } ?>
+    if ($foo) {
+        ?>
+    <?php         } ?>
 
 <?php
-if ($foo) {
-    ?>
-<?php } ?>
+    if ($foo) {
+        ?>
+    <?php } ?>
 
 <?php
 public function foo()
 {
-    $foo(
-        'some
+    $foo('some
     long description', function () {
-        }
-    );
+    });
 
-    $foo(
-        'some
+    $foo('some
     long
     description', function () {
-        }
-    );
+});
 
     $foo(
-        'bad indent here leads to bad indent for closer', function () {
-        }
-    );
+'bad indent here leads to bad indent for closer', function () {
+});
 }
 
 $fn1 = fn($x) => $x + $y;
 
-$match = match ($test) { 1 => 'a', 2 => 'b' 
-};
+$match = match ($test) { 1 => 'a', 2 => 'b' };
 
 $match = match ($test) {
     1 => 'a',
     2 => 'b'
-};
+    };
 
 ?>
 <?php if ($someConditional) : ?>
@@ -135,10 +127,8 @@ enum Enum
 {
 }
 
-enum Suits
-{
-}
+enum Suits {}
 
 enum Cards
 {
-}
+    }

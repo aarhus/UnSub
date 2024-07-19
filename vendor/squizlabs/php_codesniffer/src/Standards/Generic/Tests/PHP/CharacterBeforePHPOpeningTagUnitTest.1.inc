@@ -5,5 +5,5 @@ Foo
 
 
  <?php
-    // Some code
-    ?>
+// Some code
+?>

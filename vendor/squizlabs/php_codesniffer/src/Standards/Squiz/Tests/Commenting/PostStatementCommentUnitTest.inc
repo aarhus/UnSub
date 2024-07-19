@@ -23,16 +23,16 @@ if (true || -1 == $b) { /* test */
 }
 $y = 10 + /* test */ -2;
 
-$a = function () {
+$a = function() {
 };//end closure
 
 $array = [
-    function ($a) {
-    }, // phpcs:ignore Standard.Category.SniffName -- for reasons.
-    'key' => function ($b) {
-    }, // comment.
-    'key' => 'value', // phpcs:ignore Standard.Category.SniffName -- for reasons.
-    'key' => 'value', // comment.
+	function($a) {
+	}, // phpcs:ignore Standard.Category.SniffName -- for reasons.
+	'key' => function($b) {
+	}, // comment.
+	'key' => 'value', // phpcs:ignore Standard.Category.SniffName -- for reasons.
+	'key' => 'value', // comment.
 ];
 
 // Verify that multi-line control structure with comments and annotations are left alone.
@@ -41,13 +41,11 @@ for (
     $i < 10; /* phpcs:ignore Standard.Category.SniffName -- for reasons. */
     $i++ // comment
 
-) {
-}
+) {}
 
-if ($condition === true // comment
+if ( $condition === true // comment
     && $anotherCondition === false
-) {
-}
+) {}
 
 $match = match($foo // comment
     && $bar

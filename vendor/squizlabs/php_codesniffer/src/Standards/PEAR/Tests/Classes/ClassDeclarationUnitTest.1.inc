@@ -18,31 +18,25 @@ final class CorrectClassDeclarationWithImplements implements correctClassDeclara
 
 
 // Incorrect placement of opening braces
-class IncorrectBracePlacement
-{
-}
-class IncorrectBracePlacementWithExtends extends correctClassDeclaration
-{
-}
-class IncorrectBracePlacementWithImplements implements correctClassDeclaration
-{
-}
+class IncorrectBracePlacement {}
+class IncorrectBracePlacementWithExtends extends correctClassDeclaration {}
+class IncorrectBracePlacementWithImplements implements correctClassDeclaration {}
 
 // Incorrect code placement for opening brace.
 class IncorrectCodeAfterOpeningBrace
-{
-    echo phpinfo();
+{ echo phpinfo();
 
 }//end class
 
 class IncorrectClassDeclarationWithExtends extends correctClassDeclaration
+
 {
 
 }
 
 class IncorrectBracePlacement
-{
-}
+ {
+ }
 
 abstract class CodeSnifferFail
     extends
@@ -52,8 +46,7 @@ abstract class CodeSnifferFail
         Iterator,
         Countable,
         OuterIterator,
-        RecursiveIterator
-{
+        RecursiveIterator {
 }
 
 abstract class CodeSnifferFail
@@ -75,26 +68,20 @@ namespace A
     }
 }
 
-$util->setLogger(
-    new class {
+$util->setLogger(new class {});
+
+var_dump(new class(10) extends SomeClass implements SomeInterface {
+    private $num;
+
+    public function __construct($num)
+    {
+        $this->num = $num;
     }
-);
 
-var_dump(
-    new class(10) extends SomeClass implements SomeInterface {
-        private $num;
+    use SomeTrait;
+});
 
-        public function __construct($num)
-        {
-            $this->num = $num;
-        }
-
-        use SomeTrait;
-    }
-);
-
-class IncorrectClassDeclarationWithCommentAtEnd extends correctClassDeclaration /* Comment */
-{
+class IncorrectClassDeclarationWithCommentAtEnd extends correctClassDeclaration /* Comment */ {
 }
 
 class CorrectClassDeclarationWithCommentAtEnd extends correctClassDeclaration
@@ -109,22 +96,19 @@ class PHPCSIgnoreAnnotationAfterOpeningBrace
 
 // Moving any of the other trailing phpcs: comments is ok.
 class PHPCSAnnotationAfterOpeningBrace
-{
- // phpcs:disable Standard.Cat.Sniff -- for reasons.
+{ // phpcs:disable Standard.Cat.Sniff -- for reasons.
 }
 
 if (!class_exists('ClassOpeningBraceShouldBeIndented')) {
     abstract class ClassOpeningBraceShouldBeIndented
-    {
-    }
+{
+}
 }
 
 if (!class_exists('ClassOpeningBraceTooMuchIndentation')) {
     final class ClassOpeningBraceTooMuchIndentation
-    {
-    }
+        {
+        }
 }
 
-enum IncorrectBracePlacement
-{
-}
+enum IncorrectBracePlacement {}

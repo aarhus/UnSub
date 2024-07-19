@@ -1,7 +1,3 @@
 <?php
-class Foo
-{
-}
-enum Bar
-{
-}
+class Foo {}
+enum Bar {}

@@ -1,7 +1,7 @@
 <?php
 /**
- * Comment
- */
+* Comment
+*/
 use Foo\{function bar, const BAZ};
 
 use /* comment */ function bar\math\{
@@ -10,53 +10,47 @@ use /* comment */ function bar\math\{
     Mcosh,
 };
 
-require $blah;
+include $blah;
 
 
 /**
- * Comment
- */
+* Comment
+*/
 
 
 /**
- * Comment
- */
+* Comment
+*/
 function foo()
 {
 }//end foo()
 
-function func1()
-{
+function func1() {
 
 }//end func1()
 
 
-function func2()
-{
+function func2() {
 
 }//end func2()
 
-function func3()
-{
+function func3() {
 
 }//end func3()
 
 
 class MyClass
 {
-    function func1()
-    {
+    function func1() {
 
     }//end func1()
 
 
-    function func2()
-    {
+    function func2() {
 
     }//end func2()
 
-    function func3()
-    {
+    function func3() {
 
     }//end func3()
 }//end class
@@ -77,21 +71,18 @@ class MyClass
 {
 
 
-    function func1()
-    {
+    function func1() {
 
     }//end func1()
 
 
-    function func2()
-    {
+    function func2() {
 
     }//end func2()
 
 
 
-    function func3()
-    {
+    function func3() {
 
     }//end func3()
 
@@ -117,8 +108,7 @@ interface MyInterface
 
 class MyClass
 {
-    function func1()
-    {
+    function func1() {
 
     }//end func1()
 }//end class
@@ -146,8 +136,7 @@ class MyClass
      *
      * @return boolean
      */
-    function func1()
-    {
+    function func1() {
 
     }//end func1()
 
@@ -156,8 +145,7 @@ class MyClass
      *
      * @return boolean
      */
-    function func2()
-    {
+    function func2() {
 
     }//end func2()
 
@@ -167,8 +155,7 @@ class MyClass
      *
      * @return boolean
      */
-    function func3()
-    {
+    function func3() {
 
     }//end func3()
 
@@ -217,8 +204,7 @@ class MyClass
      *
      * @return boolean
      */
-    function func1()
-    {
+    function func1() {
 
     }//end func1()
 
@@ -267,8 +253,7 @@ class MyClass
      *
      * @return boolean
      */
-    function func1()
-    {
+    function func1() {
 
     }//end func1()
 
@@ -286,20 +271,19 @@ preg_replace_callback(
     'hello-world'
 );
 
-$callback = function ($bar) use ($foo) {
+$callback = function ($bar) use ($foo)
+            {
                 $bar += $foo;
-};
+            };
 
 class MyClass
 {
-    function func1()
-    {
+    function func1() {
     }
 }
 
 
-function test()
-{
+function test() {
 
 }//end test()
 
@@ -308,28 +292,24 @@ if ($foo) {
     /**
      * Comment
      */
-    function foo()
-    {
+    function foo() {
         // Code here
     }
     /**
      * Comment
      */
-    function bar()
-    {
+    function bar() {
         // Code here
     }
 }
 
 // foo
-function foo()
-{
+function foo() {
 }
 
 
 // phpcs:disable Standard.Category.Sniff -- for reasons.
-function bar()
-{
+function bar() {
 }
 
 
@@ -344,8 +324,7 @@ class MyClass
      *
      * @return boolean
      */
-    private static function func1()
-    {
+    private static function func1() {
 
     }//end func1()
 
@@ -354,63 +333,39 @@ class MyClass
      *
      * @return boolean
      */
-    private static function func2()
-    {
+    private static function func2() {
 
     }//end func1()
 
 
 }//end class
 
-class MyClass
-{
-    function a()
-    {
-    }
-    function b()
-    {
-    }
-    function c()
-    {
-    }
+class MyClass {
+    function a(){}
+    function b(){}
+    function c(){}
 }
 
 // phpcs:set Squiz.WhiteSpace.FunctionSpacing spacing 1
 // phpcs:set Squiz.WhiteSpace.FunctionSpacing spacingBeforeFirst 1
 // phpcs:set Squiz.WhiteSpace.FunctionSpacing spacingAfterLast 1
 
-class MyClass
-{
-    function a()
-    {
-    }
-    function b()
-    {
-    }
-    function c()
-    {
-    }
+class MyClass {
+    function a(){}
+    function b(){}
+    function c(){}
 }
 
-$util->setLogger(
-    new class {
-        public function a()
-        {
-        }
-        private function b()
-        {
-        }
-        protected function c()
-        {
-        }
-    }
-);
+$util->setLogger(new class {
+    public function a(){}
+    private function b(){}
+    protected function c(){}
+});
 
 ?>
 
 <?php
-function functionInEmbeddedPHP()
-{
+function functionInEmbeddedPHP() {
 
 }
 
@@ -427,9 +382,7 @@ class MyClass
      *
      * @return boolean
      */
-    function func1()
-    {
-    }
+    function func1() {}
 
 }//end class
 
@@ -443,9 +396,7 @@ class MyClass
      *
      * @return boolean
      */
-    function func1()
-    {
-    }
+    function func1() {}
 
 }//end class
 
@@ -457,18 +408,14 @@ class MyClass
      *
      * @return boolean
      */
-    function func1()
-    {
-    }
+    function func1() {}
     // phpcs:disable Standard.Category.Sniff -- for reasons.
     /**
      * Function comment.
      *
      * @return boolean
      */
-    function func2()
-    {
-    }
+    function func2() {}
 }//end class
 
 // phpcs:set Squiz.WhiteSpace.FunctionSpacing spacing 2
@@ -476,45 +423,30 @@ class MyClass
 // phpcs:set Squiz.WhiteSpace.FunctionSpacing spacingAfterLast 2
 
 echo 'just some code to let the below line test blank lines before';
-echo 'something'; function testingFunctionNotOnOwnLine()
-{
-} echo 'somethingelse';
+echo 'something'; function testingFunctionNotOnOwnLine() {} echo 'somethingelse';
 echo 'just some code to let the above line test blank lines after';
 
-trait MyTrait
-{
+trait MyTrait {
 
 
-    public function a()
-    {
-    }
+    public function a(){}
 
 
 
 
-    public function b()
-    {
-    }
-    public function c()
-    {
-    }
+    public function b(){}
+    public function c(){}
 }
 
 $anon_class = new class() {
-    public function a()
-    {
-    }
+    public function a(){}
 
-    protected function b()
-    {
-    }
+    protected function b(){}
 
 
 
 
-    private function c()
-    {
-    }
+    private function c(){}
 
 };
 
@@ -522,55 +454,33 @@ $anon_class = new class() {
 // phpcs:set Squiz.WhiteSpace.FunctionSpacing spacingBeforeFirst 1
 // phpcs:set Squiz.WhiteSpace.FunctionSpacing spacingAfterLast 3
 
-class MyClass
-{
-    function a()
-    {
-    }
-    function b()
-    {
-    }
-    function c()
-    {
-    }
+class MyClass {
+    function a(){}
+    function b(){}
+    function c(){}
 }
 
 $bar = function () {
     {
-    function a()
-    {
-    }
-    function b()
-    {
-    }
-    function c()
-    {
-    }
+        function a(){}
+        function b(){}
+        function c(){}
     }
 };
-class Foo
-{
-    public function returnAnonymousClass()
-    {
+class Foo {
+    public function returnAnonymousClass() {
         return new class() {
-            public function baz()
-            {
-            }
+            public function baz() {}
         };
     }
 
-    public function bar()
-    {
-        function forbidden()
-        {
-        }
+    public function bar() {
+        function forbidden() {}
     }
 }
 
 if (function_exists('foo') === false) {
-    function foo()
-    {
-    }
+    function foo(){}
 }
 
 // phpcs:set Squiz.WhiteSpace.FunctionSpacing spacing 0
@@ -581,9 +491,7 @@ interface OneBlankLineBeforeFirstFunctionClassInterface
 {
 
 
-    /**
-     * @return mixed 
-     */
+    /** @return mixed */
     public function interfaceMethod();
 }
 
@@ -591,105 +499,86 @@ interface OneBlankLineBeforeFirstFunctionClassInterface
 // phpcs:set Squiz.WhiteSpace.FunctionSpacing spacingBeforeFirst 0
 // phpcs:set Squiz.WhiteSpace.FunctionSpacing spacingAfterLast 0
 
-class MyClass
-{
+class MyClass {
 
     // phpcs:disable Stnd.Cat.Sniff -- For reasons.
 
     /**
      * Description.
      */
-    function a()
-    {
-    }
+    function a(){}
 
     /**
      * Description.
      */
-    function b()
-    {
-    }
+    function b(){}
 
     /**
      * Description.
      */
-    function c()
-    {
-    }
+    function c(){}
 
     // phpcs:enable
 }
 
-class MyClass
-{
+class MyClass {
     // Some unrelated comment
     /**
      * Description.
      */
-    function a()
-    {
-    }
+    function a(){}
 
     /**
      * Description.
      */
-    function b()
-    {
-    }
+    function b(){}
 
     /**
      * Description.
      */
-    function c()
-    {
-    }
+    function c(){}
     // function d() {}
 }
 
-class ClassWithAttributes
-{
+class ClassWithAttributes {
 
     #[Attribute1]
     #[Attribute2]
-    function a()
-    {
-    }
+    function a(){}
 
 
     #[Attribute3]
-    function b()
-    {
-    }
+    function b(){}
     #[Attribute4]
-    function c()
-    {
-    }
+    function c(){}
 
 
     /**
      * Description.
      */
     #[Attribute5]
-    function d()
-    {
-    }
+    function d(){}
     /**
      * Description.
      */
     #[Attribute6]
     #[Attribute7]
-    function e()
-    {
-    }
+    function e(){}
 
 
     #[Attribute8]
     #[Attribute9]
-    function f()
-    {
-    }
+    function f(){}
 }
 
 // phpcs:set Squiz.WhiteSpace.FunctionSpacing spacing 2
 // phpcs:set Squiz.WhiteSpace.FunctionSpacing spacingBeforeFirst 2
 // phpcs:set Squiz.WhiteSpace.FunctionSpacing spacingAfterLast 2
+
+// Issue #3904.
+echo 'this line belongs with the #3904 test';
+class Person {public function __construct($name){}}
+echo 'this line belongs with the #3904 test';
+
+function Foo() {} function bar($name){}
+echo 'this line belongs with the #3904 test';

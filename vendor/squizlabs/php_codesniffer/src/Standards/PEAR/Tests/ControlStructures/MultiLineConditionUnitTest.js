@@ -18,7 +18,8 @@ if ((condition1 || condition2)
 ) {
 }
 
-if ((condition1 || condition2)
+if (
+    (condition1 || condition2)
     && condition3
 ) {
 }
@@ -30,37 +31,40 @@ if ((condition1
 
 if ((condition1
     || condition2)
-    && condition3 
-    && condition4
+    && condition3 &&
+    condition4
 ) {
 }
 
 if ((condition1
-    || condition2)
-    && condition3
-    && condition4
-    && condition5
+   || condition2)
+      && condition3
+   && condition4
+   && condition5
 ) {
 }
 
 if (($condition1
     || $condition2)
-) {
+)  {
 }
 
 if ((condition1
     || condition2)
-) {
+ ) {
 }
 
-if ((condition1
-    || condition2)
+if (
+    (
+    condition1
+    || condition2
+    )
     && condition3
 ) {
 }
 
 
-if (condition1
+if (   condition1
     || condition2
     || condition3
 ) {
@@ -80,49 +84,46 @@ if (condition1
     || condition2
     || condition3
 ) {
-} else if (condition1
-    || condition2 
-    && condition3
+} else if (
+    condition1
+   || condition2 &&
+    condition3
 ) {
 }
 
 if (condition1
     || condition2
-    || condition3
-) {
+|| condition3) {
 }
 
 if (condition1
     || condition2 || condition3
-) {
+){
 }
 
-if (condition1) {
+if (condition1)
     console.info('bar');
-}
 
 if (condition1
     || condition2
-    || condition3
-) {
+|| condition3)
     console.info('bar');
-}
 
 
 if (condition1
     || condition2 || condition3
-) {
+)
     console.info('bar');
-}
 
 if (!a(post)
     && (!a(context.header)
     ^ a(context.header, 'Content-Type'))
 ) { 
-    // ...
+// ...
 }
 
-if (foo) {
+if (foo)
+{
     console.info('bar');
 }
 
@@ -140,17 +141,17 @@ if (true) {
     foo = true;
 };
 
-if (foo == 401  // comment
-    || bar == 3200  /* long comment
+if (foo == 401 || // comment
+    bar == 3200)  /* long comment
                      here
                    */
-) {
+{
     return false;
 }
 
-if (foo == 401  // comment
-    || bar == 3200  // long comment here
-) {
+if (foo == 401 || // comment
+    bar == 3200)  // long comment here
+{
     return false;
 }
 
@@ -161,11 +162,10 @@ if (IPP.errorCode() == 401
     return false;
 }
 
-function bar()
-{
+function bar() {
     if (a
         && b
-    ) {
+) {
         return false;
     }
 }
@@ -174,8 +174,7 @@ if (a
     && foo(
         'a',
         'b'
-    )
-) {
+    )) {
     return false;
 }
 
@@ -191,17 +190,17 @@ if (a
 
 
 
-if (foo == 401  // phpcs:ignore Standard.Category.Sniff -- for reasons.
-    || bar == 3200  /*
+if (foo == 401 || // phpcs:ignore Standard.Category.Sniff -- for reasons.
+    bar == 3200)  /*
                      phpcs:ignore Standard.Category.Sniff -- for reasons.
                    */
-) {
+{
     return false;
 }
 
-if (foo == 401  // phpcs:disable Standard.Category.Sniff -- for reasons.
-    || bar == 3200  // phpcs:enable
-) {
+if (foo == 401 || // phpcs:disable Standard.Category.Sniff -- for reasons.
+    bar == 3200)  // phpcs:enable
+{
     return false;
 }
 
@@ -212,14 +211,14 @@ if (IPP.errorCode() == 401
     return false;
 }
 
-if (foo == 401 
+    if (foo == 401 ||
     /*
 	 * phpcs:disable Standard.Category.Sniff -- for reasons.
-     */
-    || bar == 3200
-) {
-    return false;
-}
+	 */
+    bar == 3200
+    ) {
+        return false;
+    }
 
 if (IPP.errorCode() == 401
     || IPP.errorCode() == 3200
@@ -229,15 +228,16 @@ if (IPP.errorCode() == 401
 }
 
 if (foo == 401
-    || bar    == 'someverylongexpectedoutput'
+    || bar
+        == 'someverylongexpectedoutput'
 ) {
     return false;
 }
 
 if (IPP.errorCode() == 401
     || bar
-    // A comment.
-    == 'someverylongexpectedoutput'
+        // A comment.
+        == 'someverylongexpectedoutput'
 ) {
     return false;
 }
@@ -245,7 +245,7 @@ if (IPP.errorCode() == 401
 if (foo == 401
     || IPP.errorCode()
         // phpcs:ignore Standard.Category.Sniff -- for reasons.
-    == 'someverylongexpectedoutput'
+        == 'someverylongexpectedoutput'
 ) {
     return false;
 }

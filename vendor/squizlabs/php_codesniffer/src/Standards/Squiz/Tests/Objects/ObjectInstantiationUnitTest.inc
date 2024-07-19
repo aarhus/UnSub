@@ -9,20 +9,15 @@ $object->myFunction(new MyClass());
 
 throw new MyException($msg);
 
-function foo()
-{
-    return new MyClass(); 
-}
+function foo() { return new MyClass(); }
 
 $doodad = $x ? new Foo : new Bar;
 
-function returnFn()
-{
+function returnFn() {
     $fn = fn($x) => new MyClass();
 }
 
-function returnMatch()
-{
+function returnMatch() {
     $match = match($x) {
         0 => new MyClass()
     }
@@ -36,17 +31,22 @@ $time3 = $time1 ?? $time2 ?? new \DateTime();
 function_call($time1 ?? new \DateTime());
 $return = function_call($time1 ?? new \DateTime()); // False negative depending on interpretation of the sniff.
 
-function returnViaTernary()
-{
+function returnViaTernary() {
     return ($y == false ) ? ($x === true ? new Foo : new Bar) : new FooBar;
 }
 
-function nonAssignmentTernary()
-{
+function nonAssignmentTernary() {
     if (($x ? new Foo() : new Bar) instanceof FooBar) {
         // Do something.
     }
 }
+
+// Test for tokenizer issue #3789.
+$a = $b !== null
+    ? match ($c) {
+        default => 5,
+    }
+    : new Foo;
 
 // Intentional parse error. This must be the last test in the file.
 function new

@@ -1,6 +1,5 @@
 <?php
-class Foo
-{
+class Foo {
     public const BAR = 'bar';
     const BAZ = 'baz';
 }
@@ -17,8 +16,7 @@ class SampleEnum
     final private const BAZ = 'SAMPLE';
 }
 
-enum SomeEnum
-{
+enum SomeEnum {
     public const BAR = 'bar';
     const BAZ = 'baz';
 }

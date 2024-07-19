@@ -3,7 +3,5 @@
 
 use Psr\Container\ContainerInterface;
 
-/**
- * @var ContainerInterface $container 
-*/
-$container = include __DIR__ . "/../bootstrap.php";
+/** @var ContainerInterface $container */
+$container = require __DIR__ . "/../bootstrap.php";

@@ -1,8 +1,9 @@
 phpcs:set Generic.WhiteSpace.ScopeIndent tabIndent false
 var script = document.createElement('script');
-script.onload = function () {
+script.onload = function()
+{
         clearTimeout(t);
-    script456.onload = null;
+  script456.onload = null;
     script.onreadystatechange = null;
     callback.call(this);
 
@@ -10,35 +11,35 @@ script.onload = function () {
 
 this.callbacks[type] = {
     namespaces: {},
-    others: []
+others: []
 };
 
-blah = function () {
+blah = function()
+{
     print something;
 
-}
-
-test(
-    blah, function () {
-        print something;
     }
-);
+
+test(blah, function() {
+    print something;
+});
 
 var test = [{x: 10}];
 var test = [{
     x: 10,
-    y: {
+        y: {
         b14h: 12,
-        'b14h': 12
-    },
-    z: 23
+            'b14h': 12
+        },
+        z: 23
 }];
 
 Viper.prototype = {
 
-    _removeEvents: function (elem) {
+     _removeEvents: function(elem)
+     {
         if (!elem) {
-            elem = this.element;
+        elem = this.element;
         }
 
         ViperUtil.removeEvent(elem, '.' + this.getEventNamespace());
@@ -47,16 +48,16 @@ Viper.prototype = {
 
 };
 
-this.init = function (data) {
+this.init = function(data) {
     if (_pageListWdgt) {
         GUI.getWidget('changedPagesList').addItemClickedCallback(
-            function (itemid, target) {
+            function(itemid, target) {
                 draftChangeTypeClicked(
                     itemid,
                     target,
                     {
-                        reviewData: _reviewData,
-                        pageid: itemid
+                    reviewData: _reviewData,
+                    pageid: itemid
                     }
                 );
             }
@@ -66,27 +67,25 @@ this.init = function (data) {
 };
 
 a(
-    function () {
-        var _a = function () {
+    function() {
+        var _a = function() {
             b = false;
 
         };
-        true
+    true
     }
 );
 
-(function () {
-    a = function () {
-        a(
-            function () {
-                if (true) {
-                    a = true;
-                }
+(function() {
+    a = function() {
+        a(function() {
+            if (true) {
+                a = true;
             }
-        );
+        });
 
         a(
-            function () {
+            function() {
                 if (true) {
                     if (true) {
                         a = true;
@@ -96,7 +95,7 @@ a(
         );
 
         a(
-            function () {
+            function() {
                 if (true) {
                     a = true;
                 }
@@ -109,18 +108,19 @@ a(
 
 a.prototype = {
 
-    a: function () {
+    a: function()
+    {
         var currentSize = null;
         ViperUtil.addEvent(
             header,
             'safedblclick',
-            function () {},
+            function() {},
         );
 
-        if (topContent) {
-            ViperUtil.addClass(topContent, 'Viper-popup-top');
-            main.appendChild(topContent);
-        }
+    if (topContent) {
+        ViperUtil.addClass(topContent, 'Viper-popup-top');
+        main.appendChild(topContent);
+    }
 
         ViperUtil.addClass(midContent, 'Viper-popup-content');
         main.appendChild(midContent);
@@ -130,54 +130,58 @@ a.prototype = {
 
 a.prototype = {
 
-    a: function () {
+    a: function()
+    {
         ViperUtil.addClass(midContent, 'Viper-popup-content');
         main.appendChild(midContent);
 
-        var mouseUpAction  = function () {};
+        var mouseUpAction  = function() {};
         var preventMouseUp = false;
         var self           = this;
-        if (clickAction) {
-        }
+    if (clickAction) {
+    }
     }
 
 };
 
 a.prototype = {
 
-    a: function () {
-        var a = function () {
+    a: function()
+    {
+        var a = function() {
             var a = 'foo';
         };
 
-        if (true) {
-        }
+    if (true) {
+    }
 
     },
 
-    b: function () {
+    b: function()
+    {
         ViperUtil.addEvent(
-            function () {
+            function() {
                 if (fullScreen !== true) {
                     currentSize = {
                     };
 
-                    showfullScreen();
+                showfullScreen();
                 }
             }
         );
 
     },
 
-    c: function () {
+    c: function()
+    {
         this.a(
             {
-                a: function () {
-                    form.onsubmit = function () {
+                a: function() {
+                    form.onsubmit = function() {
                         return false;
                     };
 
-                    var a = true;
+                var a = true;
                 }
             }
         );
@@ -187,10 +191,11 @@ a.prototype = {
 };
 
 a.prototype = {
-    init: function () {
-    },
+    init: function()
+    {},
 
-    _b: function () {
+    _b: function()
+    {
     }
 
 };
@@ -216,11 +221,9 @@ class TestBad
 {
     destroy()
     {
-        setTimeout(
-            function () {
-                return;
-            }, 1000
-        );
+        setTimeout(function () {
+            return;
+        }, 1000);
 
         if (typeof self.callbackOnClose === "function") {
             self.callbackOnClose();
@@ -228,13 +231,9 @@ class TestBad
     }
 }
 
-( function ( $ ) {
-    foo(
-        function ( value ) {
-            value.bind(
-                function ( newval ) {
-                    $('#bar').html(newval);
-                } 
-            );
-        } 
-    )(jQuery);
+( function( $ ) {
+    foo(function( value ) {
+            value.bind( function( newval ) {
+                    $( '#bar' ).html( newval );
+            } );
+    } )( jQuery );

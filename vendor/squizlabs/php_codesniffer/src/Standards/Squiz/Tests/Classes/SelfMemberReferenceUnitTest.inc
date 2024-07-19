@@ -58,20 +58,17 @@ class SelfMemberReferenceUnitTestExample
 }
 
 
-class MyClass
-{
+class MyClass {
 
-    public static function test($value)
-    {
+    public static function test($value) {
         echo "$value\n";
     }
 
-    public static function walk()
-    {
-        $callback = function ($value, $key) {
+    public static function walk() {
+        $callback = function($value, $key) {
                         // This is valid because you can't use self:: in a closure.
                         MyClass::test($value);
-        };
+                    };
 
         $array = array(1,2,3);
         array_walk($array, $callback);
@@ -98,8 +95,7 @@ class Foo
 
 namespace TYPO3\CMS\Reports;
 
-class Status
-{
+class Status {
     const NOTICE = -2;
     const INFO = -1;
     const OK = 0;
@@ -109,18 +105,15 @@ class Status
 
 namespace TYPO3\CMS\Reports\Report\Status;
 
-class Status implements \TYPO3\CMS\Reports\ReportInterface
-{
-    public function getHighestSeverity(array $statusCollection)
-    {
+class Status implements \TYPO3\CMS\Reports\ReportInterface {
+    public function getHighestSeverity(array $statusCollection) {
         $highestSeverity = \TYPO3\CMS\Reports\Status::NOTICE;
     }
 }
 
 namespace Foo;
 
-class Bar
-{
+class Bar {
 
     function myFunction()
     {
@@ -131,8 +124,7 @@ class Bar
 
 namespace Foo\Bar;
 
-class Baz
-{
+class Baz {
 
     function myFunction()
     {
@@ -141,10 +133,8 @@ class Baz
     }
 }
 
-class Nested_Anon_Class
-{
-    public function getAnonymousClass()
-    {
+class Nested_Anon_Class {
+    public function getAnonymousClass() {
         // Spacing/comments should not cause false negatives for the NotUsed error.
         Nested_Anon_Class      ::       $prop;
         Nested_Anon_Class
@@ -157,8 +147,7 @@ class Nested_Anon_Class
 
         // Anonymous class is a different scope.
         return new class() {
-            public function nested_function()
-            {
+            public function nested_function() {
                 Nested_Anon_Class::$prop;
                 Nested_Anon_Class::BAR;
             }
@@ -168,10 +157,8 @@ class Nested_Anon_Class
 
 // Test dealing with scoped namespaces.
 namespace Foo\Baz {
-    class BarFoo
-    {
-        public function foo()
-        {
+    class BarFoo {
+        public function foo() {
             echo Foo\Baz\BarFoo::$prop;
         }
     }
@@ -179,10 +166,8 @@ namespace Foo\Baz {
 
 // Prevent false negative when namespace has whitespace/comments.
 namespace Foo /*comment*/ \ Bah {
-    class BarFoo
-    {
-        public function foo()
-        {
+    class BarFoo {
+        public function foo() {
             echo Foo \ /*comment*/ Bah\BarFoo::$prop;
         }
     }

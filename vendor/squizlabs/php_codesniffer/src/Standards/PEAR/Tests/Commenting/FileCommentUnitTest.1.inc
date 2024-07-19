@@ -3,7 +3,9 @@ declare(encoding='utf-8');
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
+*
 * Short description for fileasdasd.
+*
 *
 * asdasd
 * long description for file (if any)
@@ -16,13 +18,12 @@ declare(encoding='utf-8');
 * http://www.php.net/license/3_0.txt.  If you did not receive a copy of
 * the PHP License and are unable to obtain it through the web, please
 * send a note to license@php.net so we can mail you a copy immediately.
- *
 * @category   _wrong_category
 * @package    PHP_CodeSniffer
 * @package    ADDITIONAL PACKAGE TAG
 * @subpackage SUBPACKAGE TAG
 * @author     Antônio Carlos Venâncio Júnior <foreign@character.net>
-* @author     Greg Sherwood gsherwood@squiz.net
+* @author       Greg Sherwood gsherwood@squiz.net
 * @author     Mr T <t@squiz.net>
 * @author
 * @copyright  1997~1994 The PHP Group
@@ -44,8 +45,9 @@ require_once '/some/path.php';
 ?>
 <?php
 /**
- * This bit here is not qualified as file comment
- *
- * as it is not after the first open tag
- */
+* This bit here is not qualified as file comment
+*
+* as it is not after the first open tag
+*
+*/
 ?>

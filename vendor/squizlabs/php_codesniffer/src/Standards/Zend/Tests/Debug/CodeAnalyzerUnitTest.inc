@@ -1,6 +1,5 @@
 <?php
-function myFunction($variable)
-{
+function myFunction($variable) {
     // $variable is unused.
     echo 'hi';
 }

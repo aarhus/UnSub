@@ -40,11 +40,11 @@ class RetryMiddleware
      *                                                                         and returns the number of
      *                                                                         milliseconds to delay.
      */
-    public function __construct(callable $decider, callable $nextHandler, callable $delay = null)
+    public function __construct(callable $decider, callable $nextHandler, ?callable $delay = null)
     {
         $this->decider = $decider;
         $this->nextHandler = $nextHandler;
-        $this->delay = $delay ?: __CLASS__ . '::exponentialDelay';
+        $this->delay = $delay ?: __CLASS__.'::exponentialDelay';
     }
 
     /**
@@ -54,7 +54,7 @@ class RetryMiddleware
      */
     public static function exponentialDelay(int $retries): int
     {
-        return (int) \pow(2, $retries - 1) * 1000;
+        return (int) 2 ** ($retries - 1) * 1000;
     }
 
     public function __invoke(RequestInterface $request, array $options): PromiseInterface
@@ -64,6 +64,7 @@ class RetryMiddleware
         }
 
         $fn = $this->nextHandler;
+
         return $fn($request, $options)
             ->then(
                 $this->onFulfilled($request, $options),
@@ -77,10 +78,15 @@ class RetryMiddleware
     private function onFulfilled(RequestInterface $request, array $options): callable
     {
         return function ($value) use ($request, $options) {
-            if (!($this->decider)($options['retries'], $request, $value, null)
-            ) {
+            if (!($this->decider)(
+                $options['retries'],
+                $request,
+                $value,
+                null
+            )) {
                 return $value;
             }
+
             return $this->doRetry($request, $options, $value);
         };
     }
@@ -91,15 +97,20 @@ class RetryMiddleware
     private function onRejected(RequestInterface $req, array $options): callable
     {
         return function ($reason) use ($req, $options) {
-            if (!($this->decider)($options['retries'], $req, null, $reason)
-            ) {
+            if (!($this->decider)(
+                $options['retries'],
+                $req,
+                null,
+                $reason
+            )) {
                 return P\Create::rejectionFor($reason);
             }
+
             return $this->doRetry($req, $options);
         };
     }
 
-    private function doRetry(RequestInterface $request, array $options, ResponseInterface $response = null): PromiseInterface
+    private function doRetry(RequestInterface $request, array $options, ?ResponseInterface $response = null): PromiseInterface
     {
         $options['delay'] = ($this->delay)(++$options['retries'], $response, $request);
 

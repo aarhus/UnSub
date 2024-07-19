@@ -134,11 +134,9 @@ for ($i = 0; $i < 10; $i += 2) {
 
 // Valid
 $variable = 12;
-$var      = a_very(
-    long_line('that', 'contains'),
-    a_bunch('of long', 'parameters'),
-    'that_need to be aligned with the equal sign'
-);
+$var      = a_very(long_line('that', 'contains'),
+                   a_bunch('of long', 'parameters'),
+                   'that_need to be aligned with the equal sign');
 $var2     = 12;
 
 // Valid
@@ -150,11 +148,9 @@ $var2     = 12;
 
 // Invalid
 $variable = 12;
-$var      = a_very(
-    long_line('that', 'contains'),
-    a_bunch('of long', 'parameters'),
-    'that_need to be aligned with the equal sign'
-);
+$var      = a_very(long_line('that', 'contains'),
+                   a_bunch('of long', 'parameters'),
+                   'that_need to be aligned with the equal sign');
 $var2 = 12;
 
 // Invalid
@@ -193,15 +189,14 @@ while (list($h, $f) = getKeyAndValue($handle)) {
 
 // Valid
 $value = false;
-function blah($value = true)
-{
+function blah ($value = true) {
     $value = false;
     if ($value === true) {
         $value = false;
     }
 }
 
-if (true) {
+if (TRUE) {
     $args = array('foo' => 'foo');
     $res  = 'bar';
 }
@@ -246,14 +241,12 @@ $foobarbaz = array_map(
 );
 $foo       = 5;
 
-$loggerResult = $util->setLogger(
-    new class {
-        public function log($msg)
-        {
-            echo $msg;
-        }
+$loggerResult = $util->setLogger(new class {
+    public function log($msg)
+    {
+        echo $msg;
     }
-);
+});
 $foo          = 5;
 
 $foo = array(
@@ -294,88 +287,76 @@ function buildForm(FormBuilderInterface $builder, array $options)
     [$important, $questions, $incidents, $requests] = $this->createContractBuckets($options['contracts']);
 }
 
-$loggerResult = $util->setLogger(
-    new class {
-        public function log($msg)
-        {
+$loggerResult = $util->setLogger(new class {
+    public function log($msg)
+    {
+        $a = $msg;
+        $foobar = $msg;
+        $foo = function() {
             $a = $msg;
             $foobar = $msg;
-            $foo = function () {
-                $a = $msg;
-                $foobar = $msg;
-                $loggerResult = $util->setLogger(
-                    new class {
-                        public function log($msg)
-                        {
+            $loggerResult = $util->setLogger(new class {
+                public function log($msg)
+                {
+                    $a = $msg;
+                    $foobar = $msg;
+                    $foo = function() {
+                        foo(function() {
+                            foo(function() {
+                                echo 'hi';
+                            });
                             $a = $msg;
                             $foobar = $msg;
-                            $foo = function () {
-                                foo(
-                                    function () {
-                                        foo(
-                                            function () {
-                                                echo 'hi';
-                                            }
-                                        );
-                                        $a = $msg;
-                                        $foobar = $msg;
 
-                                        $foo = function () {
+                            $foo = function() {
 
-                                            $foo = 1;
-                                            $barbar=2;
-                                        };
-                                        $barbar = function () {
-                                            $foo    = 1;
-                                            $barbar = 2;
-                                        };
-                                    }
-                                );
-                                $a = $msg;
-                                $foobar      = $msg;
+                                $foo = 1;
+                                $barbar=2;
                             };
-                            $bar = $msg;
-                        }
+                            $barbar = function() {
+                                $foo    = 1;
+                                $barbar = 2;
+                            };
+                        });
+                        $a = $msg;
+                        $foobar      = $msg;
+                    };
+                    $bar = $msg;
+                }
 
-                        public function log2($msg)
-                        {
+                public function log2($msg)
+                {
+                    $a = $msg;
+                    $foobar = $msg;
+                    $foo = function() {
+                        foo(function() {
+                            foo(function() {
+                                echo 'hi';
+                            });
                             $a = $msg;
                             $foobar = $msg;
-                            $foo = function () {
-                                foo(
-                                    function () {
-                                        foo(
-                                            function () {
-                                                echo 'hi';
-                                            }
-                                        );
-                                        $a = $msg;
-                                        $foobar = $msg;
 
-                                        $foo = function () {
+                            $foo = function() {
 
-                                            $foo = 1;
-                                            $barbar=2;
-                                        };
-                                        $barbar = function () {
-                                            $foo    = 1;
-                                            $barbar = 2;
-                                        };
-                                    }
-                                );
-                                $a = $msg;
-                                $foobar      = $msg;
+                                $foo = 1;
+                                $barbar=2;
                             };
-                            $bar = $msg;
-                        }
-                    }
-                );
-                $foo          = 5;
-            };
-            $bar = $msg;
-        }
+                            $barbar = function() {
+                                $foo    = 1;
+                                $barbar = 2;
+                            };
+                        });
+                        $a = $msg;
+                        $foobar      = $msg;
+                    };
+                    $bar = $msg;
+                }
+            });
+            $foo          = 5;
+        };
+        $bar = $msg;
     }
-);
+});
 $foo          = 5;
 
 $foo = [
@@ -390,12 +371,10 @@ $foo = [
 ];
 
 $abc = 'something';
-if ($foo) {
-}
+if ($foo) {}
 $defghi = 'longer something';
 
-function foo()
-{
+function foo() {
     $foo = 'foo';
     $bar = 'bar';
     ?>
@@ -409,27 +388,21 @@ function foo()
     <?php
 }
 
-$foo = new Foo(
-    [
+$foo = new Foo([
     $a = new Bar(),
     $b = new Bar(),
-    ]
-);
+]);
 
-$foo = new Foo(
-    [
+$foo = new Foo([
     $a = new Bar(),
     $b    = new Bar(),
     $c  = new Bar(),
-    ]
-);
-$foofoo   = new Foo(
-    [
+]);
+$foofoo   = new Foo([
     $a = new Bar(),
     $b = new Bar(),
     $c = new Bar(),
-    ]
-);
+]);
 
 $i = 0;
 echo "TEST: ".($i += 1)."\n";
@@ -507,24 +480,21 @@ class Test
 }
 
 // Issue #3460.
-function issue3460_invalid()
-{
+function issue3460_invalid() {
     $a = static function ($variables = false) use ($foo) {
         return $variables;
     };
     $b   = $a;
 }
 
-function issue3460_valid()
-{
+function issue3460_valid() {
     $a = static function ($variables = false) use ($foo) {
         return $variables;
     };
     $b = $a;
 }
 
-function makeSureThatAssignmentWithinClosureAreStillHandled()
-{
+function makeSureThatAssignmentWithinClosureAreStillHandled() {
     $a = static function ($variables = []) use ($temp) {
         $a = 'foo';
         $bar = 'bar';

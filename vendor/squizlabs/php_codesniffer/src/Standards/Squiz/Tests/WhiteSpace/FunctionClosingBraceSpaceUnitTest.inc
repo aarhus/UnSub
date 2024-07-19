@@ -1,26 +1,22 @@
 <?php
 
-function MyFunction1()
-{
+function MyFunction1() {
     // Some code goes here.
 
 }
 
-function MyFunction2()
-{
+function MyFunction2() {
     // Some code goes here.
 }
 
 class MyClass
 {
-    function MyFunction3()
-    {
+    function MyFunction3() {
         // Some code goes here.
 
     }
 
-    function MyFunction4()
-    {
+    function MyFunction4() {
         // Some code goes here.
     }
 
@@ -29,14 +25,9 @@ class MyClass
 
 public function register();
 
-function foo()
-{ 
-}
-function foo()
-{
-}
-function foo()
-{
+function foo() { }
+function foo() {}
+function foo() {
 }
 
 function foo()

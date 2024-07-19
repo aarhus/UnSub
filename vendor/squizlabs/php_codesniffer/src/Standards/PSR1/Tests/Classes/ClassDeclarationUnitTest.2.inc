@@ -1,6 +1,4 @@
 <?php
 namespace MyProject;
 
-class Foo
-{
-}
+class Foo {}

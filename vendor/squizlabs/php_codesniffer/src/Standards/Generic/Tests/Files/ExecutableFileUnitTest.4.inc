@@ -1,1 +1,1 @@
-<?php echo 'text' ?>
+<?= 'text' ?>

@@ -25,8 +25,7 @@ abstract class IncorrectAbstractName // error
 
 }
 
-$anon = new class {
-};
+$anon = new class {};
 
 class AbstractClassName
 {
@@ -52,9 +51,7 @@ $var = 'abstract class IncorrectNameButOk';
 
 $abstracVar = '';
 
-class NameAbstractBar
-{
-}
+class NameAbstractBar {}
 
 abstract class abstractOkName
 {

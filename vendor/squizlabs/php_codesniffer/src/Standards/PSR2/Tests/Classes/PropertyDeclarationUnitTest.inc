@@ -31,8 +31,7 @@ qux
 BAZ;
 }
 
-class ABC
-{
+class ABC {
     public static $propA;
     protected static $propB;
     private static $propC;
@@ -73,8 +72,7 @@ class MyClass
     public static int/*comment*/$var = null;
 }
 
-class ReadOnlyProp
-{
+class ReadOnlyProp {
     public readonly int $foo,
         $bar,
         $var = null;
@@ -82,4 +80,8 @@ class ReadOnlyProp
     protected readonly ?string    $foo;
 
     readonly array $foo;
+
+    readonly public int $wrongOrder1;
+
+    readonly protected ?string $wrongOrder2;
 }

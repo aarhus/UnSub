@@ -1,20 +1,20 @@
 <?php
-if ($value === true || $other === false) {
+if ($value === TRUE || $other === FALSE) {
 }
 
-if ($value === true OR $other === false) {
+if ($value === TRUE OR $other === FALSE) {
 }
 
-if ($value === true && $other === false) {
+if ($value === TRUE && $other === FALSE) {
 }
 
-if ($value === true and $other === false) {
+if ($value === TRUE and $other === FALSE) {
 }
 
-if ($one === true && ($two === true || $three === true)) {
+if ($one === TRUE && ($two === TRUE || $three === TRUE)) {
 }
 
-if ($one === true AND ($two === true or $three === true)) {
+if ($one === TRUE AND ($two === TRUE or $three === TRUE)) {
 }
 
 if ($a ^ $b) {

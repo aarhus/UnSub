@@ -48,8 +48,8 @@ class TestClass
                ];
 
         $train = [
-                   true,
-                  false,
+                   TRUE,
+                  FALSE,
                   'aaa'
                  ];
 
@@ -78,23 +78,23 @@ $value = [  ];
 $value = ['1'=>$one, '2'  =>  $two, '3'=> $three, '4' =>$four];
 $value = ['1'=>$one];
 
-if (in_array('1', ['1','2','3']) === true) {
+if (in_array('1', ['1','2','3']) === TRUE) {
     $value = in_array('1', ['1'  ,   '2',     '3','4']);
 }
 
 $value = [
-          '1'=> true,
-          false,
+          '1'=> TRUE,
+          FALSE,
           '3' => 'aaa',];
 
 $value = [
-          '1'=> true,
-          false,
+          '1'=> TRUE,
+          FALSE,
          ];
 
 $value = [
-          true,
-          '1' => false,
+          TRUE,
+          '1' => FALSE,
          ];
 
 $value = [1,
@@ -198,10 +198,10 @@ $x = [
      ];
 
 $test = [
-        'test' => TestFunction::blah(
-            $value1,
-            $value2
-        ),
+         'test' => TestFunction::blah(
+             $value1,
+             $value2
+         ),
         ];
 
 $c = ['a' => 1,];
@@ -217,7 +217,7 @@ function foo()
 
 $array = [
           'name'       => 'contactSubject',
-          'required'   => true,
+          'required'   => TRUE,
           'validators' => [
                            new \Zend\Validator\InArray(['haystack' => array_keys($aSubjects)]),
                           ],
@@ -294,15 +294,15 @@ $ids = [
        ];
 
 [
- 'key1' => function ($bar) {
+ 'key1' => function($bar) {
     return $bar;
  },
-    'key2' => function ($foo) {
-        return $foo;
-    },
-    'key3' => function ($bar) {
-        return $bar;
-    }
+ 'key2' => function($foo) {
+    return $foo;
+ },
+ 'key3' => function($bar) {
+    return $bar;
+ }
 ];
 
 [
@@ -330,14 +330,12 @@ $fields = [
            'id'    => ['type' => 'INT'],
            'value' => ['type' => 'VARCHAR']];
 
-get_current_screen()->add_help_tab(
-    [
+get_current_screen()->add_help_tab( [
                                      'id' => <<<EOD
 Here comes some text.
 EOD
-    ,
-     ] 
-);
+,
+                                    ] );
 
 echo [1][0];
 echo 'PHP'[0];
@@ -386,15 +384,15 @@ HERE
        ];
 
 [
-lorem(
-    1
-), 2,
+ lorem(
+     1
+ ), 2,
 ];
 
 [
-1 => lorem(
-    1
-), 2 => 2,
+ 1 => lorem(
+     1
+ ), 2 => 2,
 ];
 
 $foo = [
@@ -439,16 +437,16 @@ $c];
 'c' => $c];
 
 [
- static function () {
+ static function() {
      return null;
  },
-    (array) [],
-    (bool) [],
-    (double) [],
-    (int) [],
-    (object) [],
-    (string) [],
-    (unset) [],
+ (array) [],
+ (bool) [],
+ (double) [],
+ (int) [],
+ (object) [],
+ (string) [],
+ (unset) [],
 ];
 
 [
@@ -466,7 +464,75 @@ yield [
        static fn () : string => '',
       ];
 
+$foo = [
+        'foo' => match ($anything) {
+            'foo' => 'bar',
+            default => null,
+        },
+       ];
+
 // Intentional syntax error.
 $a = [
       'a' =>
+     ];
+
+// Safeguard correct errors for key/no key when PHP 7.4+ array unpacking is encountered.
+$x = [
+    ...$a,
+      'foo' => 'bar',
+     ];
+
+$x = [
+      'foo' => 'bar',
+    ...$a,
+     ];
+
+$x = [
+      'foo' => 'bar',
+    ...$a,
+      'baz' => 'bar',
+     ];
+
+$x = [
+    ...$a,
+    'foo' => 'bar', // OK.
+    'bar', // NoKeySpecified Error (based on second entry).
+     ];
+
+$x = [
+    ...$a,
+    'bar', // OK.
+    'foo' => 'bar', // KeySpecified Error (based on second entry).
+     ];
+
+$x = [
+    'foo' => 'bar',
+    ...$a,
+    'baz' => 'bar',
+    'bar', // NoKeySpecified Error (based on first entry).
+     ];
+
+$x = [
+    'bar',
+    ...$a,
+    'bar',
+    'baz' => 'bar', // KeySpecified (based on first entry).
+     ];
+
+ $x =
+ [
+  'a',
+  'b',
+   ];
+
+$x = [
+      1, static fn (float $item): float => match ($item) {
+        2.0 => 3.0,
+        default => $item
+    },
+     ];
+
+$x = [
+      1, static::helloWorld(), $class instanceof static,
+      2,
      ];

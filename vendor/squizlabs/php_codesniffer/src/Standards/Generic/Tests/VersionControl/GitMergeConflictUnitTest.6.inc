@@ -1,7 +1,7 @@
 <?php
 
 $string =
-        <<<"EOD"
+		<<<"EOD"
 		Merge conflicts in PHP 7.3 indented heredocs
 <<<<<<< HEAD
 		can be problematic.
@@ -9,7 +9,7 @@ $string =
 		should also be detected.
 >>>>>>> ref/heads/other-branchname
 		And now they are.
-        EOD;
+		EOD;
 
 // Break the tokenizer.
 >>>>>>> master
@@ -23,7 +23,7 @@ $string =
  */
 
 $string =
-        <<<"EOD"
+		<<<"EOD"
 		Merge conflicts in PHP 7.3 indented heredocs
 <<<<<<< HEAD
 		can be problematic.
@@ -31,4 +31,4 @@ $string =
 		should also be detected.
 >>>>>>> ref/heads/other-branchname
 		And now they are.
-        EOD;
+		EOD;

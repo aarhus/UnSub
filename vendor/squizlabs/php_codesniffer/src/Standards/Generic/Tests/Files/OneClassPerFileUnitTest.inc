@@ -1,16 +1,13 @@
 <?php
-class foo
-{
+class foo {
 
 }
 
-class bar
-{
+class bar {
 
 }
 
-class baz
-{
+class baz {
 
 }
 ?>

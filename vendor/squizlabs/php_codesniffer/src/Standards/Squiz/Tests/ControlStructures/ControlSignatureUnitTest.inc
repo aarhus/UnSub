@@ -15,8 +15,7 @@ do
 }
 while ($i > 0);
 
-do { echo $i; 
-} while ($i > 0);
+do { echo $i; } while ($i > 0);
 
 do{
     echo $i;
@@ -30,8 +29,7 @@ while($i < 1){
     echo $i;
 }
 
-while ($i < 1) { echo $i; 
-}
+while ($i < 1) { echo $i; }
 
 for ($i = 1; $i < 1; $i++) {
     echo $i;
@@ -41,19 +39,17 @@ for($i = 1; $i < 1; $i++){
     echo $i;
 }
 
-for ($i = 1; $i < 1; $i++) { echo $i; 
-}
+for ($i = 1; $i < 1; $i++) { echo $i; }
 
 if ($i == 0) {
     $i = 1;
 }
 
-if($i == 0) {
+if($i == 0){
     $i = 1;
 }
 
-if ($i == 0) { $i = 1; 
-}
+if ($i == 0) { $i = 1; }
 
 if ($i == 0) {
     $i = 1;
@@ -67,9 +63,7 @@ if ($i == 0) {
     $i = 0;
 }
 
-if ($i == 0) { $i = 1; 
-} else { $i = 0; 
-}
+if ($i == 0) { $i = 1; } else { $i = 0; }
 
 if ($i == 0) {
     $i = 1;
@@ -79,13 +73,11 @@ if ($i == 0) {
 
 if ($i == 0) {
     $i = 1;
-}else   if($i == 2) {
+}else   if($i == 2){
     $i = 0;
 }
 
-if ($i == 0) { $i = 1; 
-} else if ($i == 2) { $i = 0; 
-}
+if ($i == 0) { $i = 1; } else if ($i == 2) { $i = 0; }
 
 if ($i == 0) { // comments are allowed
     $i = 1;
@@ -99,7 +91,8 @@ if ($i == 0) { /* comments are allowed*/
     $i = 1;
 }
 
-if ($i == 0) { // this is ok
+if ($i == 0)
+{ // this is ok
     $i = 1;
 }
 
@@ -112,8 +105,7 @@ try {
     // Caught!
 }
 
-try { $code = 'this'; 
-} catch (Exception $e) {
+try { $code = 'this'; } catch (Exception $e) {
     // Caught!
 }
 
@@ -165,18 +157,18 @@ catch (OtherExceptionType $e) {
 
 switch($foo) {
 
-case 'bar':
+    case 'bar':
     break;
 
 }
 
-if ($foo) :
+if ($foo)  :
 endif;
 
 ?>
 
 <?php while($row = $data->getRow()): ?>
-    <p><?php echo $val ?></p>
+    <p><?= $val ?></p>
 <?php endwhile; ?>
 
 <?php
@@ -190,7 +182,7 @@ if ($foo === 1) {
     <?php
 }
 
-if ($test) { /*one space after the bracket*/
+if ($test)    { /*one space after the bracket*/
     echo 'true';
 }
 
@@ -220,12 +212,12 @@ else :
     echo 'not 1';
 endif;
 
-// @codingStandardsChangeSetting Squiz.ControlStructures.ControlSignature requiredSpacesBeforeColon 0
+// phpcs:set Squiz.ControlStructures.ControlSignature requiredSpacesBeforeColon 0
 
-if ($a == 5) :
+if ($a == 5):
     echo "a equals 5";
     echo "...";
-elseif ($a == 6) :
+elseif ($a == 6):
     echo "a equals 6";
     echo "!!!";
 else:
@@ -234,18 +226,18 @@ endif;
 
 switch($foo) {
 
-case 'bar':
+    case 'bar':
     break;
 
 }
 
-if ($foo) :
+if ($foo)  :
 endif;
 
 ?>
 
 <?php while($row = $data->getRow()) : ?>
-    <p><?php echo $val ?></p>
+    <p><?= $val ?></p>
 <?php endwhile; ?>
 
 <?php foreach($formset['Fieldset'] as $fieldset) : ?>
@@ -294,28 +286,38 @@ finally {
 }
 
 if ($this) {
-    if ($that) {
+    if ($that)
         foo(${$a[$b]});
-    }
 }
 
-while ( $level-- ) { ob_end_clean();
-}
+while ( $level-- ) ob_end_clean();
 
-while ( $level-- ) {
-    ob_end_clean();
-}
+while ( $level-- )
+	ob_end_clean();
 
 while ( $level-- ):
-    ob_end_clean();
+	ob_end_clean();
 endwhile;
 
 $r = match ($x) {
     1 => 1,
 };
 
-$r = match($x){1 => 1
-};
+$r = match($x){1 => 1};
+
+// phpcs:set Squiz.ControlStructures.ControlSignature requiredSpacesBeforeColon 2
+if ($a == 5):
+    echo "a equals 5";
+    echo "...";
+elseif ($a == 6)  :
+    echo "a equals 6";
+    echo "!!!";
+else :
+    echo "a is neither 5 nor 6";
+endif;
+
+// Reset property.
+// phpcs:set Squiz.ControlStructures.ControlSignature requiredSpacesBeforeColon 1
 
 // Intentional parse error. This should be the last test in the file.
 foreach

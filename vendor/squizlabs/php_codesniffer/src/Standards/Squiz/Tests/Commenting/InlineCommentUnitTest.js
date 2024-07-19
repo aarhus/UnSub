@@ -26,7 +26,8 @@ myClass.prototype = {
      * This is the first line of a method comment.
      * This is the second line.
      */
-    load: function (url, callback) {
+    load: function(url, callback)
+    {
         // Some code here.
 
     }
@@ -53,44 +54,45 @@ code = 'hello';
 //
 code = 'hello';
 
-/**
- * Neither is this! 
-**/
+/** Neither is this! **/
 code = 'hello';
 
 /**
  * This is the first line of a function comment.
  * This is the second line.
  */
-var myFunction = function () {
+var myFunction = function() {
 }
 
 /**
  * This is the first line of a function comment.
  * This is the second line.
  */
-myFunction = function () {
+myFunction = function() {
 }
 
 /**
  * This is the first line of a function comment.
  * This is the second line.
  */
-myClass.myFunction = function () {
+myClass.myFunction = function() {
 }
 
-dfx.getIframeDocument = function (iframe) {
+dfx.getIframeDocument = function(iframe)
+{
     return doc;
 
 };//end dfx.getIframeDocument()
 
 mig.Gallery.prototype = {
 
-    init: function (cb) {
+    init: function(cb)
+    {
 
     },//end init()
 
-    imageClicked: function (id) {
+    imageClicked: function(id)
+    {
 
     }//end imageClicked()
 
@@ -113,7 +115,7 @@ var foo = 'foo'; // Var set to foo.
 
 console.info(foo);
 
-//    Comment here.
+//	Comment here.
 console.info(foo);
 
 //**

@@ -1,3 +1,3 @@
 <?php
-use UnfinishedGroup\NotFixable {
-    ClassT,
+use UnfinishedGroup\NotFixable\ {
+	ClassT,

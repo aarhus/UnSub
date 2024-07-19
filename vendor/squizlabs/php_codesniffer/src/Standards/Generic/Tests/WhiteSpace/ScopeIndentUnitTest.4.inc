@@ -1,7 +1,6 @@
  <?php
 
 
- class Test
- {
+ class Test {
 
  }

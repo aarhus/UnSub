@@ -48,8 +48,8 @@ class TestClass
                );
 
         $train = array  (
-                   true,
-                  false,
+                   TRUE,
+                  FALSE,
                   'aaa'
                  );
 
@@ -78,23 +78,23 @@ $value = array(  );
 $value = array('1'=>$one, '2'  =>  $two, '3'=> $three, '4' =>$four);
 $value = array('1'=>$one);
 
-if (in_array('1', array('1','2','3')) === true) {
+if (in_array('1', array('1','2','3')) === TRUE) {
     $value = in_array('1', array('1'  ,   '2',     '3','4'));
 }
 
 $value = array(
-          '1'=> true,
-          false,
+          '1'=> TRUE,
+          FALSE,
           '3' => 'aaa',);
 
 $value = array(
-          '1'=> true,
-          false,
+          '1'=> TRUE,
+          FALSE,
          );
 
 $value = array(
-          true,
-          '1' => false,
+          TRUE,
+          '1' => FALSE,
          );
 
 $value = array(1,
@@ -198,10 +198,10 @@ $x = array(
      );
 
 $test = array(
-        'test' => TestFunction::blah(
-            $value1,
-            $value2
-        ),
+         'test' => TestFunction::blah(
+             $value1,
+             $value2
+         ),
         );
 
 $c = array('a' => 1,);
@@ -225,7 +225,7 @@ function foo()
 
 $array = array(
           'name'       => 'contactSubject',
-          'required'   => true,
+          'required'   => TRUE,
           'validators' => array(
                            new \Zend\Validator\InArray(array('haystack' => array_keys($aSubjects))),
                           ),
@@ -302,13 +302,13 @@ $ids = array(
        );
 
 array(
- 'key1' => function ($bar) {
+ 'key1' => function($bar) {
     return $bar;
  },
- 'key2' => function ($foo) {
+ 'key2' => function($foo) {
     return $foo;
  },
- 'key3' => function ($bar) {
+ 'key3' => function($bar) {
     return $bar;
  }
 );
@@ -338,14 +338,12 @@ $fields = array(
            'id'    => array('type' => 'INT'),
            'value' => array('type' => 'VARCHAR'));
 
-get_current_screen()->add_help_tab(
-    array(
+get_current_screen()->add_help_tab( array(
                                      'id' => <<<EOD
 Here comes some text.
 EOD
-    ,
-    ) 
-);
+,
+                                    ) );
 
 $a = array
 // comment
@@ -397,15 +395,15 @@ HERE
        );
 
 array(
-lorem(
-    1
-), 2,
+ lorem(
+     1
+ ), 2,
 );
 
 array(
-1 => lorem(
-    1
-), 2 => 2,
+ 1 => lorem(
+     1
+ ), 2 => 2,
 );
 
 $foo = array(
@@ -450,7 +448,7 @@ array('a' => $a, 'b' => $b,
 'c' => $c);
 
 array(
- static function () {
+ static function() {
      return null;
  },
  (array) array(),
@@ -477,14 +475,75 @@ yield array(
        static fn () : string => '',
       );
 
-$foo = [
+$foo = array(
         'foo' => match ($anything) {
             'foo' => 'bar',
             default => null,
         },
-       ];
+       );
 
 // Intentional syntax error.
 $a = array(
       'a' =>
+     );
+
+// Safeguard correct errors for key/no key when PHP 7.4+ array unpacking is encountered.
+$x = array(
+    ...$a,
+      'foo' => 'bar',
+     );
+
+$x = array(
+      'foo' => 'bar',
+    ...$a,
+     );
+
+$x = array(
+      'foo' => 'bar',
+    ...$a,
+      'baz' => 'bar',
+     );
+
+$x = array(
+    ...$a,
+    'foo' => 'bar', // OK.
+    'bar', // NoKeySpecified Error (based on second entry).
+     );
+
+$x = array(
+    ...$a,
+    'bar', // OK.
+    'foo' => 'bar', // KeySpecified Error (based on second entry).
+     );
+
+$x = array(
+    'foo' => 'bar',
+    ...$a,
+    'baz' => 'bar',
+    'bar', // NoKeySpecified Error (based on first entry).
+     );
+
+$x = array(
+    'bar',
+    ...$a,
+    'bar',
+    'baz' => 'bar', // KeySpecified (based on first entry).
+     );
+
+ $x =
+ array(
+  'a',
+  'b',
+   );
+
+$x = array(
+      1, static fn (float $item): float => match ($item) {
+        2.0 => 3.0,
+        default => $item
+    },
+     );
+
+$x = array(
+      1, static::helloWorld(), $class instanceof static,
+      2,
      );

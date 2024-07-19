@@ -1,8 +1,6 @@
 <?php
 class Foo
-{
-
-}
+{}
 
 class Foo1
 {

@@ -27,26 +27,22 @@ $instance6 = new class {
 
 $instance1 = new class( $arg )
 
-{
-};
-$instance2 = new class   ($one ,  $two ) {
-};
+{};
+$instance2 = new class   ($one ,  $two ) {};
 $instance3 = new class(
 
 
     $one ,
 $two,
-  $three, $four) {
-};
+  $three, $four) {};
 
 $instance4 = new class
             extends \Foo {
-};
+            };
 
 $instance5 = new class($one ,
   $two , $three) extends \Foo
-    implements \HandleableInterface {
-};
+    implements \HandleableInterface {};
 
 $instance6 = new class extends \Foo
     implements \HandleableInterface {
@@ -76,8 +72,7 @@ $instance9 = new class (
     // Class content
 };
 
-$instance10 = new class   {
-};
+$instance10 = new class   {};
 
 $foo->bar(
     new class implements Bar {
@@ -85,7 +80,17 @@ $foo->bar(
     },
 );
 
-foo(
-    new class {
-    }
-);
+foo(new class {
+});
+
+// Issue #3790: OpenBraceSameLine fixer should not remove open brace.
+$instance = new class() extends SomeClass implements
+    SomeInterface{
+    public function __construct() {}
+};
+
+// PHP 8.3 readonly anonymous classes.
+$anon = new readonly class {};
+$anon = new readonly    class {};
+$anon = new readonly
+        class {};

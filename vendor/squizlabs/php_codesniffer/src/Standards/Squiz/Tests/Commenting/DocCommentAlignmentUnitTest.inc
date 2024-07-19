@@ -1,55 +1,48 @@
 <?php
 /**
- * Some info about the class here
+* Some info about the class here
+ *
  */
 class MyClass
 {
     /**
      * Some info about the function here.
      *
-     * @return void
+     *@return void
      */
-    function myFunction()
-    {
-    }
+    function myFunction() {}
 }
 
 /**
- *  Some info about the class here
- */
+  *  Some info about the class here
+  *
+  */
 class MyClass
 {
     /**
-     * Some info about the function here.
-     *
-     * @return void
-     */
-    function myFunction()
-    {
-    }
+      *Some info about the function here.
+      *
+      *  @return void
+      */
+    function myFunction() {}
 }
 
 /**
  * Some info about the class here
- */
-class MyClass
+  *
+*/
+readonly class MyClass
 {
     /**
      * Some info about the function here.
-     *
-     * @return void
+      *
+    * @return void
      */
-    function myFunction()
-    {
-    }
+    function myFunction() {}
 }
 
-/**
- * @var Database $mockedDatabase 
- */
-/**
- * @var Container $mockedContainer 
- */
+/** @var Database $mockedDatabase */
+/** @var Container $mockedContainer */
 
 function myFunction()
 {
@@ -74,14 +67,12 @@ function myFunction()
  *
  * @return void
  */
-function myFunction()
-{
-}
+function myFunction() {}
 
 class MyClass2
 {
     /**
-     * Some info about the variable here.
+       * Some info about the variable here.
      */
     var $x;
 }
@@ -89,26 +80,24 @@ class MyClass2
 abstract class MyClass
 {
     /**
-     * Property comment
-     */
+* Property comment
+   */
     readonly public string $prop;
 }
 
 /**
  * Some info about the enum here
- */
+  *
+*/
 enum Suits: string
 {
     /**
-     * Some info about the case here.
-     */
+      * Some info about the case here.
+       */
     case HEARTS;
 }
 
-/**
- * ************************************************************************
+/** ************************************************************************
  * Example with no errors.
  **************************************************************************/
-function example()
-{
-}
+function example() {}

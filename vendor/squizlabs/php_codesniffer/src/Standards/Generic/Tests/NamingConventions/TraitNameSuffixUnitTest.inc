@@ -1,25 +1,13 @@
 <?php
 
-trait BadName
-{
-} // error
+trait BadName {} // error
 
-trait GoodTrait
-{
-}
+trait GoodTrait {}
 
-trait GoodTraitTrait
-{
-}
+trait GoodTraitTrait {}
 
-trait BadTraitName
-{
-} // error
+trait BadTraitName {} // error
 
-trait BadTraitNametrait
-{
-}
+trait BadTraitNametrait {}
 
-trait NormalTraitNameTrait
-{
-}
+trait NormalTraitNameTrait {}

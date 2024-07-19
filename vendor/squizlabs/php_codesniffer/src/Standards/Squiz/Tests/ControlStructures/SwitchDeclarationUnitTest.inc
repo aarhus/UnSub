@@ -2,50 +2,50 @@
 
 // Valid SWITCH statement.
 switch ($something) {
-case '1':
-    $case = '1';
+    case '1':
+        $case = '1';
     break;
 
-case '2':
-case '3':
-    $case = '5';
+    case '2':
+    case '3':
+        $case = '5';
     break;
 
-case '4':
-    $case = '4';
+    case '4':
+        $case = '4';
     break;
 
-default:
-    $case = null;
+    default:
+        $case = null;
     break;
 }
 
 // Alignment wrong.
 switch ($something) {
-case '1':
-    $case = '1';
-    return '1';
+    case '1':
+        $case = '1';
+        return '1';
 
 case '2':
-case '3':
-    $case = '5';
+    case '3':
+        $case = '5';
     break;
 
 case '4':
     $case = '4';
-    break;
+break;
 
-default:
-    $case = null;
+    default:
+        $case = null;
     break;
 }
 
 // Closing brace wrong.
 switch ($something) {
-case '1':
-    $case = '1';
+    case '1':
+        $case = '1';
     break;
-}
+    }
 
 // PEAR style.
 switch ($something) {
@@ -66,268 +66,268 @@ default:
 
 // Valid, but missing BREAKS.
 switch ($something) {
-case '1':
-    $case = '1';
+    case '1':
+        $case = '1';
 
-case '2':
-case '3':
-    $case = '5';
+    case '2':
+    case '3':
+        $case = '5';
 
-case '4':
-    $case = '4';
+    case '4':
+        $case = '4';
 
-default:
-    $case = null;
+    default:
+        $case = null;
 }
 
 // Invalid, and missing BREAKS.
 switch ($something) {
-Case '1' :
-    $case = '1';
+    Case '1' :
+        $case = '1';
 
 case  '2':
-case  '3' :
-    $case = '5';
+    case  '3' :
+        $case = '5';
 
-case'4':
-    $case = '4';
+    case'4':
+        $case = '4';
 
-Default :
-    $case = null;
-    $something = 'hello';
-    $other = 'hi';
-}
+    Default :
+        $case = null;
+        $something = 'hello';
+        $other = 'hi';
+    }
 
 // Valid
 switch ($condition) {
-case 'string':
-    $varStr = 'test';
+    case 'string':
+        $varStr = 'test';
 
-default:
-    // Ignore the default.
+    default:
+        // Ignore the default.
     break;
 }
 
 // No default comment
 switch ($condition) {
-case 'string':
-    $varStr = 'test';
+    case 'string':
+        $varStr = 'test';
 
-default:
+    default:
     break;
 }
 
 // Break problems
 switch ($condition) {
-case 'string':
+    case 'string':
 
 
-    $varStr = 'test';
-
-    break;
-
-
-case 'bool':
-    $varStr = 'test';
-
+        $varStr = 'test';
 
     break;
-default:
 
-    $varStr = 'test';
+
+    case 'bool':
+        $varStr = 'test';
+
+
+    break;
+    default:
+
+        $varStr = 'test';
     break;
 
 }
 
 switch ($var) {
-case 'one':
-case 'two':
+    case 'one':
+    case 'two':
     break;
 
-case 'three':
-    // Nothing to do.
+    case 'three':
+        // Nothing to do.
     break;
 
-case 'four':
-    echo $hi;
+    case 'four':
+        echo $hi;
     break;
 
-default:
-    // No default.
+    default:
+        // No default.
     break;
 }
 
 switch ($var) {
-case 'one':
-    if ($blah) {
-    }
+    case 'one':
+        if ($blah) {
+        }
 
     break;
 
-default:
-    // No default.
+    default:
+        // No default.
     break;
 }
 
 switch ($name) {
-case "1":
-    switch ($name2) {
     case "1":
-        return true;
-        break;
+        switch ($name2) {
+            case "1":
+                return true;
+            break;
 
-    case "2":
-        return true;
-        break;
+            case "2":
+            return true;
+            break;
 
-    default:
-        // No default.
-        break;
-    }
-    break;
-
-case "2":
-    switch ($name2) {
-    case "1":
-        return true;
+            default:
+                // No default.
+            break;
+        }
     break;
 
     case "2":
+switch ($name2) {
+    case "1":
         return true;
+    break;
+
+    case "2":
+    return true;
     break;
 
     default:
         // No default.
-        break;
-    }
+    break;
+}
     break;
 }
 
 switch ($name) {
-case "1":
-    switch ($name2) {
     case "1":
-        return true;
+        switch ($name2) {
+            case "1":
+            return true;
+
+            default:
+                // No default.
+            break;
+        }
+    break;
 
     default:
         // No default.
-        break;
-    }
-    break;
-
-default:
-    // No default.
     break;
 }
 
 switch ($name2) {
-default:
-    // No default.
+    default:
+        // No default.
     break;
 }
 
 switch ($foo) {
-case "1":
+    case "1":
     return true;
 
-default:
-    if ($foo === false) {
-        break(2);
-    }
+    default:
+        if ($foo === FALSE) {
+            break(2);
+        }
     break;
 }
 
 // Valid SWITCH statement.
 switch ($something) {
-case '1';
-    $case = '1';
+    case '1';
+        $case = '1';
     return '1';
 
-case '2';
-case '3';
-    $case = '5';
+    case '2';
+    case '3';
+        $case = '5';
     return '2';
 
-case '4';
-    $case = '4';
+    case '4';
+        $case = '4';
     return '3';
 
-default;
-    $case = null;
+    default;
+        $case = null;
     return '4';
 }
 
 switch ($something) {
-case '1':
-    $case = '1';
+    case '1':
+        $case = '1';
     break;
 
-case '2':
-    throw new Exception('message');
+    case '2':
+        throw new Exception('message');
 
-default:
+    default:
     throw new Exception('message');
 }
 
 switch ($something) {
-case '1';
-    echo 'one';
+    case '1';
+        echo 'one';
     break;
 
-default:
-    echo 'default';
+    default:
+        echo 'default';
     exit;
 }
 
 switch ($foo) {
-case '1':
-    return; // comment
+    case '1':
+        return; // comment
     break;
 
 }
 
 // Correct Multi line breaking statement with return.
 switch ($foo) {
-case 1:
+    case 1:
     return array(
             'whiz',
             'bang',
            );
 
-case 2:
+    case 2:
     return helper_func(
         'whiz',
         'bang'
-);
+    );
 
-default:
+    default:
     throw new Exception();
 }
 
 switch ($foo) {
-case 'bar':
+    case 'bar':
     throw new \Exception(
         'bar'
-);
+    );
 
-default:
+    default:
     throw new \Exception(
         'bar'
-);
+    );
 }
 
 $foo = $foo ?
     function () {
         switch ($a) {
-        case 'a':
-            break;
+            case 'a':
+                break;
 
-        case (preg_match('/foo/i', $foo) ? $a : $b):
-            echo 'really?'
-            break;
+            case (preg_match('/foo/i', $foo) ? $a : $b):
+                echo 'really?'
+                break;
 
-        default:
-            break;
+            default:
+                break;
         }
     } :
     null;

@@ -7,11 +7,13 @@ function FuncOne()
 
 Testing.prototype = {
 
-    doSomething: function () {
+    doSomething: function()
+    {
         // Code here.
     },
 
-    doSomethingElse: function () {
+    doSomethingElse: function()
+    {
         // Code here.
 
     },
@@ -31,36 +33,33 @@ function FuncFive()
 
 function valid()
 {
-    if (true) {
-        test = {
-            namespaces: {}
-        };
-    }
+   if (true) {
+       test = {
+           namespaces: {}
+       };
+   }
 
 }
 
-dfx.addEvent(
-    this.rightScroll, 'mousedown', function () {
-        t = setInterval(
-            function () {
-                pos -= 10;
-            }, 30
-        );
-    }
-);
+dfx.addEvent(this.rightScroll, 'mousedown', function() {
+    t = setInterval(function() {
+        pos -= 10;
+    }, 30);
+});
 
 // Valid because function is empty.
 if (dfx.isFn(callback) === false) {
-    callback = function () {};
-    callback = function () { };
+    callback = function() {};
+    callback = function() { };
 }
 
 AbstractAttributeEditorWidgetType.prototype = {
-    isActive: function () {
+    isActive: function() {
         return this.active;
     },
 
-    activate: function (data) {
+    activate: function(data)
+    {
         var x = {
             test: function () {
                 alert('This is ok');
@@ -74,19 +73,15 @@ AbstractAttributeEditorWidgetType.prototype = {
 
 };
 
-var myFunc = function () {
+var myFunc = function()
+{
     var x = 1;
 
-    blah(
-        function () {
-            alert(2);
-        }
-    );
+    blah(function() {
+        alert(2);
+    });
 
-    blah(
-        function () {
-            alert(2); }
-    );
+    blah(function() { alert(2); });
 
     return x;
 
@@ -94,22 +89,26 @@ var myFunc = function () {
 
 a.prototype = {
 
-    a: function () {
+    a: function()
+    {
         var settings = {
             default: ''
         };
 
     },
 
-    b: function () {
+    b: function()
+    {
         var self = this;
 
     }
 
 };
 
-var a = new function () {
-    this.initScreen = function (usersFolderid) {
+var a = new function()
+{
+    this.initScreen = function(usersFolderid)
+    {
         for (var i = 0; i < paramSelectors.length; i++) {
         }//end for
     }
@@ -119,13 +118,14 @@ var a = new function () {
 a.prototype = {
 
     this.addItem(
-        id,
-        {
-            b: function () {
-                for (var i = 0; i < paramSelectors.length; i++) {
-                }//end for
+            id,
+            {
+                b: function()
+                {
+                    for (var i = 0; i < paramSelectors.length; i++) {
+                    }//end for
 
-            }
+                }
             }
     )
 

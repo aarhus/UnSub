@@ -1,7 +1,6 @@
 <?php
 
-public static function foo()
-{
+public static function foo() {
 }
 
 /**
@@ -30,16 +29,16 @@ public static function foo()
 public static function addIssue(
     $title,
     $description,
-    $reporter=null,
-    $projectid=null,
+    $reporter=NULL,
+    $projectid=NULL,
     array $tags=array(),
-    $status=null,
-    $assignedTo=null,
-    $reportedDate=null,
-    $reportedMilestone=null
+    $status=NULL,
+    $assignedTo=NULL,
+    $reportedDate=NULL,
+    $reportedMilestone=NULL
 ) {
     // Get current projectid if not specified.
-    if ($projectid === null) {
+    if ($projectid === NULL) {
         Channels::includeSystem('Project');
         $projectid = Project::getCurrentProjectId();
         Channels::modifyBasket('project', $projectid);
@@ -47,50 +46,50 @@ public static function addIssue(
 
     Channels::includeSystem('SquizRoadmap');
     Channels::includeSystem('Permission');
-    if (Permission::hasPermission($projectid, 'ideas.contribute') === false) {
+    if (Permission::hasPermission($projectid, 'ideas.contribute') === FALSE) {
         throw new ChannelException(_('You do not have permission to contribute idea'));
     }
 
-    if ($assignedTo !== null) {
-        if (Permission::hasPermission($projectid, 'ideas.edit.details') === false) {
+    if ($assignedTo !== NULL) {
+        if (Permission::hasPermission($projectid, 'ideas.edit.details') === FALSE) {
             throw new ChannelException(_('You do not have permission to assign user to idea'));
         }
 
-        if (SquizRoadmap::isVisibleProject($projectid, $assignedTo) === false) {
+        if (SquizRoadmap::isVisibleProject($projectid, $assignedTo) === FALSE) {
             throw new ChannelException(_('Assigned to user does not have access to issue project.'));
         }
     }
 
     // Get current user id if not specified.
-    if ($reporter === null) {
+    if ($reporter === NULL) {
         Channels::includeSystem('User');
         $reporter = User::getCurrentUserid();
         Channels::modifyBasket('reporter', $reporter);
     }
 
-    if (SquizRoadmap::isVisibleProject($projectid, $reporter) === false) {
+    if (SquizRoadmap::isVisibleProject($projectid, $reporter) === FALSE) {
         throw new ChannelException(_('Contributed by user does not have access to issue project.'));
     }
 
     // Make sure status is valid.
     Channels::includeSystem('SquizRoadmap');
     Channels::includeSystem('SquizRoadmapStatus');
-    if ($status === null) {
+    if ($status === NULL) {
         $statuses = SquizRoadmapStatus::getStatus($projectid);
-        if (empty($statuses) === true) {
+        if (empty($statuses) === TRUE) {
             throw new ChannelException(_('No defined statuses in project'));
         }
 
         $status = $statuses[0]['status'];
         Channels::modifyBasket('status', $status);
-    } else if (SquizRoadmapStatus::isValidStatus($projectid, $status) === false) {
+    } else if (SquizRoadmapStatus::isValidStatus($projectid, $status) === FALSE) {
         throw new ChannelException(sprintf(_('Invalid status: %s'), $status));
     }
 
     $issueid = DAL::seqNextVal('sq_rdm_issue_seq');
     Channels::addToBasket('issueid', $issueid);
 
-    if ($reportedDate === null) {
+    if ($reportedDate === NULL) {
         include_once 'Libs/String/String.inc';
         $reportedDate = String::tsIso8601(time());
         Channels::modifyBasket('reportedDate', $reportedDate);
@@ -98,13 +97,13 @@ public static function addIssue(
 
     $title = trim($title);
     Channels::modifyBasket('title', $title);
-    if (empty($title) === true) {
+    if (empty($title) === TRUE) {
         throw new ChannelException(_('Title cannot be empty'));
     }
 
     $description = SquizRoadmap::stripTags(trim($description));
     Channels::modifyBasket('description', $description);
-    if (empty($description) === true) {
+    if (empty($description) === TRUE) {
         throw new ChannelException(_('Description cannot be empty'));
     }
 
@@ -120,7 +119,7 @@ public static function addIssue(
         // Add reporter and assignee to watch list.
         SquizRoadmapIssue::addIssueWatch($issueid, $reporter);
 
-        if ($assignedTo !== null) {
+        if ($assignedTo !== NULL) {
             SquizRoadmapIssue::addIssueWatch($issueid, $assignedTo);
         }
 
@@ -132,8 +131,8 @@ public static function addIssue(
         throw new ChannelException($e->getMessage());
     }//end try
 
-    if ($something === null) {
-        if ($bar !== null) {
+    if ($something === NULL) {
+        if ($bar !== NULL) {
         }
     }
 
@@ -160,20 +159,21 @@ public static function addIssue(
  *
  * @return integer
  * @throws ChannelException If there is an error.
+ *
  */
 public static function addIssue(
     $title,
     $description,
-    $reporter=null,
-    $projectid=null,
+    $reporter=NULL,
+    $projectid=NULL,
     array $tags=array(),
-    $status=null,
-    $assignedTo=null,
-    $reportedDate=null,
-    $reportedMilestone=null
+    $status=NULL,
+    $assignedTo=NULL,
+    $reportedDate=NULL,
+    $reportedMilestone=NULL
 ) {
     // Get current projectid if not specified.
-    if ($projectid === null) {
+    if ($projectid === NULL) {
         Channels::includeSystem('Project');
         $projectid = Project::getCurrentProjectId();
         Channels::modifyBasket('project', $projectid);

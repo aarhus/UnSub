@@ -29,7 +29,7 @@ div {
 .my-commented-style {
     opacity: /*comment*/ 0;
     opacity: /* phpcs:ignore Standard.Cat.Sniff -- for reasons */
-        0.0;
+		0.0;
     opacity: /*comment*/ 1.0;
     opacity: /*comment*/ .5;
 }

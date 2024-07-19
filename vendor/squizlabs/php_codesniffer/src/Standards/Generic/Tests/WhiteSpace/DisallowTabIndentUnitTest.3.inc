@@ -4,10 +4,10 @@ $heredoc = <<<"END"
 		a
 		b
 		c
-    END;
+	END;
 
 $nowdoc = <<<'END'
 		a
 		b
 		c
-    END;
+	END;

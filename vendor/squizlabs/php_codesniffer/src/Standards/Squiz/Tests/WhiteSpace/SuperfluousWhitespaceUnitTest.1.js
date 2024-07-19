@@ -32,7 +32,8 @@ function myFunction2()
 
 }
 
-MyFunction = function () {
+MyFunction = function()
+{
     alert('code here');
 
 

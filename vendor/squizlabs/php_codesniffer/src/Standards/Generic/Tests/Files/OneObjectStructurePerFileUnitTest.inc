@@ -1,31 +1,25 @@
 <?php
-class foo
-{
+class foo {
 
 }
 
-class bar
-{
+class bar {
 
 }
 
-class baz
-{
+class baz {
 
 }
 
-trait barTrait
-{
+trait barTrait {
 
 }
 
-interface barInterface
-{
+interface barInterface {
 
 }
 
-enum barEnum
-{
+enum barEnum {
 
 }
 

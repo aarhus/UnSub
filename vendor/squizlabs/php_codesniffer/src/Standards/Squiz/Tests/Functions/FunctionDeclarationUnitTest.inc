@@ -7,8 +7,7 @@ function func1()
 }//end func1()
 
 
-function func1()
-{
+function func1() {
 
 }//end func1()
 
@@ -23,8 +22,7 @@ class MyClass
     }//end func1()
 
 
-    public function func1()
-    {
+    public function func1() {
 
     }//end func1()
 
@@ -39,8 +37,7 @@ abstract class MyClass
     abstract function func1();
 
 
-    public function func1()
-    {
+    public function func1() {
 
     }//end func1()
 
@@ -55,7 +52,7 @@ interface MyInterface
     function func1();
 
 
-    function func2();
+    function func2() ;
 
 
 }//end interface
@@ -68,25 +65,11 @@ function recurseCreateTree(
 }
 
 
-function test( )
-{
-}
+function test ( ){}
 
-function parent()
-{
-}
-function self()
-{
-}
-function false()
-{
-}
-function true()
-{
-}
-function null()
-{
-}
-function fn()
-{
-}
+function parent() {}
+function self() {}
+function false() {}
+function true() {}
+function null() {}
+function fn() {}

@@ -13,12 +13,12 @@ function nestingFive()
         echo 'hi';
         switch ($condition)
         {
-        case '1':
-            if ($condition === '1') {
-                if ($cond) {
-                    echo 'hi';
+            case '1':
+                if ($condition === '1') {
+                    if ($cond) {
+                        echo 'hi';
+                    }
                 }
-            }
             break;
         }
     }
@@ -30,14 +30,14 @@ function nestingSix()
         echo 'hi';
         switch ($condition)
         {
-        case '1':
-            if ($condition === '1') {
-                if ($cond) {
-                    foreach ($conds as $cond) {
-                        echo 'hi';
+            case '1':
+                if ($condition === '1') {
+                    if ($cond) {
+                        foreach ($conds as $cond) {
+                            echo 'hi';
+                        }
                     }
                 }
-            }
             break;
         }
     }
@@ -49,22 +49,22 @@ function nestingTen()
         echo 'hi';
         switch ($condition)
         {
-        case '1':
-            if ($condition === '1') {
-                if ($cond) {
-                    switch ($cond) {
-                    case '1':
-                        if ($cond === '1') {
-                            foreach ($conds as $cond) {
-                                if ($cond === 'hi') {
-                                    echo 'hi';
+            case '1':
+                if ($condition === '1') {
+                    if ($cond) {
+                        switch ($cond) {
+                            case '1':
+                                if ($cond === '1') {
+                                    foreach ($conds as $cond) {
+                                        if ($cond === 'hi') {
+                                            echo 'hi';
+                                        }
+                                    }
                                 }
-                            }
+                            break;
                         }
-                        break;
                     }
                 }
-            }
             break;
         }
     }
@@ -76,24 +76,24 @@ function nestingEleven()
         echo 'hi';
         switch ($condition)
         {
-        case '1':
-            if ($condition === '1') {
-                if ($cond) {
-                    switch ($cond) {
-                    case '1':
-                        if ($cond === '1') {
-                            foreach ($conds as $cond) {
-                                if ($cond === 'hi') {
-                                    if ($cond !== 'bye') {
-                                        echo 'hi';
+            case '1':
+                if ($condition === '1') {
+                    if ($cond) {
+                        switch ($cond) {
+                            case '1':
+                                if ($cond === '1') {
+                                    foreach ($conds as $cond) {
+                                        if ($cond === 'hi') {
+                                            if ($cond !== 'bye') {
+                                                echo 'hi';
+                                            }
+                                        }
                                     }
                                 }
-                            }
+                            break;
                         }
-                        break;
                     }
                 }
-            }
             break;
         }
     }

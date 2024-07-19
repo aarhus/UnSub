@@ -7,12 +7,9 @@ if ($var1) {
 
 $var1 ? $var2 = 0 : $var2 = 1;
 
-function foo(string $bar, array $baz, ?MyClass $object) : MyClass
-{
-}
+function foo(string $bar, array $baz, ?MyClass $object) : MyClass {}
 
-class Example
-{
+class Example {
     public ?int $scalarType;
 }
 

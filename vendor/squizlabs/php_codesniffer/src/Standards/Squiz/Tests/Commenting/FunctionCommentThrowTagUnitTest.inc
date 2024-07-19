@@ -5,6 +5,7 @@ class FunctionCommentThrowTagUnitTest
 
     /**
      * Missing throw tag.
+     *
      */
     public function missingThrowTag()
     {
@@ -266,44 +267,37 @@ class FunctionCommentThrowTagUnitTest
     }//end okVariableMultiRethrown()
 }//end class
 
-class NamespacedException
-{
+class NamespacedException {
     /**
      * @throws \Exception
      */
-    public function foo()
-    {
+    public function foo() {
         throw new \Exception();
     }
 
     /**
      * @throws \Foo\Bar\FooBarException
      */
-    public function fooBar2()
-    {
+    public function fooBar2() {
         throw new \Foo\Bar\FooBarException();
     }
     
     /**
      * @throws FooBarException
      */
-    public function fooBar2()
-    {
+    public function fooBar2() {
         throw new \Foo\Bar\FooBarException();
     }
 }
 
-class Foo
-{
+class Foo {
     /**
      * Comment
      */
-    public function foo()
-    {
+    public function foo() {
     }//end foo()
 
-    public function bar()
-    {
+    public function bar() {
         throw new Exception();
     }
 
@@ -317,7 +311,7 @@ class Foo
      * @return array
      * @throws ChannelException If the project is invalid.
      */
-    public static function getTestInfo($projectid=null)
+    public static function getTestInfo($projectid=NULL)
     {
         try {
             DAL::beginTransaction();
@@ -342,7 +336,7 @@ class Test
     {
         parent::setUp();
 
-        if (!strlen($this->folderName) ) {
+        if ( !strlen($this->folderName) ) {
             throw new \RuntimeException('The $this->folderName must be specified before proceeding.');
         }
     }
@@ -410,16 +404,14 @@ class A
     }
 }
 
-abstract class SomeClass
-{
+abstract class SomeClass {
     /**
      * Comment here.
      */
     abstract public function getGroups();
 }
 
-class SomeClass
-{
+class SomeClass {
     /**
      * Validates something.
      *
@@ -430,14 +422,13 @@ class SomeClass
      * @throws Prefix_Invalid_Argument_Exception The invalid argument exception.
      * @throws InvalidArgumentException          The invalid argument exception.
      */
-    protected function validate_something( $something )
-    {
-        if (! Prefix_Validator::is_string($something) ) {
-            throw Prefix_Invalid_Argument_Exception::invalid_string_parameter($something, 'something');
+    protected function validate_something( $something ) {
+        if ( ! Prefix_Validator::is_string( $something ) ) {
+            throw Prefix_Invalid_Argument_Exception::invalid_string_parameter( $something, 'something' );
         }
 
-        if (! in_array($something, $this->valid_http_something, true) ) {
-            throw new InvalidArgumentException(sprintf('%s is not a valid HTTP something', $something));
+        if ( ! in_array( $something, $this->valid_http_something, true ) ) {
+            throw new InvalidArgumentException( sprintf( '%s is not a valid HTTP something', $something ) );
         }
 
         return $something;
@@ -450,79 +441,70 @@ class SomeClass
      * @throws Exception2 Comment.
      * @throws Exception3 Comment.
      */
-    public function foo()
-    {
+    public function foo() {
         switch ($foo) {
-        case 1:
-            throw Exception1::a();
-        case 2:
-            throw Exception1::b();
-        case 3:
-            throw Exception1::c();
-        case 4:
-            throw Exception2::a();
-        case 5:
-            throw Exception2::b();
-        default:
-            throw new Exception3;
+            case 1:
+                throw Exception1::a();
+            case 2:
+                throw Exception1::b();
+            case 3:
+                throw Exception1::c();
+            case 4:
+                throw Exception2::a();
+            case 5:
+                throw Exception2::b();
+            default:
+                throw new Exception3;
 
         }
     }
 }
 
 namespace Test\Admin {
-    class NameSpacedClass
-    {
+    class NameSpacedClass {
         /**
          * @throws \ExceptionFromGlobalNamespace
          */
-        public function ExceptionInGlobalNamespace()
-        {
+        public function ExceptionInGlobalNamespace() {
             throw new \ExceptionFromGlobalNamespace();
         }
 
         /**
          * @throws ExceptionFromSameNamespace
          */
-        public function ExceptionInSameNamespace()
-        {
+        public function ExceptionInSameNamespace() {
             throw new ExceptionFromSameNamespace();
         }
 
         /**
          * @throws \Test\Admin\ExceptionFromSameNamespace
          */
-        public function ExceptionInSameNamespaceToo()
-        {
+        public function ExceptionInSameNamespaceToo() {
             throw new ExceptionFromSameNamespace();
         }
 
         /**
          * @throws \Different\NameSpaceName\ExceptionFromDifferentNamespace
          */
-        public function ExceptionInSameNamespaceToo()
-        {
+        public function ExceptionInSameNamespaceToo() {
             throw new \Different\NameSpaceName\ExceptionFromDifferentNamespace();
         }
     }
 }
 
 namespace {
-    class GlobalNameSpaceClass
-    {
+    class GlobalNameSpaceClass {
         /**
          * @throws SomeGlobalException
          */
-        public function ThrowGlobalException()
-        {
+        public function ThrowGlobalException() {
             throw new SomeGlobalException();
         }
 
         /**
          * @throws \SomeGlobalException
          */
-        public function ThrowGlobalExceptionToo()
-        {
+        public function ThrowGlobalExceptionToo() {
             throw new SomeGlobalException();
         }
     }

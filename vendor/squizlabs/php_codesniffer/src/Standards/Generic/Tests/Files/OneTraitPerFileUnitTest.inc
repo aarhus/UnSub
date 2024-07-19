@@ -1,16 +1,13 @@
 <?php
-trait foo
-{
+trait foo {
 
 }
 
-trait bar
-{
+trait bar {
 
 }
 
-trait baz
-{
+trait baz {
 
 }
 

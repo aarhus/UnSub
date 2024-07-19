@@ -2,8 +2,7 @@
 
 $a = $a+(bool) $b;
 $a = function_call((bool) $b);
-if ((bool) $a ===(bool) $b) {
-}
+if ((bool) $a ===(bool) $b) {}
 
 $var = (int) $var2;
 $var =(int) $var2;
@@ -15,11 +14,11 @@ $var =    (integer) $var2;
 
 $var = (string) $var2;
 $var =(string) $var2;
-$var =     (string) $var2;
+$var =	 (string) $var2;
 
 $var = (float) $var2;
 $var =(float) $var2;
-$var =             (float) $var2;
+$var =			 (float) $var2;
 
 $var = (double) $var2;
 $var =(double) $var2;
@@ -57,10 +56,10 @@ $var =(binary) $string;
 $var =    (binary) $string;
 
 $var = array(
-    (bool) $a,
-    array(
+	(bool) $a,
+	array(
         (int) $b,
-    ),
+	),
 );
 
 (bool) $a ? echo $b : echo $c;

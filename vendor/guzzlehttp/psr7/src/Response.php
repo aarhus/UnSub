@@ -14,9 +14,7 @@ class Response implements ResponseInterface
 {
     use MessageTrait;
 
-    /**
-     * Map of standard HTTP status code/reason phrases 
-     */
+    /** Map of standard HTTP status code/reason phrases */
     private const PHRASES = [
         100 => 'Continue',
         101 => 'Switching Protocols',
@@ -80,19 +78,15 @@ class Response implements ResponseInterface
         511 => 'Network Authentication Required',
     ];
 
-    /**
-     * @var string 
-     */
+    /** @var string */
     private $reasonPhrase;
 
-    /**
-     * @var int 
-     */
+    /** @var int */
     private $statusCode;
 
     /**
      * @param int                                  $status  Status code
-     * @param array<string, string|string[]>       $headers Response headers
+     * @param (string|string[])[]                  $headers Response headers
      * @param string|resource|StreamInterface|null $body    Response body
      * @param string                               $version Protocol version
      * @param string|null                          $reason  Reason phrase (when empty a default will be used based on the status code)
@@ -102,7 +96,7 @@ class Response implements ResponseInterface
         array $headers = [],
         $body = null,
         string $version = '1.1',
-        string $reason = null
+        ?string $reason = null
     ) {
         $this->assertStatusCodeRange($status);
 
@@ -144,6 +138,7 @@ class Response implements ResponseInterface
             $reasonPhrase = self::PHRASES[$new->statusCode];
         }
         $new->reasonPhrase = (string) $reasonPhrase;
+
         return $new;
     }
 

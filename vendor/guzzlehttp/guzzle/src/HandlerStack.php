@@ -58,7 +58,7 @@ class HandlerStack
     /**
      * @param (callable(RequestInterface, array): PromiseInterface)|null $handler Underlying HTTP handler.
      */
-    public function __construct(callable $handler = null)
+    public function __construct(?callable $handler = null)
     {
         $this->handler = $handler;
     }
@@ -86,14 +86,14 @@ class HandlerStack
         $stack = [];
 
         if ($this->handler !== null) {
-            $stack[] = "0) Handler: " . $this->debugCallable($this->handler);
+            $stack[] = '0) Handler: '.$this->debugCallable($this->handler);
         }
 
         $result = '';
         foreach (\array_reverse($this->stack) as $tuple) {
-            $depth++;
+            ++$depth;
             $str = "{$depth}) Name: '{$tuple[1]}', ";
-            $str .= "Function: " . $this->debugCallable($tuple[0]);
+            $str .= 'Function: '.$this->debugCallable($tuple[0]);
             $result = "> {$str}\n{$result}";
             $stack[] = $str;
         }
@@ -122,7 +122,7 @@ class HandlerStack
      */
     public function hasHandler(): bool
     {
-        return $this->handler !== null ;
+        return $this->handler !== null;
     }
 
     /**
@@ -186,14 +186,12 @@ class HandlerStack
 
         $this->cached = null;
         $idx = \is_callable($remove) ? 0 : 1;
-        $this->stack = \array_values(
-            \array_filter(
-                $this->stack,
-                static function ($tuple) use ($idx, $remove) {
-                    return $tuple[$idx] !== $remove;
-                }
-            )
-        );
+        $this->stack = \array_values(\array_filter(
+            $this->stack,
+            static function ($tuple) use ($idx, $remove) {
+                return $tuple[$idx] !== $remove;
+            }
+        ));
     }
 
     /**
@@ -209,9 +207,7 @@ class HandlerStack
             }
 
             foreach (\array_reverse($this->stack) as $fn) {
-                /**
- * @var callable(RequestInterface, array): PromiseInterface $prev 
-*/
+                /** @var callable(RequestInterface, array): PromiseInterface $prev */
                 $prev = $fn[0]($prev);
             }
 
@@ -270,12 +266,10 @@ class HandlerStack
         if (\is_array($fn)) {
             return \is_string($fn[0])
                 ? "callable({$fn[0]}::{$fn[1]})"
-                : "callable(['" . \get_class($fn[0]) . "', '{$fn[1]}'])";
+                : "callable(['".\get_class($fn[0])."', '{$fn[1]}'])";
         }
 
-        /**
- * @var object $fn 
-*/
-        return 'callable(' . \spl_object_hash($fn) . ')';
+        /** @var object $fn */
+        return 'callable('.\spl_object_hash($fn).')';
     }
 }

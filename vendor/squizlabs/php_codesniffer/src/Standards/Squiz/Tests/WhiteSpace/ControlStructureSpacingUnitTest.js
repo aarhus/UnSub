@@ -25,30 +25,30 @@ if (one) {
 }
 
 switch (blah) {
-case 'one':
-    if (blah) {
-        // There are no spaces before break.
-    }
+    case 'one':
+        if (blah) {
+            // There are no spaces before break.
+        }
     break;
 
-default:
-    if (blah) {
-        // There are no spaces before break.
-    }
+    default:
+        if (blah) {
+            // There are no spaces before break.
+        }
     break;
 }
 
 switch (blah) {
-case 'one':
-    if (blah) {
-        // There are no spaces before break.
-    }
+    case 'one':
+        if (blah) {
+            // There are no spaces before break.
+        }
     break;
 
-default:
-    if (blah) {
-        // Code here.
-    }
+    default:
+        if (blah) {
+            // Code here.
+        }
 }
 
 for (i = 0; i < 10; i++) {
@@ -72,7 +72,7 @@ while (true) {
 }
 
 for (  i = 0; i < 10; i++  ) {
-    if (blah   ) {
+    if ( blah   ) {
     }
 }
 

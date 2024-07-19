@@ -1,17 +1,18 @@
 <?php
 
-class MyClass
-{
+class MyClass {
     public function validNullableTypeHinting(
         ?array $array = null,
         ?MyObject $object
-    ): ?MyObject {
+    ): ?MyObject
+    {
     }
 
     public function validWithFQN(
         ?\MyNameSpace\MyArray $array = null,
         ?\MyNameSpace\MyObject $object
-    ): ?\MyNameSpace\MyObject {
+    ): ?\MyNameSpace\MyObject
+    {
     }
 
     public function validReturnTypeForThisSniff():?MyObject
@@ -21,32 +22,29 @@ class MyClass
     public function invalidTooMuchWhitespace(
         ? array $array = null,
         ? MyObject
-    ):? MyObject {
+    ):? MyObject
+    {
     }
 
     public function invalidWithFQNTooMuchWhitespace(
         ? \MyNameSpace\MyArray $array = null,
         ? \MyNameSpace\MyObject
-    ):? \MyNameSpace\MyObject {
+    ):? \MyNameSpace\MyObject
+    {
     }
 }
 
 // valid in lambda
-array_map(
-    function (?int $integer = null): ?int {
-        return $integer;
-    }, []
-);
+array_map(function(?int $integer = null): ?int {
+    return $integer;
+}, []);
 
 // invalid in lambda
-array_map(
-    function (? int $integer = null): ? int {
-        return $integer;
-    }, []
-);
+array_map(function(? int $integer = null): ? int {
+    return $integer;
+}, []);
 
-interface MyInterface
-{
+interface MyInterface {
     public function invalidTypeHintsWithNewlinesAndComments( ?
         string $varA,
         ? /* a comment, fixing is undesirable */ array $varB,
@@ -56,21 +54,13 @@ interface MyInterface
         bool;
 }
 
-function testSelf( ? self $self ) : ? self
-{
-}
-function testParent( ? parent $parent ) : ? parent
-{
-}
-function testCallable( ? callable $callable ) : ? callable
-{
-}
+function testSelf( ? self $self ) : ? self {}
+function testParent( ? parent $parent ) : ? parent {}
+function testCallable( ? callable $callable ) : ? callable {}
 
 // Issue #2552.
-class TestTokenizingOfNullableVsInlineThen
-{
-    public function testStatic()
-    {
+class TestTokenizingOfNullableVsInlineThen {
+    public function testStatic() {
         $test = Something::one(self::CONSTANT) ?: '';
         $test = Something::one(static::CONSTANT) ?: '';
     }
@@ -83,10 +73,8 @@ $foo = new static(
 );
 
 // Issue #2791.
-class testInstanceOf()
-{
-    function testIt()
-    {
+class testInstanceOf() {
+    function testIt() {
         $foo = $value instanceof static ? '(' . $value . ')' : $value;
         $bar = $value instanceof static ? function_call($value) : $value;
         $baz = $value instanceof static ? array($value) : $value;
@@ -96,6 +84,12 @@ class testInstanceOf()
 }
 
 // PHP 8.0: static return type.
-function testStatic() : ? static
-{
-}
+function testStatic() : ? static {}
+
+// PHP 8.2: nullable true/false.
+function fooG(): ? true {}
+function fooH(): ?
+     false {}
+
+// Fatal error: null cannot be marked as nullable, but that's not the concern of this sniff.
+function fooI(): ? null {}

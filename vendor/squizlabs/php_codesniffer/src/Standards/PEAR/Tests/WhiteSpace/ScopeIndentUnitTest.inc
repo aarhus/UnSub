@@ -4,31 +4,30 @@ class Test
 {
     function __construct()
     {
-        $this->hello(); // error here
+       $this->hello(); // error here
     }
 
-    function hello() // error here
-    {
-        // no error here as brackets can be put anywhere in the pear standard
+   function hello() // error here
+    { // no error here as brackets can be put anywhere in the pear standard
         echo 'hello';
     }
 
     function hello2()
     {
-        if (true) { // error here
+       if (TRUE) { // error here
             echo 'hello'; // no error here as its more than 4 spaces.
         } else {
-            echo 'bye'; // error here
+        echo 'bye'; // error here
         }
 
-        while (true) {
-            echo 'hello'; // error here
-        }
+        while (TRUE) {
+           echo 'hello'; // error here
+         }
 
-        do { // error here
-            echo 'hello'; // error here
-        } while (true);
-    }
+       do { // error here
+         echo 'hello'; // error here
+       } while (TRUE);
+   }
 
     function hello3()
     {
@@ -56,16 +55,14 @@ class Test2
 {
     function __construct()
     {
-        //    $this->open(); // error here
+    //    $this->open(); // error here
     }
 
     public function open()
     {
         // Some inline stuff that shouldn't error
-        if (true) { echo 'hello';
-        }
-        foreach ($tokens as $token) { echo $token;
-        }
+        if (TRUE) echo 'hello';
+        foreach ($tokens as $token) echo $token;
     }
 
     /**
@@ -77,9 +74,9 @@ class Test2
     public function close()
     {
         // All ok.
-        if (true) {
-            if (true) {
-            } else if (false) {
+        if (TRUE) {
+            if (TRUE) {
+            } else if (FALSE) {
                 foreach ($tokens as $token) {
                     switch ($token) {
                     case '1':
@@ -93,7 +90,7 @@ class Test2
                                 }
                             }
                         }
-                        break;
+                    break;
                     case '5':
                         break;
                     }
@@ -123,10 +120,10 @@ class Test2
     *
     *
     *
-    */
+   */
 
     /**
-     */
+   */
 
     /*
       This comment has a newline in it.
@@ -166,11 +163,10 @@ abstract class Test3
                 switch ($token) {
                 case '(':
 
-                    if ($last >= 3 
-                        && $ts[0]['token'] != T_CLASS 
-                        && $ts[$last - 2]['token'] == T_OBJECT_OPERATOR 
-                        && $ts[$last - 3]['token'] == T_VARIABLE 
-                    ) {
+                    if ($last >= 3 &&
+                        $ts[0]['token'] != T_CLASS &&
+                        $ts[$last - 2]['token'] == T_OBJECT_OPERATOR &&
+                        $ts[$last - 3]['token'] == T_VARIABLE ) {
 
 
                         if (true) {
@@ -199,9 +195,8 @@ EOF;
     return $o;
 }
 
-if ($a === true || $a === true || $a === true || $a === true 
-    || $a === true || $a === true || $a === true || $a === true
-) {
+if ($a === true || $a === true || $a === true || $a === true ||
+    $a === true || $a === true || $a === true || $a === true) {
 
     echo 'hello';
 }
@@ -225,9 +220,9 @@ if ($true) {
 function test()
 {
     /* taken from http://de3.php.net/manual/en/reserved.php */
-    // $m[] = 'declare';
-    /* taken from http://de3.php.net/manual/en/reserved.php */
-    // $m[] = 'declare';
+    # $m[] = 'declare';
+   /* taken from http://de3.php.net/manual/en/reserved.php */
+   # $m[] = 'declare';
 }
 
 foreach ($elements as $element) {
@@ -267,8 +262,7 @@ case 1:
     break;
 }
 
-function temp($foo, $bar)
-{
+function temp($foo, $bar) {
     switch ($foo) {
     case 1:
         switch ($bar) {
@@ -282,12 +276,12 @@ function temp($foo, $bar)
 switch ($foo) {
 case 1:
     switch ($bar) {
-    default:
+        default:
         if ($something) {
             echo $string{1};
         } else if ($else) {
             switch ($else) {
-            default:
+                default:
             }
         }
     }
@@ -312,8 +306,9 @@ default :
 // Don't check the first token in the closure.
 $array = array();
 array_map(
-    function ($x) {
-        return trim($x);
+    function($x)
+    {
+       return trim($x);
     },
     $array
 );

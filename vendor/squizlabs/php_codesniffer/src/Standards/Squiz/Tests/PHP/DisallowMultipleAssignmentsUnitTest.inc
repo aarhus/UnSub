@@ -20,9 +20,9 @@ function getVar($varname='var', $var='var')
         $result[$row[0]] = array();
         $result[$row[0]][] = $current;
 
-        self::$_inTransaction = true;
-        parent::$_inTransaction = true;
-        static::$_inTransaction = true;
+        self::$_inTransaction = TRUE;
+        parent::$_inTransaction = TRUE;
+        static::$_inTransaction = TRUE;
         $$varName = $varValue;
     }
 
@@ -30,10 +30,10 @@ function getVar($varname='var', $var='var')
 
 class myClass
 {
-    private static $_dbh = null;
-    public $dbh = null;
-    protected $dbh = null;
-    var $dbh = null; // Old PHP4 compatible code.
+    private static $_dbh = NULL;
+    public $dbh = NULL;
+    protected $dbh = NULL;
+    var $dbh = NULL; // Old PHP4 compatible code.
 }
 
 A::$a = 'b';
@@ -44,9 +44,8 @@ B\C::$d = 'e';
 @$a = 1;
 
 $a = [];
-foreach ($a as $b) {
+foreach ($a as $b)
     $c = 'd';
-}
 
 $var = $var2;
 list ($a, $b) = explode(',', $c);
@@ -54,20 +53,18 @@ $var1 ? $var2 = 0 : $var2 = 1;
 
 $obj->$classVar = $prefix.'-'.$type;
 
-$closureWithDefaultParamter = function (array $testArray=array()) {
-};
+$closureWithDefaultParamter = function(array $testArray=array()) {};
 ?>
 <?php $var = false; ?>
 
 <?php
 
-while ( ( $csvdata = fgetcsv($handle, 2000, $separator) ) !== false ) {
-    // Do something.
+while ( ( $csvdata = fgetcsv( $handle, 2000, $separator ) ) !== false ) {
+	// Do something.
 }
 
 // Issue #2787.
-class Foo
-{
+class Foo {
     protected ?int $id = null;
 }
 
@@ -80,8 +77,8 @@ class Bar
 }
 
 switch ($b < 10 && $a = 10) {
-case true:
-    break;
+    case true:
+        break;
 }
 
 $array = [
@@ -96,12 +93,10 @@ $arrow_function = fn ($a = null) => $a;
 function ($html) {
     $regEx = '/regexp/';
 
-    return preg_replace_callback(
-        $regEx, function ($matches) {
-            [$all] = $matches;
-            return $all;
-        }, $html
-    );
+    return preg_replace_callback($regEx, function ($matches) {
+        [$all] = $matches;
+        return $all;
+    }, $html);
 };
 
 

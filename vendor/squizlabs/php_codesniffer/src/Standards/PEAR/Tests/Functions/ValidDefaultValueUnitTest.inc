@@ -83,54 +83,36 @@ class myClass
     }
 }
 
-function myFunc($req, $opt=null, ...$params)
-{
-}
+function myFunc($req, $opt=null, ...$params) {}
 
 // Type hinting with NULL
-function foo(Foo $foo = null, $bar)
-{
-}
-function foo(Foo $foo, $bar)
-{
-}
-function foo(Foo $foo = null, $bar = true, $baz)
-{
-}
-function foo($baz, Foo $foo = null, $bar = true)
-{
-}
-function foo($baz, $bar = true, Foo $foo = null)
-{
-}
+function foo(Foo $foo = null, $bar) {}
+function foo(Foo $foo, $bar) {}
+function foo(Foo $foo = null, $bar = true, $baz) {}
+function foo($baz, Foo $foo = null, $bar = true) {}
+function foo($baz, $bar = true, Foo $foo = null) {}
 
 // Valid closure
-$closure = function ($arg1, $arg2='hello') {
-};
+$closure = function ($arg1, $arg2='hello') {};
 
 // Invalid closure
-$closure = function (array $arg2=array(), array $arg1) {
-}
+$closure = function(array $arg2=array(), array $arg1) {}
 
 $fn = fn($a = [], $b) => $a[] = $b;
 
-class OnlyConstructorPropertyPromotion
-{
+class OnlyConstructorPropertyPromotion {
     public function __construct(
         public string $name = '',
         protected $bar
-    ) {
-    }
+    ) {}
 }
 
-class ConstructorPropertyPromotionMixedWithNormalParams
-{
+class ConstructorPropertyPromotionMixedWithNormalParams {
     public function __construct(
         public string $name = '',
         ?int $optionalParam = 0,
         mixed $requiredParam,
-    ) {
-    }
+    ) {}
 }
 
 // Intentional syntax error. Must be last thing in the file.

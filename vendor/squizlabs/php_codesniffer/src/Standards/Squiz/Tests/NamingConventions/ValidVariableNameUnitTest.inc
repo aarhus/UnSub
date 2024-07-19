@@ -135,8 +135,7 @@ class TestClass
 }
 
 $anonClass = new class() {
-    public function foo($foo, $_foo, $foo_bar)
-    {
+    public function foo($foo, $_foo, $foo_bar) {
         $bar = 1;
         $_bar = 2;
         $bar_foo = 3;
@@ -150,8 +149,7 @@ echo $obj?->_varName;
 
 enum SomeEnum
 {
-    public function foo($foo, $_foo, $foo_bar)
-    {
+    public function foo($foo, $_foo, $foo_bar) {
         $bar = 1;
         $_bar = 2;
         $bar_foo = 3;

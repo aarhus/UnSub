@@ -4,8 +4,7 @@ class ClassName extends ParentClass implements \ArrayAccess,  \Countable
     // constants, properties, methods
 }
 
-class ClassName extends ParentClass,AnotherParentClass implements \ArrayAccess,\Countable
-{
+class ClassName extends ParentClass,AnotherParentClass implements \ArrayAccess,\Countable {
     // constants, properties, methods
 }
 
@@ -20,8 +19,7 @@ implements \ArrayAccess, \Countable
 class ClassName extends  ParentClass  implements
    \ArrayAccess,
         \Foo\Bar\Countable,
-    \Serializable
-{
+    \Serializable {
     // constants, properties, methods
 
 }
@@ -70,10 +68,8 @@ class ClassName extends ParentClass implements
 
 class Test
 {
-    public function test()
-    {
-        if (1) { 1;
-        }
+    public function test() {
+        if (1) 1;
         1 ? (1 ? 1 : 1) : 1;
     }
 }
@@ -241,7 +237,82 @@ C8
 {
 }
 
-foo(
-    new class {
+foo(new class {
+});
+
+readonly
+class Test
+{
+}
+
+readonly    class Test
+{
+}
+
+if (!class_exists('IndentedDeclaration')) {
+    class IndentedDeclaration
+    {
+        function foo() {}
+
+
     }
-);
+}
+
+// Space between modifier and class keyword would not be flagged nor fixed if newline + indentation.
+final
+    class FinalClassWithIndentation
+    {
+    }
+
+readonly
+    class ReadonlyClassWithIndentation
+    {
+    }
+
+// And would also not be flagged if there was a comment between (not auto-fixable).
+final/*comment*/class FinalClassWithComment
+{
+}
+abstract /*comment*/  class AbstractClassWithComment
+{
+}
+
+readonly
+    // comment
+    class ReadonlyClassWithComment
+    {
+    }
+
+// Safeguard against fixer conflict when there are namespace relative interface names in extends.
+interface FooBar extends namespace\BarFoo
+{
+}
+
+// Safeguard against fixer conflict when there are namespace relative interface names in a multi-line implements.
+class BarFoo implements
+    namespace\BarFoo
+{
+}
+
+// Safeguard that the sniff ignores comments between interface names in a multiline implements.
+class ClassWithMultiLineImplementsAndIgnoreAnnotation implements
+    SomeInterface,
+    // phpcs:disable Stnd.Cat.Sniff -- For reasons.
+
+    \AnotherInterface
+{
+}
+
+class ClassWithMultiLineImplementsAndComment implements
+    SomeInterface,
+    // Comment.
+
+AnotherInterface
+{
+}
+
+class ClassWithMultiLineImplementsAndCommentOnSameLineAsInterfaceName implements
+    SomeInterface,
+    /* Comment. */ AnotherInterface
+{
+}

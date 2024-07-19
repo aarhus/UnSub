@@ -25,6 +25,7 @@ class VariableCommentUnitTest
 
 
     /**
+     *
      * Extra newline before short comment.
      *
      * @var string
@@ -34,6 +35,8 @@ class VariableCommentUnitTest
 
     /**
      * Extra newline between short description.
+     *
+     *
      *
      * Long description.
      *
@@ -48,6 +51,7 @@ class VariableCommentUnitTest
      * Long description,
      * with two var tags.
      *
+     *
      * @var string
      * @var array
      */
@@ -56,7 +60,6 @@ class VariableCommentUnitTest
 
     /**
      * No newline before tags, var tag missing.
-     *
      * @see otherFunctions()
      */
      protected $noNewlineBeforeTags = '';
@@ -75,8 +78,8 @@ class VariableCommentUnitTest
     /**
      * Incorrect tag indentation.
      *
-     * @var string
-     * @see otherFunctions()
+     * @var     string
+     * @see        otherFunctions()
      * @see anotherFunctions()
      * @see
      */
@@ -128,18 +131,18 @@ class VariableCommentUnitTest
      $emptyVarDoc = '';
 
      /**
-      * Var type checking (int v.s. integer).
-      *
-      * @var int
-      */
+     * Var type checking (int v.s. integer).
+     *
+     * @var int
+     */
      private $_varSimpleTypeCheck;
 
 
      /**
-      * Var type checking (array(int => string) v.s. array(int => string)).
-      *
-      * @var array(int => string)
-      */
+     * Var type checking (array(int => string) v.s. array(int => string)).
+     *
+     * @var array(int => string)
+     */
      private $_varArrayTypeCheck;
 
 
@@ -272,10 +275,10 @@ class VariableCommentUnitTest
 
 
      /**
-      * Var type checking (STRING v.s. string).
-      *
-      * @var STRING
-      */
+     * Var type checking (STRING v.s. string).
+     *
+     * @var STRING
+     */
      private $_varCaseTypeCheck;
 
 
@@ -288,8 +291,8 @@ class VariableCommentUnitTest
 
 
      /**
-      * @var int Var type checking (int v.s. integer) with single-line comment.
-      */
+     * @var int Var type checking (int v.s. integer) with single-line comment.
+     */
      private $_varSimpleTypeCheckSingleLine;
 
 
@@ -300,16 +303,17 @@ class VariableCommentUnitTest
  * VariableCommentUnitTest2.
  *
  * Long description goes here.
+ *
  */
 class VariableCommentUnitTest2
 {
 
-    public $hello;
+   public $hello;
 
-    /**
-     * Comment starts here.
+    /** Comment starts here.
      *
      * @var string
+     *
      */
      private $_varCaseTypeCheck;
 
@@ -336,7 +340,7 @@ class Foo
      *
      * @var array
      */
-    public static array $variableName = array();
+     public static array $variableName = array();
 
 }
 
@@ -348,17 +352,17 @@ class Foo
      *
      * @var array
      */
-    public array $variableName = array();
+     public array $variableName = array();
 
 
      // Not "/**" style comment.
      //
      // @var   string
-    private ?Folder\ClassName $_incorrectCommentStyle = null;
+     private ?Folder\ClassName $_incorrectCommentStyle = null;
 
 
      var int $noComment = 1;
-}
+ }
 
 class HasAttributes
 {
@@ -387,7 +391,7 @@ class ReadOnlyProps
      *
      * @var array
      */
-    public readonly array $variableName = array();
+     public readonly array $variableName = array();
 
     /**
      * Short description of the member variable.
@@ -396,5 +400,57 @@ class ReadOnlyProps
      */
      readonly protected ?int $variableName = 10;
 
-    private readonly string $variable;
+     private readonly string $variable;
+}
+
+class UnionTypes
+{
+    /**
+     * @var array|boolean
+     */
+    private array|bool $variableName = array();
+}
+
+class IntersectionTypes
+{
+    /**
+     * @var \Iterator|\Countable
+     */
+    private \Iterator&\Countable $variableName;
+}
+
+class StandaloneNullTrueFalseTypes
+{
+    /**
+     * @var null
+     */
+    public null $variableName = null;
+
+    /**
+     * @var true
+     */
+    protected true $variableName = true;
+
+    /**
+     * @var false
+     */
+    private false $variableName = false;
+}
+
+class MoreMissingButSupportedTypes
+{
+    /**
+     * @var parent
+     */
+    public parent $variableName;
+
+    /**
+     * @var self
+     */
+    protected self $variableName;
+
+    /**
+     * @var SomeClass
+     */
+    private namespace\SomeClass $variableName;
 }

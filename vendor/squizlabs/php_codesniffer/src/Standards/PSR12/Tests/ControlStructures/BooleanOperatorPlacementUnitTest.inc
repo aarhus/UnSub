@@ -1,19 +1,22 @@
 <?php
-if ($expr1
+if (
+    $expr1
     && $expr2
     && ($expr3
     || $expr4)
     && $expr5
 ) {
     // if body
-} elseif ($expr1 
-    && ($expr3 || $expr4)
+} elseif (
+    $expr1 &&
+    ($expr3 || $expr4)
     && $expr5
 ) {
     // elseif body
-} elseif ($expr1
-    && ($expr3 || $expr4) 
-    && $expr5
+} elseif (
+    $expr1
+    && ($expr3 || $expr4) &&
+    $expr5
 ) {
     // elseif body
 }
@@ -37,19 +40,23 @@ switch (
     // structure body
 }
 
-if (($n > 0 && $n < 10)
+if (
+    ($n > 0 && $n < 10)
     || ($n > 10 && $n < 20)
     || ($n > 20 && $n < 30)
 ) {
     return $n;
 }
 
-if ((    $expr1
-    && $expr2
-    && $expr3
-    && $expr4
-    && $expr5
-    && $expr6)
+if (
+    (
+        $expr1
+        && $expr2
+        && $expr3
+        && $expr4
+        && $expr5
+        && $expr6
+    )
     || ($n > 100 && $n < 200)
     || ($n > 200 && $n < 300)
 ) {
@@ -57,50 +64,57 @@ if ((    $expr1
 }
 
 // phpcs:set PSR12.ControlStructures.BooleanOperatorPlacement allowOnly first
-if ($expr1
+if (
+    $expr1
     && $expr2
     && ($expr3
     || $expr4)
     && $expr5
 ) {
     // if body
-} elseif ($expr1 
-    && ($expr3 || $expr4)
+} elseif (
+    $expr1 &&
+    ($expr3 || $expr4)
     && $expr5
 ) {
     // elseif body
-} elseif ($expr1
-    && ($expr3 || $expr4) 
-    && $expr5
+} elseif (
+    $expr1
+    && ($expr3 || $expr4) &&
+    $expr5
 ) {
     // elseif body
 }
 
 // phpcs:set PSR12.ControlStructures.BooleanOperatorPlacement allowOnly last
-if ($expr1
+if (
+    $expr1
     && $expr2
     && ($expr3
     || $expr4)
     && $expr5
 ) {
     // if body
-} elseif ($expr1 
-    && ($expr3 || $expr4)
+} elseif (
+    $expr1 &&
+    ($expr3 || $expr4)
     && $expr5
 ) {
     // elseif body
-} elseif ($expr1
-    && ($expr3 || $expr4) 
-    && $expr5
+} elseif (
+    $expr1
+    && ($expr3 || $expr4) &&
+    $expr5
 ) {
     // elseif body
 }
 
-if (($value == 1 
-    || $value == 2)
-    
-    && ($value == 3 
-    || $value == 4)
+if (
+    ($value == 1 ||
+        $value == 2)
+    &&
+    ($value == 3 ||
+        $value == 4)
 ) {
     return 5;
 }

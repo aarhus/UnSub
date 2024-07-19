@@ -16,8 +16,7 @@ class ClassName3
     use ThirdTrait;
 }
 
-$foo = function () use ($bar) {
-};
+$foo = function() use($bar) {};
 
 enum SomeEnum
 {

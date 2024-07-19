@@ -1,29 +1,26 @@
 var x = {
-    abc: 1,
-    zyz: 2,
-    abc: 5,
-    mno: {
-        abc: 4
-    },
-    abc: 5
+  abc: 1,
+  zyz: 2,
+  abc: 5,
+  mno: {
+      abc: 4
+  },
+  abc: 5
   
-    this.request(
-        {
-            action: 'getSubmissions'
-        }
-    );
+  this.request({
+    action: 'getSubmissions'
+  });
 
-this.request(
-    {
-        action: 'deleteSubmission'
-    }
-);
+  this.request({
+    action: 'deleteSubmission'
+  });
 }
 
 
 LinkingEditScreenWidgetType.prototype = {
 
-    _addDeleteButtonEvent: function (parentid) {
+    _addDeleteButtonEvent: function(parentid)
+    {
         var params = {
             screen: 'LinkingEditScreenWidget',
             assetid: self.assetid,
@@ -34,7 +31,8 @@ LinkingEditScreenWidgetType.prototype = {
 
     },
 
-    saveDesignEdit: function () {
+    saveDesignEdit: function()
+    {
         var params = {
             screen: [this.id, 'Widget'].join(''),
             assetid: this.assetid,

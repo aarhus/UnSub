@@ -19,15 +19,19 @@ class Invalid_Comment_Style1
 
 
 /**
+ *
+ *
  * Sample class comment
  *
+ *
  * Long description with extra blank line before and after
+ *
  *
  * @category  PHP
  * @package   PHP_CodeSniffer
  * @author    Greg Sherwood <gsherwood@squiz.net>
  * @copyright 2006-2014 Squiz Pty Ltd (ABN 77 084 670 600)
- * @license   https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
+ * @license   https://github.com/PHPCSStandards/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
  * @version   Release: 1.0
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
@@ -39,12 +43,11 @@ class Extra_Description_Newlines
 
 /**
  * Sample class comment
- *
  * @category  PHP
  * @package   PHP_CodeSniffer
  * @author    Greg Sherwood <gsherwood@squiz.net>
  * @copyright 2006-2014 Squiz Pty Ltd (ABN 77 084 670 600)
- * @license   https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
+ * @license   https://github.com/PHPCSStandards/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
  * @version
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
@@ -62,7 +65,7 @@ class Missing_Newlines_Before_Tags
  * @package    ADDITIONAL PACKAGE TAG
  * @subpackage SUBPACKAGE TAG
  * @author     Original Author <author@example.com>
- * @author     Greg Sherwood gsherwood@squiz.net
+ * @author       Greg Sherwood gsherwood@squiz.net
  * @author     Mr T <t@squiz.net>
  * @author
  * @copyright  1997~1994 The PHP Group
@@ -79,8 +82,7 @@ class Missing_Newlines_Before_Tags
  */
 class Checking_Tags
 {
-    class Sub_Class
-    {
+    class Sub_Class {
 
     }//end class
 
@@ -131,13 +133,31 @@ enum Empty_Enum_Doc
 /**
  * Sample class comment
  *
- * @category PHP
- * @package  PHP_CodeSniffer
- * @author   Greg Sherwood <gsherwood@squiz.net>
- * @license  https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
- * @link     http://pear.php.net/package/PHP_CodeSniffer
+ * @category  PHP
+ * @package   PHP_CodeSniffer
+ * @author    Greg Sherwood <gsherwood@squiz.net>
+ * @license   https://github.com/PHPCSStandards/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
+ * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
 #[Authenticate('admin_logged_in')]
 class TodoController extends AbstractController implements MustBeLoggedInInterface
 {
 }
+
+/**
+ * Docblock
+ *
+ * @category  PHP
+ * @package   PHP_CodeSniffer
+ * @author    Greg Sherwood <gsherwood@squiz.net>
+ * @license   https://github.com/PHPCSStandards/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
+ * @link      http://pear.php.net/package/PHP_CodeSniffer
+ */
+abstract readonly class AbstractReadonlyWithDocblock {}
+
+/*
+ * Docblock
+ */
+readonly class ReadonlyWrongStyle {}
+
+readonly final class ReadonlyFinalWithoutDocblock {}

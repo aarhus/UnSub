@@ -2,14 +2,12 @@
 class TestClass extends MyClass
 {
 
-    function TestClass()
-    {
+    function TestClass() {
         parent::MyClass();
         parent::__construct();
     }
 
-    function __construct()
-    {
+    function __construct() {
         parent::MYCLASS();
         parent::__construct();
     }
@@ -19,14 +17,12 @@ class TestClass extends MyClass
 class MyClass
 {
 
-    function MyClass()
-    {
+    function MyClass() {
         parent::YourClass();
         parent::__construct();
     }
 
-    function __construct()
-    {
+    function __construct() {
         parent::YourClass();
         parent::__construct();
     }
@@ -35,8 +31,7 @@ class MyClass
 
 class MyOtherClass extends \MyNamespace\SomeClass
 {
-    function __construct()
-    {
+    function __construct() {
         something::MyNamespace();
     }
 
@@ -55,51 +50,39 @@ class OldClass
     }
 }
 
-foo(
-    new class extends MyClass
-    {
+foo(new class extends MyClass
+{
 
-        function TestClass()
-        {
-            parent::MyClass();
-            parent::__construct();
-        }
-
-        function __construct()
-        {
-            parent::MyClass();
-            parent::__construct();
-        }
-
+    function TestClass() {
+        parent::MyClass();
+        parent::__construct();
     }
-);
+
+    function __construct() {
+        parent::MyClass();
+        parent::__construct();
+    }
+
+});
 
 class OlderClass
 {
-    function OlderClass()
-    {
-    }
+    function OlderClass() {}
 
-    function __CONSTRUCT()
-    {
-    }
+    function __CONSTRUCT() {}
 }
 
 
 // Issue #2178.
-class Nested extends Another
-{
-    public function getAnonymousClass()
-    {
+class Nested extends Another {
+    public function getAnonymousClass() {
         return new class() extends Something {
-            public function nested()
-            {
+            public function nested() {
                 echo 'In method nested!';
                 parent::Another(); // OK.
             }
 
-            public function __construct()
-            {
+            public function __construct() {
                 parent::Another(); // OK.
             }
         };

@@ -54,7 +54,7 @@ class ClassName7
 
 class ClassName8
 {
-    use A ,  B,
+    use   A ,  B,
     C
     {
 
@@ -159,7 +159,7 @@ class MyExample
         $shortArgs_longVars = function ($arg) use (
             $longVar1,
         ): string {
-            // body
+           // body
         };
     }
     use A, B, C {

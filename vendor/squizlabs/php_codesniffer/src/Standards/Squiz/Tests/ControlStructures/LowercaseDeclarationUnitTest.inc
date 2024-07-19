@@ -1,20 +1,15 @@
 <?php
 
-Foreach ($condition as $cond) {
-}
+Foreach ($condition as $cond) {}
 
-FOR ($i = 1; $i < 10; $i++) {
-}
+FOR ($i = 1; $i < 10; $i++) {}
 
-wHile ($i < 10) {
-}
+wHile ($i < 10) {}
 
 DO {
-} While ($1 < 10) {
+} While ($1 < 10)
 
-    Switch ($condition) {
-    }
-}
+Switch ($condition) {}
 
 If ($condition) {
 } elsE if ($condition) {
@@ -26,5 +21,4 @@ TRY {
 } Catch (Exception $e) {
 }
 
-$r = MATCH ($x) {
-};
+$r = MATCH ($x) {};

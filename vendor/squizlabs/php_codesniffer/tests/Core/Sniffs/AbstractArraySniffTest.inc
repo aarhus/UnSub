@@ -17,9 +17,7 @@ $paths = array(
 
 /* testMissingKeysCoalesceTernary */
 return [
-    $a => static function () {
-        return [1,2,3]; 
-    },
+    $a => static function () { return [1,2,3]; },
     $b ?? $c,
     $d ? [$e] : [$f],
 ];

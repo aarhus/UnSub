@@ -1,12 +1,12 @@
 <?php
 
 trySomething() || trySomethingElse();
-if (trySomething() === false) {
+if (trySomething() === FALSE) {
     trySomethingElse();
 }
 
 $success || fail();
-if ($success === false) {
+if ($success === FALSE) {
     fail();
 }
 

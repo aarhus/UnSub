@@ -16,14 +16,10 @@ use Psr\Http\Message\StreamInterface;
  */
 final class BufferStream implements StreamInterface
 {
-    /**
-     * @var int 
-     */
+    /** @var int */
     private $hwm;
 
-    /**
-     * @var string 
-     */
+    /** @var string */
     private $buffer = '';
 
     /**
@@ -138,8 +134,6 @@ final class BufferStream implements StreamInterface
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return mixed
      */
     public function getMetadata($key = null)

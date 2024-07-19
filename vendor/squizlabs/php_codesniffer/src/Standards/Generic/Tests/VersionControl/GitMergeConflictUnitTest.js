@@ -5,14 +5,15 @@ result = x ? y : z;
 <<<<<<< HEAD
 if (something === true
 =======
-if (something === false    >>>>>>> develop
+if (something === false
+>>>>>>> develop
     ^ somethingElse === true
 ) {
-    <<<<<<< HEAD
+<<<<<<< HEAD
     return true;
-    =======
+=======
     return false;
-    >>>>>>> develop
+>>>>>>> develop
 }
 
 y = 1
@@ -27,7 +28,6 @@ if (something === true
 
 /**
 =======
- *
  * @var string $foo
 >>>>>>> master
  */

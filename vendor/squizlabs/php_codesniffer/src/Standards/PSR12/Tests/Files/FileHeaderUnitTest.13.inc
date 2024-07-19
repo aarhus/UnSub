@@ -6,13 +6,11 @@
  * @package Vendor\Package
  */
 
-class Foo
-{
+class Foo {
     /**
      * Function docblock.
      */
-    public function bar()
-    {
+    public function bar() {
         do_something();
         ?>
         <p>Demo</p>

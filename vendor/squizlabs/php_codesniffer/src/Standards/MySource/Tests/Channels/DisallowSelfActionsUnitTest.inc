@@ -33,8 +33,7 @@ class SomethingActions
     }
 }
 
-abstract class AbstractEditingScreenModeWidgetActions extends AbstractEditingModeWidgetActions
-{
+abstract class AbstractEditingScreenModeWidgetActions extends AbstractEditingModeWidgetActions {
 
     public static function getScreens($systemName)
     {

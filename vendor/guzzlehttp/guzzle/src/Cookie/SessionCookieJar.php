@@ -47,9 +47,7 @@ class SessionCookieJar extends CookieJar
     public function save(): void
     {
         $json = [];
-        /**
- * @var SetCookie $cookie 
-*/
+        /** @var SetCookie $cookie */
         foreach ($this as $cookie) {
             if (CookieJar::shouldPersist($cookie, $this->storeSessionCookies)) {
                 $json[] = $cookie->toArray();
@@ -73,7 +71,7 @@ class SessionCookieJar extends CookieJar
                 $this->setCookie(new SetCookie($cookie));
             }
         } elseif (\strlen($data)) {
-            throw new \RuntimeException("Invalid cookie data");
+            throw new \RuntimeException('Invalid cookie data');
         }
     }
 }

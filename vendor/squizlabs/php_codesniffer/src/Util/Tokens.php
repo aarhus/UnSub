@@ -4,7 +4,7 @@
  *
  * @author    Greg Sherwood <gsherwood@squiz.net>
  * @copyright 2006-2015 Squiz Pty Ltd (ABN 77 084 670 600)
- * @license   https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
+ * @license   https://github.com/PHPCSStandards/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
  */
 
 namespace PHP_CodeSniffer\Util;
@@ -82,6 +82,8 @@ define('T_MATCH_DEFAULT', 'PHPCS_T_MATCH_DEFAULT');
 define('T_ATTRIBUTE_END', 'PHPCS_T_ATTRIBUTE_END');
 define('T_ENUM_CASE', 'PHPCS_T_ENUM_CASE');
 define('T_TYPE_INTERSECTION', 'PHPCS_T_TYPE_INTERSECTION');
+define('T_TYPE_OPEN_PARENTHESIS', 'PHPCS_T_TYPE_OPEN_PARENTHESIS');
+define('T_TYPE_CLOSE_PARENTHESIS', 'PHPCS_T_TYPE_CLOSE_PARENTHESIS');
 
 // Some PHP 5.5 tokens, replicated for lower versions.
 if (defined('T_FINALLY') === false) {

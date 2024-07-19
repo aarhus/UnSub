@@ -54,7 +54,7 @@ echo 'hi';
 // Go here:
 // http://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval
 
-// http://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval
+# http://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval
 
 if ($foo) {
     if ($bar) {
@@ -68,33 +68,17 @@ if ($foo) {
 }
 
 /* -------------------------------- 80 chars -------------------------------- */
-$ab    = function () {
-    /* comment */ if ($foo === true) { return (int) $foo; 
-    } 
-};
-$ab    = function () {
-    /* comment */ if ($foo === true) { return    (int)$foo; 
-    }
-};
-$ab    = function () {
-    /* comment */ if ($foo === true) { return    (int) $foo; 
-    }  
-};
-    $ab    = function () {
-        /* comment */ if ($foo === true) { return(int) $foo; 
-        }
-    };
-    $ab    = function () {
-        /* comment */ if ($foo === true) {    return(int) $foo; 
-        }
-    };
-    $ab    =      $ab    =      $ab    =      $ab    =      $ab    =      $ab    =      $ab    =      $ab    =      $ab    =      $ab;
+$ab	= function () { /* comment */ if ($foo === true) { return (int) $foo; } };
+$ab	= function ()	{ /* comment */ if ($foo === true){ return	(int)$foo; }};
+$ab	= function ()	{ /* comment */ if ($foo === true) { return	(int) $foo; }  };
+	$ab	= function () { /* comment */ if ($foo === true) { return(int) $foo; }};
+	$ab	= function () { /* comment */ if ($foo === true) {	return(int) $foo; }};
+$ab	=  	$ab	=  	$ab	=  	$ab	=  	$ab	=  	$ab	=  	$ab	=  	$ab	=  	$ab	=  	$ab;
 
-    // PHPCS annotations on a line by themselves should be ignored for the metrics.
-    // phpcs:enable Standard.Category.Sniff.ErrorCode1,Standard.Category.Sniff.ErrorCode2 -- for reasons ...
+// PHPCS annotations on a line by themselves should be ignored for the metrics.
+// phpcs:enable Standard.Category.Sniff.ErrorCode1,Standard.Category.Sniff.ErrorCode2 -- for reasons ...
 
-    // ... but not when combined with statements.
-    $a = $b; // phpcs:ignore Standard.Category.Sniff.ErrorCode1,Standard.Category.Sniff.ErrorCode2 -- for reasons ...
+// ... but not when combined with statements.
+$a = $b; // phpcs:ignore Standard.Category.Sniff.ErrorCode1,Standard.Category.Sniff.ErrorCode2 -- for reasons ...
 
-    if (($anotherReallyLongVarName === true) {
-    } // This comment makes the line too long.
+if (($anotherReallyLongVarName === true) {} // This comment makes the line too long.

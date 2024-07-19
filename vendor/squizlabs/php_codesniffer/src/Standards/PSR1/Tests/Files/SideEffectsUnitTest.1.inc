@@ -29,21 +29,18 @@ final class Foo
     public $myvar = 'foo';
 
     // Function comment.
-    function Bar()
-    {
+    function Bar() {
         echo 'hi';
     }
 }
 
-function MyFunction()
-{
+function MyFunction() {
     echo 'hi';
 }
 
 if (!function_exists('YourFunction')) {
     // Define a function.
-    function YourFunction()
-    {
+    function YourFunction() {
         echo 'hi';
     }
 }
@@ -52,45 +49,39 @@ if (!class_exists('MyClass')) {
     // Define a class.
     class MyClass
     {
-        function SomeFunction()
-        {
-        }
+        function SomeFunction() {}
     }
 } else if (!interface_exists('MyInterface')) {
-    interface MyInterface
-    {
-    }
+    interface MyInterface {}
 } elseif (!interface_exists('MyInterface')) {
-    interface MyInterface
-    {
-    }
+    interface MyInterface {}
 } else {
-    interface MyInterface
-    {
-    }
+    interface MyInterface {}
 }
 
 if (!interface_exists('MyInterface')) {
     // Define an interface.
-    interface MyInterface
-    {
-    }
+    interface MyInterface {}
 }
 
 if (!interface_exists('MyEnum')) {
     // Define an enum.
-    enum MyEnum
-    {
-    }
+    enum MyEnum {}
 }
 
 #[\Attribute]
 namespace {
-    class A
-    {
-    }
+    class A {}
 }
 
 defined('APP_BASE_URL') or define('APP_BASE_URL', '/');
+
+readonly class Foo {
+    public function __construct(
+        private string $foo,
+        private string $bar,
+    ) {
+    }
+}
 
 ?>

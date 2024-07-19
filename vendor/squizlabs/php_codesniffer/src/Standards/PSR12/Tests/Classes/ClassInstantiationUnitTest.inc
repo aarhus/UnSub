@@ -3,7 +3,7 @@ $foo = new Foo();
 $foo = new Foo;
 $foo = new Foo\Bar;
 $foo = new Foo\Bar();
-$foo = new Foo();
+$foo = new Foo /* comment */ ();
 
 $foo = new $foo();
 $foo = new $foo;
@@ -15,19 +15,14 @@ $foo = new self;
 $foo = new static();
 $foo = new static;
 
-foo(
-    new class {
-    }
-);
+foo(new class {});
 echo (new Foo())->bar();
 echo (new Foo)->bar();
 echo (new Foo((new Bar)->getBaz()))->bar();
 $foo = (new Foo)::$bar;
 
-echo (new Foo(
-    (new Bar//comment
-    )->getBaz(new Baz /* comment */)
-))->bar();
+echo (new Foo((new Bar//comment
+)->getBaz(new Baz /* comment */)))->bar();
 
 $foo = new $bar['a']();
 $foo = new $bar['a']['b']();
@@ -50,3 +45,7 @@ $anonWithAttribute = new #[SomeAttribute('summary')] class {
 
 $foo = new parent();
 $foo = new parent;
+
+// PHP 8.3: safeguard that the sniff ignores anonymous classes, even when declared as readonly.
+$anon = new readonly class {};
+$anon = new #[MyAttribute] readonly class {};

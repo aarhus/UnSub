@@ -1,1 +1,1 @@
-<?php require $this->add('arg') /* comment */ ?>
+<?php include($this->add('arg')) /* comment */ ?>

@@ -7,10 +7,10 @@ class PHP_CodeSniffer_File
      *
      * long desc here
      *
-     * @param  int $stackPtr The position in @ @unknown the stack of the token
-     *                       that opened the scope
-     * @param  int $detph    How many scope levels down we are.
-     * @param  int $index    The index
+     * @param int $stackPtr   The position in @ @unknown the stack of the token
+     *                        that opened the scope
+     * @param int $detph    How many scope levels down we are.
+     * @param int    $index    The index
      * @return
      * @throws
      */
@@ -32,9 +32,13 @@ class PHP_CodeSniffer_File
 
 
     /**
+     *
+     *
      * A simple function comment
      *
+     *
      * Long description with extra blank line before and after
+     *
      *
      * @return void
      */
@@ -46,7 +50,6 @@ class PHP_CodeSniffer_File
 
     /**
      * A simple function comment
-     *
      * @return void
      */
     public function missingNewlinesBeforeTags()
@@ -105,6 +108,7 @@ class PHP_CodeSniffer_File
 
     /**
      * no return tag
+     *
      */
     public function noReturn($one)
     {
@@ -116,9 +120,9 @@ class PHP_CodeSniffer_File
      * Param not immediate
      *
      * @return
-     * @param  int     $threeSpaces
-     * @param  int     $superfluous
-     * @param  missing
+     * @param   int   $threeSpaces
+     * @param int     $superfluous
+     * @param missing
      * @param
      */
     public function missingDescription($threeSpaces)
@@ -130,9 +134,9 @@ class PHP_CodeSniffer_File
     /**
      * Param not immediate
      *
-     * @param int    $one   comment
-     * @param int    $two   comment
-     * @param string $three comment
+     * @param int      $one   comment
+     * @param int      $two   comment
+     * @param string   $three comment
      *
      * @return void
      */
@@ -173,6 +177,9 @@ function tagBeforeComment()
 
 /**
  * no return tag
+ *
+ *
+ *
  */
 function noReturnOutsideClass()
 {
@@ -186,7 +193,7 @@ function noReturnOutsideClass()
  * @param int $one comment
  *
  * @return void
- * @fine   Unknown tag
+ * @fine  Unknown tag
  */
 function missingTwoParamComment($one, $two, $three)
 {
@@ -210,9 +217,7 @@ function emptyFunctionDocComment()
  * @access public
  * @return bool
  */
-function myFunction($arg1)
-{
-}
+function myFunction($arg1) {}
 
 
 /**
@@ -226,9 +231,7 @@ function myFunction($arg1)
 
 echo $blah;
 
-function myFunction($arg1)
-{
-}
+function myFunction($arg1) {}
 
 /**
  * Test function.
@@ -238,12 +241,9 @@ function myFunction($arg1)
  * @throws MyException
  * @throws MyException When I feel like it
  */
-function myFunction()
-{
-}
+function myFunction() {}
 
-abstract class MyClass
-{
+abstract class MyClass {
     /**
      * An abstract function.
      *
@@ -268,21 +268,19 @@ function foo(&$tokens, $tokenizer, $eolChar)
 
 /**
  * Gettext.
+ *
  */
-function _()
-{
+function _() {
     return $foo;
 }
 
-class Baz
-{
+class Baz {
     /**
      * The PHP5 constructor
      *
      * No return tag
      */
-    public function __construct()
-    {
+    public function __construct() {
 
     }
 }
@@ -296,8 +294,7 @@ class Baz
  *
  * @return void
  */
-function completeStep($status, array $array = [Class1::class, 'test'], $note = '')
-{
+function completeStep($status, array $array = [Class1::class, 'test'], $note = '') {
     echo 'foo';
 }
 
@@ -309,8 +306,7 @@ function completeStep($status, array $array = [Class1::class, 'test'], $note = '
  *
  * @return void
  */
-function myFunction(string $name1, string ...$name2)
-{
+function myFunction(string $name1, string ...$name2) {
 }
 
 
@@ -322,8 +318,7 @@ function myFunction(string $name1, string ...$name2)
  *
  * @return void
  */
-function myFunction(string $name1, string ...$name2)
-{
+function myFunction(string $name1, string ...$name2) {
 }
 
 /**
@@ -336,19 +331,19 @@ function myFunction(string $name1, string ...$name2)
  *
  * @return
  *   Return value
+ *
  */
-function foo($bar)
-{
+function foo($bar) {
 }
 
 /**
  * Processes the test.
  *
  * @param PHP_CodeSniffer\Files\File $phpcsFile The PHP_CodeSniffer file where the
- *                                              token occurred.
- * @param int                        $stackPtr  The position in the tokens stack
- *                                              where the listening token type
- *                                              was found.
+ *                                        token occurred.
+ * @param int                        $stackPtr The position in the tokens stack
+ *                                    where the listening token type
+ *                                           was found.
  *
  * @return void
  * @see    register()
@@ -362,11 +357,11 @@ function process(File $phpcsFile, $stackPtr)
  * Processes the test.
  *
  * @param int $phpcsFile The PHP_CodeSniffer
- *                       file where the
- *                       token occurred.
+ *                   file where the
+ *                                        token occurred.
  * @param int $stackPtr  The position in the tokens stack
- *                       where the listening token type
- *                       was found.
+ *                                    where the listening token type
+ *                                           was found.
  *
  * @return void
  * @see    register()
@@ -404,27 +399,23 @@ private function setTranslator4($a, &$b): void
     $this->translator = $translator;
 }
 
-class Bar
-{
+class Bar {
     /**
      * The PHP5 constructor
      *
      * @return
      */
-    public function __construct()
-    {
+    public function __construct() {
 
     }
 }
 
 // phpcs:set PEAR.Commenting.FunctionComment specialMethods[]
-class Bar
-{
+class Bar {
     /**
      * The PHP5 constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
 
     }
 }
@@ -433,24 +424,20 @@ class Bar
 /**
  * Should be ok
  */
-public function ignored()
-{
+public function ignored() {
 
 }
 
 // phpcs:set PEAR.Commenting.FunctionComment specialMethods[] __construct,__destruct
 
-class Something implements JsonSerializable
-{
+class Something implements JsonSerializable {
     /**
      * Single attribute.
      *
      * @return mixed
      */
     #[ReturnTypeWillChange]
-    public function jsonSerialize()
-    {
-    }
+    public function jsonSerialize() {}
 
     /**
      * Multiple attributes.
@@ -459,9 +446,7 @@ class Something implements JsonSerializable
      */
     #[AttributeA]
     #[AttributeB]
-    public function methodName()
-    {
-    }
+    public function methodName() {}
 
     /**
      * Blank line between docblock and attribute.
@@ -470,9 +455,7 @@ class Something implements JsonSerializable
      */
 
     #[ReturnTypeWillChange]
-    public function blankLineDetectionA()
-    {
-    }
+    public function blankLineDetectionA() {}
 
     /**
      * Blank line between attribute and function declaration.
@@ -481,9 +464,7 @@ class Something implements JsonSerializable
      */
     #[ReturnTypeWillChange]
 
-    public function blankLineDetectionB()
-    {
-    }
+    public function blankLineDetectionB() {}
 
     /**
      * Blank line between both docblock and attribute and attribute and function declaration.
@@ -493,7 +474,39 @@ class Something implements JsonSerializable
 
     #[ReturnTypeWillChange]
 
-    public function blankLineDetectionC()
-    {
-    }
+    public function blankLineDetectionC() {}
+}
+
+class SpacingAfter {
+    /**
+     * There are multiple blank lines between this comment and the next function.
+     *
+     * @return void
+     */
+
+
+
+
+
+
+
+
+    public function multipleBlankLines() {}
+
+    /**
+     * There are multiple blank lines, and some "empty" lines with only
+     * spaces/tabs between this comment and the next function.
+     *
+     * @return void
+     */
+
+
+        
+
+		
+
+	  
+
+
+    public function multipleLinesSomeEmpty() {}
 }

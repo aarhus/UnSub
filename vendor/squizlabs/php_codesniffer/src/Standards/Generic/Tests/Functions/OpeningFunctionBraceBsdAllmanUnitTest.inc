@@ -1,8 +1,7 @@
 <?php
 
 // Brace should be on new line.
-function myFunction()
-{
+function myFunction() {
 }
 
 // Good.
@@ -11,25 +10,24 @@ function myFunction()
 }
 
 // Too many spaces.
-function myFunction()
-{
+function myFunction()   {
 }
 
 // Too many newlines.
 function myFunction()
+
 {
 }
 
 // Space before brace.
 function myFunction()
-{
+ {
 }
 
 class myClass
 {
     // Brace should be on new line.
-    function myFunction()
-    {
+    function myFunction() {
     }
     
     // Good.
@@ -39,22 +37,22 @@ class myClass
 
     // No aligned correctly.
     function myFunction()
-    {
-    }
+{
+}
     
     // Too many spaces.
-    function myFunction()
-    {
+    function myFunction()   {
     }
     
     // Too many newlines.
     function myFunction()
+
     {
     }
     
     // Space before brace.
     function myFunction()
-    {
+     {
     }
 }
 
@@ -66,72 +64,68 @@ class myClass
 
 // Brace should be on new line.
 function myFunction($variable1, $variable2,
-    $variable3, $variable4
-) {
+    $variable3, $variable4) {
 }
 
 // Good.
 function myFunction($variable1, $variable2,
-    $variable3, $variable4
-) {
+    $variable3, $variable4)
+{
 }
 
 // Too many spaces.
 function myFunction($variable1, $variable2,
-    $variable3, $variable4
-) {
+    $variable3, $variable4)   {
 }
 
 // Too many newlines.
 function myFunction($variable1, $variable2,
-    $variable3, $variable4
-) {
+    $variable3, $variable4)
 
+{
 }
 
 // Space before brace.
 function myFunction($variable1, $variable2,
-    $variable3, $variable4
-) {
+    $variable3, $variable4)
+ {
 }
 
 class myClass
 {
     // Brace should be on new line.
     function myFunction($variable1, $variable2,
-        $variable3, $variable4
-    ) {
+    $variable3, $variable4) {
     }
     
     // Good.
     function myFunction($variable1, $variable2,
-        $variable3, $variable4
-    ) {
+    $variable3, $variable4)
+    {
     }
 
     // No aligned correctly.
     function myFunction($variable1, $variable2,
-        $variable3, $variable4
-    ) {
-    }
+    $variable3, $variable4)
+{
+}
     
     // Too many spaces.
     function myFunction($variable1, $variable2,
-        $variable3, $variable4
-    ) {
+    $variable3, $variable4)   {
     }
     
     // Too many newlines.
     function myFunction($variable1, $variable2,
-        $variable3, $variable4
-    ) {
+    $variable3, $variable4)
 
+    {
     }
     
     // Space before brace.
     function myFunction($variable1, $variable2,
-        $variable3, $variable4
-    ) {
+    $variable3, $variable4)
+     {
     }
 }
 
@@ -141,31 +135,29 @@ interface MyInterface
 }
 
 function myFunction(
-    $arg1,
-    $arg2,
-    $arg3,
-    $arg4,
-    $arg5,
-    $arg6
-) {
+                    $arg1,
+                    $arg2,
+                    $arg3,
+                    $arg4,
+                    $arg5,
+                    $arg6
+                    )
+{
 }
 
 function myFunction(
-    $arg1,
-    $arg2,
-    $arg3,
-    $arg4,
-    $arg5,
-    $arg6
-) {
+                    $arg1,
+                    $arg2,
+                    $arg3,
+                    $arg4,
+                    $arg5,
+                    $arg6
+                    ) {
 }
 
+function myFunction() {}
 function myFunction()
-{
-}
-function myFunction()
-{
-}
+{}
 
 // phpcs:set Generic.Functions.OpeningFunctionBraceBsdAllman checkClosures 1
 
@@ -193,47 +185,39 @@ $closureWithArgs = function ($arg1, $arg2) {
 
 class Foo
 {
-    //Comments should not affect code
+//Comments should not affect code
     public function bar()
     {
 
     }
-    //Comments should not affect code
+//Comments should not affect code
 }
 
-function myFunction() : Something
-{
+function myFunction() : Something {
     return null;
 }
 
 function myFunction($a, $lot, $of, $params)
-    : array
-{
+    : array {
+    return null;
+}
+
+function myFunction($a, $lot, $of, $params) { // comment
     return null;
 }
 
 function myFunction($a, $lot, $of, $params)
-{
-    // comment
+    : array { // comment
     return null;
 }
 
 function myFunction($a, $lot, $of, $params)
-    : array
-{
-    // comment
+    : array { // phpcs:ignore Standard.Category.Sniff -- for reasons.
     return null;
 }
 
 function myFunction($a, $lot, $of, $params)
-    : array  // phpcs:ignore Standard.Category.Sniff -- for reasons.
-{
-    return null;
-}
-
-function myFunction($a, $lot, $of, $params)
-    : array // phpcs:ignore Standard.Category.Sniff -- for reasons.
-{
+    : array {// phpcs:ignore Standard.Category.Sniff -- for reasons.
     return null;
 }
 
@@ -244,26 +228,27 @@ function myFunction($a, $lot, $of, $params)
 }
 
 function myFunction($a, $lot, $of, $params)
-    : array /* phpcs:ignore Standard.Category.Sniff -- for reasons */
-{
+    : array /* phpcs:ignore Standard.Category.Sniff -- for reasons */ {
     return null;
 }
 
 function myFunction($a, $lot, $of, $params)
-    : array /* comment */
-{
+    : array /* comment */ {
     return null;
 }
 
 class Issue3357
 {
     public function extraLine(string: $a): void
+
     {
         // code here.
     }
 }
 
 function issue3357WithoutIndent(string: $a): void
+
+
 {
     // code here.
 }
@@ -276,3 +261,10 @@ class Issue3357WithComment
         // code here.
     }
 }
+
+    function myFunction()
+    {}
+    function myFunction()
+          {} // Too many spaces indent with an empty function.
+    function myFunction()
+{} // Too little spaces indent with an empty function.

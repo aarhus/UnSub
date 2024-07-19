@@ -1,5 +1,5 @@
 
-<?php echo 'hi'; ?>
+<?= 'hi'; ?>
 
 <div>...more HTML...</div>
-<?php echo 'hi'; ?>
+<?= 'hi'; ?>

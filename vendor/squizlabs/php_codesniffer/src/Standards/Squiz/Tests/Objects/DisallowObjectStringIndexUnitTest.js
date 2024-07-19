@@ -6,7 +6,8 @@ function test(id)
 }
 /**/
 test.prototype = {
-    init: function () {
+    init: function()
+    {
         var x      = {};
         x.name     = 'test';
         x['phone'] = 123124324;
@@ -19,8 +20,7 @@ test.prototype = {
 
 };
 
-function test()
-{
+function test() {
     this.errors['step_' + step] = errors;
     this.errors['test'] = x;
     this.errors['test' + 10] = x;

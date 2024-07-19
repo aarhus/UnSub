@@ -1,14 +1,14 @@
 if (variable === true) { }
-if (variable === true) { }
-if (variable === true) { }
-variable = true;
+if (variable === TRUE) { }
+if (variable === True) { }
+variable = True;
 
 if (variable === false) { }
-if (variable === false) { }
-if (variable === false) { }
+if (variable === FALSE) { }
+if (variable === False) { }
 variable = false;
 
 if (variable === null) { }
-if (variable === null) { }
-if (variable === null) { }
-variable = null;
+if (variable === NULL) { }
+if (variable === Null) { }
+variable = NULL;

@@ -14,22 +14,17 @@ qux
 BAZ;
 }
 
-class Foo
-{
+class Foo {
     public static function default(): ObjectA
     {
         return new self(1);
     }
 }//end class
 
-class MyClass
-{
-    $anonFunc = function ($foo) use ($bar) {
-    };
-    public $anonFunc2 = function ($foo2) use ($bar2) {
-    };
-    public function method($var1, $var2)
-    {
+class MyClass {
+    $anonFunc = function($foo) use ($bar) {};
+    public $anonFunc2 = function($foo2) use ($bar2) {};
+    public function method($var1, $var2) {
         $anon = new class {
             $p1 = null;
             public $p2;
@@ -37,8 +32,7 @@ class MyClass
             private $p4;
             $p5 = null;
 
-            public function m($x)
-            {
+            public function m($x) {
                 $y = $x + 1;
 
                 $xAnon = new class {
@@ -47,7 +41,7 @@ class MyClass
                     $g3 = null;
                 };
 
-                $anonFunc = function ($foo) use ($bar) {
+                $anonFunc = function($foo) use ($bar) {
                     $x = true;
                 };
 
@@ -73,7 +67,6 @@ class MyClass
         $mSearchPeriodStart;
 }
 
-interface Base
-{
+interface Base {
     protected $anonymous;
 }

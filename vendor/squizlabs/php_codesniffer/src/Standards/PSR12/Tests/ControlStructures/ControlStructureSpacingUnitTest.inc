@@ -2,7 +2,8 @@
 while ( $expr ) {
 }
 
-if () {
+if (
+) {
 }
 
 while (
@@ -22,14 +23,15 @@ do {
     && $expr2) {
 }
 
-if ($expr1
-    && $expr2
+if (
+    $expr1
+        && $expr2
     && $expr3
 ) {
     while (
-    $expr1
-    && $expr2
-    ) {
+$expr1
+  && $expr2
+) {
     }
     while (
     $expr1
@@ -59,27 +61,29 @@ $i < 10;
 ) {
 }
 
-if (foo(
-    'this
+if (
+    foo(
+            'this
             is a
             string',
-    <<<EOD
+            <<<EOD
 foobar!
 EOD
-)
+        )
 ) {
     return;
 }
 
-if (isset($foo) === true
-    && $bar > $foo
-    /*
+    if (
+        isset($foo) === true
+        && $bar > $foo
+        /*
          * A multi-line comment.
          */
-    && $foo === true
-) {
-    break;
-}
+        && $foo === true
+    ) {
+        break;
+    }
 
 match (
     $expr1 &&

@@ -1,9 +1,9 @@
 <?php
 $someObject->someFunction("some", "parameter")
-    ->someOtherFunc(23, 42)
-    ->someOtherFunc2($one, $two)
+->someOtherFunc(23, 42)->
+    someOtherFunc2($one, $two)
 
-    ->someOtherFunc3(23, 42)
+ ->someOtherFunc3(23, 42)
     ->andAThirdFunction();
 
     $someObject->someFunction("some", "parameter")
@@ -12,7 +12,7 @@ $someObject->someFunction("some", "parameter")
 $someObject->someFunction("some", "parameter")->someOtherFunc(23, 42);
 
 $someObject->someFunction("some", "parameter")
-    ->someOtherFunc(23, 42);
+        ->someOtherFunc(23, 42);
 
 func(
     $bar->foo()
@@ -24,7 +24,7 @@ func(
 )
     ->bar(
         $bar->foo()
-            ->bar()
+        ->bar()
             ->func()
     );
 
@@ -34,8 +34,8 @@ $object
 
 if ($bar) {
     $object
-        ->setBar($foo)
-        ->setFoo($bar);
+    ->setBar($foo)
+    ->setFoo($bar);
 }
 
 $response -> CompletedTrackDetails -> TrackDetails -> Events;
@@ -45,9 +45,9 @@ $response
     -> Events;
 
 $response
-    -> CompletedTrackDetails
-    -> TrackDetails
-    -> Events;
+     -> CompletedTrackDetails
+-> TrackDetails
+ -> Events;
 
 $var = get_object(
     $foo->something()
@@ -62,24 +62,24 @@ $foo->one(
 
 get_object()->one()
     ->two()
-    ->three();
+        ->three();
 
 someclass::one()
     ->two()
-    ->three();
+        ->three();
 
 (new someclass())->one()
     ->two()
-    ->three();
+        ->three();
 
 // phpcs:set PEAR.WhiteSpace.ObjectOperatorIndent multilevel true
 
 $someObject
     ->startSomething()
-        ->someOtherFunc(23, 42)
-    ->endSomething()
-    ->doSomething(23, 42)
-    ->endEverything();
+                    ->someOtherFunc(23, 42)
+->endSomething()
+->doSomething(23, 42)
+->endEverything();
 
 $rootNode
     ->one()
@@ -92,7 +92,7 @@ $rootNode
     ->one()
         ->two()
             ->three()
-        ->four()
+    ->four()
     ->five();
 
 $rootNode
@@ -100,7 +100,7 @@ $rootNode
     ->two()
         ->three()
     ->four()
-    ->five();
+->five();
 
 $rootNode
     ->one()
@@ -116,10 +116,10 @@ $object
     ?->setFoo($bar);
 
 $someObject?->someFunction("some", "parameter")
-    ->someOtherFunc(23, 42)
-    ?->someOtherFunc2($one, $two)
+->someOtherFunc(23, 42)?->
+    someOtherFunc2($one, $two)
 
-    ->someOtherFunc3(23, 42)
+->someOtherFunc3(23, 42)
     ?->andAThirdFunction();
 
 // phpcs:set PEAR.WhiteSpace.ObjectOperatorIndent multilevel true
@@ -128,15 +128,15 @@ $object
         ?->setFoo($bar);
 
 $someObject?->someFunction("some", "parameter")
-    ->someOtherFunc(23, 42)
+->someOtherFunc(23, 42)
         ?->someOtherFunc2($one, $two)
 
-    ->someOtherFunc3(23, 42)
+->someOtherFunc3(23, 42)
     ?->andAThirdFunction();
 // phpcs:set PEAR.WhiteSpace.ObjectOperatorIndent multilevel false
 
 $someObject
     ->startSomething(paramName: $value)
-    ->someOtherFunc(nameA: 23, nameB: 42)
-    ->endSomething($value, name: $value)
-    ->endEverything();
+                    ->someOtherFunc(nameA: 23, nameB: 42)
+->endSomething($value, name: $value)
+->endEverything();

@@ -2,8 +2,8 @@
 
 if (!class_exists('ClassOpeningBraceTabIndented')) {
     abstract class ClassOpeningBraceTabIndented
-    {
-    }
+	{
+	}
 }
 
 

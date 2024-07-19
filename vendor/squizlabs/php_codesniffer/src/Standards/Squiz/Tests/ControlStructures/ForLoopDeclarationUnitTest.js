@@ -24,10 +24,7 @@ dfx.inherits('ContentFormat', 'Widget');
 
 for (var widgetid in this.loadedContents) {
     if (dfx.isset(widget) === true) {
-        widget.loadAutoSaveCWidgetStore.setData('activeScreen', null);widget.getContents(
-            this.loadedContents[widgetid], function () {
-                self.widgetLoaded(widget.id);}
-        );
+        widget.loadAutoSaveCWidgetStore.setData('activeScreen', null);widget.getContents(this.loadedContents[widgetid], function() {self.widgetLoaded(widget.id);});
     }
 }
 
@@ -120,13 +117,9 @@ for (
 // phpcs:set Squiz.ControlStructures.ForLoopDeclaration requiredSpacesAfterOpen 0
 // phpcs:set Squiz.ControlStructures.ForLoopDeclaration requiredSpacesBeforeClose 0
 
-// Test with semi-colon not belonging to for.
-for (i = function () {
-    self.widgetLoaded(widget.id);  }; i < function () {
-        self.widgetLoaded(widget.id);}; i++) {}
-for (i = function () {
-    self.widgetLoaded(widget.id);}; i < function () {
-        self.widgetLoaded(widget.id);}  ;   i++) {}
+// Test with semicolon not belonging to for.
+for (i = function() {self.widgetLoaded(widget.id)  ;  }; i < function() {self.widgetLoaded(widget.id);}; i++) {}
+for (i = function() {self.widgetLoaded(widget.id);}; i < function() {self.widgetLoaded(widget.id);}  ;   i++) {}
 
 // This test has to be the last one in the file! Intentional parse error check.
 for

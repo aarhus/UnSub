@@ -3,22 +3,19 @@ Channels::includeSystem('MySystem');
 Channels::includeAsset('Page');
 require_once 'libs/FileSystem2.inc';
 
-function one()
-{
+function one() {
     Channels::includeSystem('MySystem2');
     $siteid = MySystem2::getCurrentSiteId();
     Page::create();
     PageAssetType::create();
 }
 
-function two()
-{
+function two() {
     $siteid = MySystem2::getCurrentSiteId();
     $parserFiles = FileSystem2::listDirectory();
 }
 
-function three()
-{
+function three() {
     include 'libs/FileSystem.inc';
     $siteid = MySystem::getCurrentSiteId();
     $parserFiles = FileSystem::listDirectory();
@@ -33,23 +30,20 @@ PageAssetType::create();
 
 class AssetListingAssetType extends AssetAssetType
 {
-    function one()
-    {
+    function one() {
         Channels::includeSystem('MySystem2');
         $siteid = MySystem2::getCurrentSiteId();
         Page::create();
         PageAssetType::create();
     }
 
-    function two()
-    {
+    function two() {
         $siteid = MySystem2::getCurrentSiteId();
         $parserFiles = FileSystem2::listDirectory();
         return parent::two();
     }
 
-    function three()
-    {
+    function three() {
         include 'libs/FileSystem.inc';
         $siteid = MySystem::getCurrentSiteId();
         $parserFiles = FileSystem::listDirectory();
@@ -72,48 +66,40 @@ Util::getArrayIndex(array(), '');
 
 Channels::includeSystem('Widget');
 Widget::includeWidget('AbstractContainer');
-class MyWidget extends AbstractContainerWidgetType
-{
-}
-class MyOtherWidget extends BookWidgetType
-{
-}
+class MyWidget extends AbstractContainerWidgetType {}
+class MyOtherWidget extends BookWidgetType {}
 
 $zip = new ZipArchive();
 $res = $zip->open($path, ZipArchive::CREATE);
 
 class AssetListingUnitTest extends AbstractMySourceUnitTest
 {
-    function setUp()
-    {
+    function setUp() {
         parent::setUp();
         Channels::includeSystem('MySystem2');
         include_once 'Libs/FileSystem.inc';
     }
 
-    function two()
-    {
+    function two() {
         $siteid = MySystem2::getCurrentSiteId();
         $parserFiles = FileSystem::listDirectory();
     }
 
-    function three()
-    {
+    function three() {
         $siteid = MySystem3::getCurrentSiteId();
         $parserFiles = FileSystem::listDirectory();
     }
 }
 
-if (Channels::systemExists('Log') === true) {
-    Channels::includeSystem('Log');
+if (Channels::systemExists('Log') === TRUE) {
+   Channels::includeSystem('Log');
 } else {
-    return;
+   return;
 }
 
 Log::addProjectLog('metadata.field.update', $msg);
 
-function two()
-{
+function two() {
     Widget::includeWidget('CacheAdminScreen');
     $barChart = CacheAdminScreenWidgetType::constructBarchart($data);
 }

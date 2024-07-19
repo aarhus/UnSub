@@ -1,4 +1,3 @@
-<?php echo 'text' ?>
+<?= 'text' ?>
 <div>text</div>
-<?php echo if($x) { $y = 'text'; 
-} ?>
+<?= if($x) { $y = 'text'; } ?>

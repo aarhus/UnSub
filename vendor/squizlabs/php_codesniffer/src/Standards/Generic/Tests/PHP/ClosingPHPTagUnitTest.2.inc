@@ -1,5 +1,5 @@
-<?php echo 'foo'; ?>
+<?= 'foo'; ?>
 <b>Bold text</b>
-<?php echo 'bar'; ?>
+<?= 'bar'; ?>
 <i>Italic text</i>
-<?php echo 'baz';
+<?= 'baz';

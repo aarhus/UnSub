@@ -14,14 +14,10 @@ final class CachingStream implements StreamInterface
 {
     use StreamDecoratorTrait;
 
-    /**
-     * @var StreamInterface Stream being wrapped 
-     */
+    /** @var StreamInterface Stream being wrapped */
     private $remoteStream;
 
-    /**
-     * @var int Number of bytes to skip reading due to a write on the buffer 
-     */
+    /** @var int Number of bytes to skip reading due to a write on the buffer */
     private $skipReadBytes = 0;
 
     /**
@@ -37,7 +33,7 @@ final class CachingStream implements StreamInterface
      */
     public function __construct(
         StreamInterface $stream,
-        StreamInterface $target = null
+        ?StreamInterface $target = null
     ) {
         $this->remoteStream = $stream;
         $this->stream = $target ?: new Stream(Utils::tryFopen('php://temp', 'r+'));
