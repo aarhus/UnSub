@@ -118,13 +118,13 @@ class UnSubController extends Controller
 
         if ((isset($opts["https"]) || isset($opts["http"]))) {
 
-            try {
                 $client = new Client(['request.options' => ['exceptions' => false,]]);
 
                 $url = isset($opts["https"]) ? 'https:' . $opts["https"] : 'http:' . $opts["http"];
                 $response = null;
 
-                if ("List-Unsubscribe=One-Click" === $unsubPost) {
+            try {
+                if ($unsubPost) {
                     $response = $client->request(
                         'POST',
                         $url,
@@ -136,13 +136,16 @@ class UnSubController extends Controller
                     $response = $client->request('GET', $url);
                 }
 
+		$code = $response->getStatusCode();
+
 
                 $body = $response->getBody();
 
                 $conversation->setMeta("List-Unsubscribe-Submitted", ["status" => $response->getStatusCode(), "reason" => $response->getReasonPhrase()]);
 
                 $auth_user = auth()->user();
-                $created_by_user_id = $auth_user->id;
+		error_log($auth_user);
+                $created_by_user_id = (gettype($auth_user) == "object") ? $auth_user->id : $auth_user ;
                 \App\Thread::create(
                     $conversation, Thread::TYPE_LINEITEM,
                     '',
@@ -154,15 +157,20 @@ class UnSubController extends Controller
                         'source_type' => \App\Thread::SOURCE_TYPE_WEB,
                         'body' => $body,
                         'meta' => [
-                            'code' => $response->getStatusCode(),
+                            'code' => $code,
                             'message' => $response->getReasonPhrase()
                         ]
                     ]
                 );
+
+		if ($code>=200 && $code <=299) {
+			$conversation->changeStatus(Conversation::STATUS_CLOSED,$auth_user, false);
+		}
+		
             } catch (ConnectException $e) {
 
                 $auth_user = auth()->user();
-                $created_by_user_id = $auth_user->id;
+                $created_by_user_id = (gettype($auth_user) == "object") ? $auth_user->id : $auth_user ;
                 \App\Thread::create(
                     $conversation, Thread::TYPE_LINEITEM,
                     '',
@@ -172,17 +180,22 @@ class UnSubController extends Controller
                         'action_type' => self::ACTION_TYPE_UNSUBSCRIBE,
                         'source_via' => \App\Thread::PERSON_USER,
                         'source_type' => \App\Thread::SOURCE_TYPE_WEB,
-                        'body' => "Something went wrong",
+                        'body' => "Something went wrong. ".print_r([ 'url' => $url, 'opts' => $opts, ]),
                         'meta' => [
                             'code' => 501,
-                            'message' => "Sorry, something went wrong: " . $e->getMessage()
+                            'message' => "Sorry, something went wrong: " . $e->getMessage(),
+                            'lineNumber' => $e->getLine(),
+			    'trace'=>$e->getTraceAsString(),
+			    'method' => ($unsubPost) ? 'POST' : "GET",
+			    'url' => $url,
+			    'opts' => $opts,
                         ]
                     ]
                 );
             } catch (\Exception $e) {
 
                 $auth_user = auth()->user();
-                $created_by_user_id = $auth_user->id;
+                $created_by_user_id = (gettype($auth_user) == "object") ? $auth_user->id : $auth_user ;
                 \App\Thread::create(
                     $conversation, Thread::TYPE_LINEITEM,
                     '',
@@ -195,7 +208,13 @@ class UnSubController extends Controller
                         'body' => "Something went wrong",
                         'meta' => [
                             'code' => 501,
-                            'message' => "Sorry, something went wrong: " . $e->getMessage()
+                            'message' => "Sorry, something went wrong: " . $e->getMessage(),
+                            'lineNumber' => $e->getLine(),
+			    'trace'=>$e->getTraceAsString(),
+			    'method' => ($unsubPost) ? 'POST' : "GET",
+			    'user' => json_encode($auth_user),
+			    'url' => $url,
+			    'opts' => $opts,
                         ]
                     ]
                 );
