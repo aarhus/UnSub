@@ -136,7 +136,7 @@ class UnSubController extends Controller
                     $response = $client->request('GET', $url);
                 }
 
-		$code = $response->getStatusCode();
+                $code = $response->getStatusCode();
 
 
                 $body = $response->getBody();
@@ -144,7 +144,7 @@ class UnSubController extends Controller
                 $conversation->setMeta("List-Unsubscribe-Submitted", ["status" => $response->getStatusCode(), "reason" => $response->getReasonPhrase()]);
 
                 $auth_user = auth()->user();
-		error_log($auth_user);
+                error_log($auth_user);
                 $created_by_user_id = (gettype($auth_user) == "object") ? $auth_user->id : $auth_user ;
                 \App\Thread::create(
                     $conversation, Thread::TYPE_LINEITEM,
@@ -163,10 +163,10 @@ class UnSubController extends Controller
                     ]
                 );
 
-		if ($code>=200 && $code <=299) {
-			$conversation->changeStatus(Conversation::STATUS_CLOSED,$auth_user, false);
-		}
-		
+                if ($code>=200 && $code <=299) {
+                    $conversation->changeStatus(Conversation::STATUS_CLOSED, $auth_user, false);
+                }
+        
             } catch (ConnectException $e) {
 
                 $auth_user = auth()->user();
@@ -185,10 +185,10 @@ class UnSubController extends Controller
                             'code' => 501,
                             'message' => "Sorry, something went wrong: " . $e->getMessage(),
                             'lineNumber' => $e->getLine(),
-			    'trace'=>$e->getTraceAsString(),
-			    'method' => ($unsubPost) ? 'POST' : "GET",
-			    'url' => $url,
-			    'opts' => $opts,
+                    'trace'=>$e->getTraceAsString(),
+                    'method' => ($unsubPost) ? 'POST' : "GET",
+                    'url' => $url,
+                    'opts' => $opts,
                         ]
                     ]
                 );
@@ -210,11 +210,11 @@ class UnSubController extends Controller
                             'code' => 501,
                             'message' => "Sorry, something went wrong: " . $e->getMessage(),
                             'lineNumber' => $e->getLine(),
-			    'trace'=>$e->getTraceAsString(),
-			    'method' => ($unsubPost) ? 'POST' : "GET",
-			    'user' => json_encode($auth_user),
-			    'url' => $url,
-			    'opts' => $opts,
+                    'trace'=>$e->getTraceAsString(),
+                    'method' => ($unsubPost) ? 'POST' : "GET",
+                    'user' => json_encode($auth_user),
+                    'url' => $url,
+                    'opts' => $opts,
                         ]
                     ]
                 );
