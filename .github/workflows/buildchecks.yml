@@ -57,6 +57,7 @@ jobs:
       - name: Prepare files
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
         run: |
+          composer install --prefer-dist --no-progress --no-dev
           mkdir AarhusChangeCustomer
           # Move everything except .git and README.md into the AarhusChangeCustomer folder
           find . -maxdepth 1 ! -name .git ! -name .github ! -name AarhusChangeCustomer ! -name . ! -name README.md -exec mv {} AarhusChangeCustomer/ \;
