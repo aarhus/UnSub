@@ -2,7 +2,7 @@
     "name": "Aarhus Unsub",
     "alias": "unsub",
     "description": "Aarhus Unsub adds a link to the conversation if we can automatically unsub",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "keywords": [],
     "active": 1,
     "order": 0,

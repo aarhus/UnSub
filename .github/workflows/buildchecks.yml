@@ -73,4 +73,4 @@ jobs:
         with:
           artifacts: "${GITHUB_REF_NAME}.zip"
           generateReleaseNotes: true
-          body: Download the zip file, copy the file to your server under the "Modules" directory, unzip the file and rename the directory createed to AarhusChangeCustomer
+          body: Download the zip file, copy the file to your server under the "Modules" directory, unzip the file and rename the directory createed to AarhusUnSub
